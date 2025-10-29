@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment Career Guidance | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #9c27b0; /* Purple for entertainment theme */
+            --secondary-color: #f8f9fc;
+            --accent-color: #e91e63; /* Pink */
+            --text-color: #5a5c69;
+            --dark-color: #7b1fa2; /* Darker purple */
+            --entertainment-color: #9c27b0; /* Main entertainment theme color */
+        }
+        
+        body {
+            padding-top: 70px;
+            background-color: #f8f9fa;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #fff;
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .entertainment-hero {
+            background: linear-gradient(rgba(156, 39, 176, 0.85), rgba(156, 39, 176, 0.9)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Card Styles */
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--entertainment-color), var(--dark-color));
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 600;
+        }
+        
+        /* Entertainment Specific Styles */
+        .entertainment-badge {
+            background: linear-gradient(135deg, var(--entertainment-color), var(--dark-color));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .pathway-card {
+            border-left: 4px solid var(--entertainment-color);
+        }
+        
+        .specialization-card {
+            border-top: 3px solid var(--entertainment-color);
+        }
+        
+        .progress {
+            height: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Roadmap Styles */
+        .roadmap-container {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+        
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--entertainment-color);
+        }
+        
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--entertainment-color);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--entertainment-color);
+        }
+        
+        /* Button Styles */
+        .btn-entertainment {
+            background: linear-gradient(to right, var(--entertainment-color), var(--dark-color));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+        
+        .btn-entertainment:hover {
+            background: linear-gradient(to right, var(--dark-color), var(--entertainment-color));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Resource Cards */
+        .resource-card {
+            height: 100%;
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover {
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+        }
+        
+        /* Stats */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--entertainment-color);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--entertainment-color), var(--dark-color));
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        /* Entertainment Field Colors */
+        .film-tv { --field-color: #9c27b0; }
+        .music { --field-color: #2196f3; }
+        .performing-arts { --field-color: #f44336; }
+        .gaming { --field-color: #4caf50; }
+        .digital-media { --field-color: #ff9800; }
+        .event-production { --field-color: #607d8b; }
+        
+        .field-badge {
+            background-color: var(--field-color);
+            color: white;
+        }
+        
+        /* College ranking styles */
+        .college-rank {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--entertainment-color);
+            margin-right: 15px;
+        }
+        
+        .college-card {
+            transition: all 0.3s ease;
+        }
+        
+        .college-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Help Button Animation */
+        #helpBtn {
+            transition: all 0.3s ease;
+        }
+        
+        #helpBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(156, 39, 176, 0.5);
+        }
+        
+        /* Help Modal Styles */
+        .help-step {
+            border-left: 4px solid var(--entertainment-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .help-step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--entertainment-color);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .contact-support {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        /* Footer Links */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-mask me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-info me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Future Entertainer!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Entertainment Hero Section -->
+    <div class="entertainment-hero rounded">
+        <div class="container">
+            <div class="entertainment-badge">
+                <i class="fas fa-star me-2"></i>Creative Excellence
+            </div>
+            <h1 class="display-4 fw-bold">Entertainment Career Pathways</h1>
+            <p class="lead">Congratulations on your outstanding assessment results! Your creativity, communication skills, and artistic talent make you an ideal candidate for entertainment careers.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Learning Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">$45K-$200K+</div>
+                    <div class="stat-label">Salary Range (Varies by role)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">10%</div>
+                    <div class="stat-label">Job Growth (2022-2032)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Freelance/Project-Based Work</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">2-6 Years</div>
+                    <div class="stat-label">Typical Education Path</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Entertainment Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Entertainment Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 film-tv">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Film & Television</span>
+                                    <h5 class="card-title">Film & Television</h5>
+                                    <p class="card-text">Create compelling visual stories through film and television production. Your storytelling ability and visual creativity are perfect for this field.</p>
+                                    <ul class="mb-3">
+                                        <li>Diverse roles from directing to editing</li>
+                                        <li>Global entertainment industry</li>
+                                        <li>Creative collaboration opportunities</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment" onclick="showFieldDetails('filmTv')">Explore Film & TV</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 music">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Music Industry</span>
+                                    <h5 class="card-title">Music Industry</h5>
+                                    <p class="card-text">Create, produce, and distribute music across various platforms. Your musical talent and industry knowledge can lead to diverse career paths.</p>
+                                    <ul class="mb-3">
+                                        <li>Performance, production, and business roles</li>
+                                        <li>Digital distribution opportunities</li>
+                                        <li>Live events and touring</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment" onclick="showFieldDetails('music')">Explore Music Industry</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 performing-arts">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Performing Arts</span>
+                                    <h5 class="card-title">Performing Arts</h5>
+                                    <p class="card-text">Express artistic talent through theater, dance, and live performance. Your stage presence and performance skills are exceptional.</p>
+                                    <ul class="mb-3">
+                                        <li>Theater, dance, and musical performance</li>
+                                        <li>Directing and choreography opportunities</li>
+                                        <li>Educational and community outreach</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment" onclick="showFieldDetails('performingArts')">Explore Performing Arts</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 gaming">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Gaming & Esports</span>
+                                    <h5 class="card-title">Gaming & Esports</h5>
+                                    <p class="card-text">Develop games, manage esports teams, or create gaming content. Your technical skills and gaming knowledge are valuable assets.</p>
+                                    <ul class="mb-3">
+                                        <li>Game development and design</li>
+                                        <li>Esports management and broadcasting</li>
+                                        <li>Content creation and streaming</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment" onclick="showFieldDetails('gaming')">Explore Gaming & Esports</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 digital-media">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Digital Media</span>
+                                    <h5 class="card-title">Digital Media</h5>
+                                    <p class="card-text">Create content for digital platforms including social media, streaming services, and online publications.</p>
+                                    <ul class="mb-3">
+                                        <li>Social media management</li>
+                                        <li>Digital content creation</li>
+                                        <li>Online platform development</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment" onclick="showFieldDetails('digitalMedia')">Explore Digital Media</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 event-production">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Event Production</span>
+                                    <h5 class="card-title">Event Production</h5>
+                                    <p class="card-text">Plan and execute live events including concerts, festivals, and corporate entertainment experiences.</p>
+                                    <ul class="mb-3">
+                                        <li>Concert and festival production</li>
+                                        <li>Corporate event management</li>
+                                        <li>Venue operations</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment" onclick="showFieldDetails('eventProduction')">Explore Event Production</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Top Entertainment Schools Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-university me-2"></i>Top Entertainment Schools</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- School 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card college-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="college-rank">#1</span>
+                                        <h5 class="card-title mb-0">University of Southern California (USC)</h5>
+                                    </div>
+                                    <p class="card-text">Located in the heart of Los Angeles with unparalleled access to the entertainment industry and top film, music, and media programs.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Los Angeles, CA</span>
+                                        <span class="badge bg-success">Acceptance: 16%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Cinema & Media Studies, Music Industry, Animation</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showCollegeDetails('usc')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- School 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card college-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="college-rank">#2</span>
+                                        <h5 class="card-title mb-0">New York University (NYU)</h5>
+                                    </div>
+                                    <p class="card-text">Located in the cultural capital of New York with exceptional performing arts, film, and music programs.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">New York, NY</span>
+                                        <span class="badge bg-success">Acceptance: 21%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Tisch School of the Arts, Clive Davis Institute, Game Design</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showCollegeDetails('nyu')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- School 3 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card college-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="college-rank">#3</span>
+                                        <h5 class="card-title mb-0">Berklee College of Music</h5>
+                                    </div>
+                                    <p class="card-text">World-renowned music institution with comprehensive programs in performance, production, and music business.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Boston, MA</span>
+                                        <span class="badge bg-success">Acceptance: 52%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Music Production, Performance, Music Business</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showCollegeDetails('berklee')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- School 4 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card college-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="college-rank">#4</span>
+                                        <h5 class="card-title mb-0">University of California, Los Angeles (UCLA)</h5>
+                                    </div>
+                                    <p class="card-text">Top public university with strong film, theater, and media programs in the entertainment capital of the world.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Los Angeles, CA</span>
+                                        <span class="badge bg-success">Acceptance: 14%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Film & Television, Theater, Digital Media</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showCollegeDetails('ucla')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn-entertainment" onclick="showAllColleges()">
+                            <i class="fas fa-list me-2"></i>View More Entertainment Schools
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Specializations -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-star me-2"></i>Entertainment Specializations</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Virtual Production</h5>
+                                    <p class="card-text">Combine traditional filmmaking with real-time CGI and virtual environments.</p>
+                                    <span class="badge bg-primary mb-2">High Growth</span>
+                                    <span class="badge bg-success">Cutting-Edge</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Esports Management</h5>
+                                    <p class="card-text">Manage competitive gaming teams, events, and organizations in the rapidly growing esports industry.</p>
+                                    <span class="badge bg-primary mb-2">High Growth</span>
+                                    <span class="badge bg-info">Digital Innovation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Immersive Experiences</h5>
+                                    <p class="card-text">Create interactive and immersive entertainment experiences using AR/VR technology.</p>
+                                    <span class="badge bg-success mb-2">High Impact</span>
+                                    <span class="badge bg-warning">Emerging Field</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Entertainment Education Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: Build Foundation Skills (1-2 years)</h5>
+                            <p>Develop core creative skills through classes, workshops, and personal projects. Build a portfolio of your work.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: Formal Education (2-4 years)</h5>
+                            <p>Pursue a degree or certificate program in your chosen entertainment field. Focus on building industry connections.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Internships & Entry-Level Positions</h5>
+                            <p>Gain practical experience through internships, assistant roles, or entry-level positions in the industry.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: Specialization & Networking</h5>
+                            <p>Focus on a specific area of entertainment. Attend industry events and build professional relationships.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: Build Your Career</h5>
+                            <p>Take on more significant projects, build your reputation, and establish yourself in your chosen field.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Continuous Learning & Adaptation</h5>
+                            <p>Stay current with industry trends, technologies, and opportunities for growth and advancement.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Learning Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Online Courses</h5>
+                                    <ul>
+                                        <li>MasterClass - Entertainment Industry</li>
+                                        <li>Coursera - Film, Music & Media</li>
+                                        <li>LinkedIn Learning - Creative Skills</li>
+                                        <li>Skillshare - Creative Arts</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment" onclick="showResources('courses')">Explore Courses</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Books & Publications</h5>
+                                    <ul>
+                                        <li>"Save the Cat!" by Blake Snyder</li>
+                                        <li>"The War of Art" by Steven Pressfield</li>
+                                        <li>Variety Magazine</li>
+                                        <li>The Hollywood Reporter</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment" onclick="showResources('books')">View Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Professional Organizations</h5>
+                                    <ul>
+                                        <li>Academy of Motion Picture Arts & Sciences</li>
+                                        <li>Recording Academy (Grammys)</li>
+                                        <li>Actors' Equity Association</li>
+                                        <li>International Game Developers Association</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment" onclick="showResources('orgs')">Join Organizations</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Next Steps</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Short-Term Goals (0-6 months)</h5>
+                                    <ul>
+                                        <li>Build a portfolio of creative work</li>
+                                        <li>Attend local entertainment events and network</li>
+                                        <li>Take an introductory course in your field of interest</li>
+                                        <li>Join relevant student or community organizations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Long-Term Goals (1-3 years)</h5>
+                                    <ul>
+                                        <li>Complete a degree or certification program</li>
+                                        <li>Secure an internship in the entertainment industry</li>
+                                        <li>Build a professional network of industry contacts</li>
+                                        <li>Create a professional demo reel or portfolio</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-entertainment btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Entertainment Fields
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg" onclick="showResources('courses')">
+                            <i class="fas fa-book me-2"></i>Learning Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping students discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('courses')">Online Courses</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Books & Publications</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Professional Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Added navigation links -->
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="#" onclick="loadContent('about')">About</a>
+            <a href="#" onclick="loadContent('contact')">Contact Us</a>
+        </div>
+        
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2023 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Entertainment Field Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Entertainment Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Colleges Modal -->
+<div class="modal fade" id="collegesModal" tabindex="-1" aria-labelledby="collegesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="collegesModalLabel">Entertainment Schools</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="collegesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel"><i class="fas fa-question-circle me-2"></i>Entertainment Career Guidance Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>How to Use This Entertainment Career Guide</h4>
+                <p>This personalized guide is designed to help you explore entertainment career options based on your assessment results. Here's how to make the most of it:</p>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">1</span>Explore Entertainment Fields</h5>
+                    <p>Review the different entertainment pathways to understand which specialties align with your skills and interests.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">2</span>Check School Options</h5>
+                    <p>Browse top entertainment schools and their specializations to find programs that match your career goals.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">3</span>Review Educational Roadmap</h5>
+                    <p>Follow the step-by-step educational path to understand what it takes to build a career in entertainment.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">4</span>Utilize Learning Resources</h5>
+                    <p>Access recommended courses, books, and professional organizations to start building your entertainment knowledge.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">5</span>Set Your Goals</h5>
+                    <p>Use the suggested short-term and long-term goals to create your personalized action plan.</p>
+                </div>
+                
+                <div class="contact-support">
+                    <h5><i class="fas fa-headset me-2"></i>Need More Help?</h5>
+                    <p>If you have additional questions or need personalized guidance, our career counselors are here to help:</p>
+                    <ul>
+                        <li>Email: support@careerguider.edu</li>
+                        <li>Phone: (800) 555-SHOWBIZ</li>
+                        <li>Live Chat: Available weekdays 9AM-5PM EST</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-1"></i> Explore Entertainment Fields
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script>
+    // Field details data
+    const fieldDetails = {
+        filmTv: {
+            title: "Film & Television",
+            description: "The film and television industry encompasses all aspects of creating visual content for screens large and small. From blockbuster movies to streaming series, this field offers diverse creative and technical roles.",
+            skills: ["Storytelling", "Visual Composition", "Collaboration", "Technical Proficiency"],
+            salary: "$40,000 - $200,000+",
+            growth: "10% (Faster than average)",
+            education: "Bachelor's in Film, Media Studies, or related field",
+            bestFor: "Creative individuals who enjoy visual storytelling, collaboration, and working in dynamic environments"
+        },
+        music: {
+            title: "Music Industry",
+            description: "The music industry includes performance, production, distribution, and business aspects of creating and sharing music. From artists to executives, this field offers diverse career paths.",
+            skills: ["Musical Talent", "Business Acumen", "Technical Skills", "Networking"],
+            salary: "$30,000 - $150,000+",
+            growth: "8% (As fast as average)",
+            education: "Varies from performance degrees to business programs",
+            bestFor: "Musically talented individuals with business sense and passion for the art form"
+        },
+        performingArts: {
+            title: "Performing Arts",
+            description: "The performing arts encompass theater, dance, opera, and other live performance disciplines. This field includes performers, directors, designers, and production staff.",
+            skills: ["Performance Ability", "Physical Expression", "Collaboration", "Discipline"],
+            salary: "$25,000 - $100,000+",
+            growth: "7% (As fast as average)",
+            education: "Bachelor's in Theater, Dance, or related performing arts",
+            bestFor: "Individuals with strong performance skills, physical expression, and stage presence"
+        },
+        gaming: {
+            title: "Gaming & Esports",
+            description: "The gaming industry includes game development, esports management, streaming, and content creation. This rapidly growing field combines technology, entertainment, and community.",
+            skills: ["Technical Proficiency", "Creative Design", "Strategic Thinking", "Communication"],
+            salary: "$50,000 - $120,000+",
+            growth: "15% (Much faster than average)",
+            education: "Bachelor's in Game Design, Computer Science, or related field",
+            bestFor: "Individuals who love gaming, technology, and creative problem-solving"
+        },
+        digitalMedia: {
+            title: "Digital Media",
+            description: "Digital media encompasses content creation for online platforms, social media management, streaming services, and digital marketing within the entertainment industry.",
+            skills: ["Content Creation", "Digital Literacy", "Analytics", "Adaptability"],
+            salary: "$45,000 - $100,000+",
+            growth: "12% (Faster than average)",
+            education: "Bachelor's in Digital Media, Communications, or related field",
+            bestFor: "Creative individuals who understand digital platforms and audience engagement"
+        },
+        eventProduction: {
+            title: "Event Production",
+            description: "Event production involves planning and executing live entertainment experiences including concerts, festivals, corporate events, and theatrical productions.",
+            skills: ["Organization", "Problem-Solving", "Budget Management", "Team Leadership"],
+            salary: "$40,000 - $90,000+",
+            growth: "10% (Faster than average)",
+            education: "Bachelor's in Event Management, Theater Production, or related field",
+            bestFor: "Organized individuals who thrive in fast-paced environments and enjoy bringing events to life"
+        }
+    };
+
+    // Resource data
+    const resourceData = {
+        courses: {
+            title: "Entertainment Courses",
+            content: `
+                <h5>Top Online Learning Platforms</h5>
+                <ul>
+                    <li><strong>MasterClass:</strong> Courses from entertainment industry leaders</li>
+                    <li><strong>Coursera:</strong> Specializations in film, music, and media from top universities</li>
+                    <li><strong>LinkedIn Learning:</strong> Professional development courses for creative careers</li>
+                    <li><strong>Skillshare:</strong> Creative arts and entertainment courses</li>
+                </ul>
+                <h5>Recommended Courses</h5>
+                <ul>
+                    <li>Introduction to Film Production</li>
+                    <li>Music Business Foundations</li>
+                    <li>Digital Content Strategy</li>
+                    <li>Event Planning and Management</li>
+                </ul>
+            `
+        },
+        books: {
+            title: "Entertainment Books & Publications",
+            content: `
+                <h5>Essential Reading</h5>
+                <ul>
+                    <li><strong>"Save the Cat! The Last Book on Screenwriting You'll Ever Need"</strong> by Blake Snyder</li>
+                    <li><strong>"The War of Art: Break Through the Blocks and Win Your Inner Creative Battles"</strong> by Steven Pressfield</li>
+                    <li><strong>"All You Need to Know About the Music Business"</strong> by Donald S. Passman</li>
+                    <li><strong>"An Actor Prepares"</strong> by Constantin Stanislavski</li>
+                </ul>
+                <h5>Industry Publications</h5>
+                <ul>
+                    <li>Variety Magazine</li>
+                    <li>The Hollywood Reporter</li>
+                    <li>Billboard Magazine</li>
+                    <li>Game Developer Magazine</li>
+                </ul>
+            `
+        },
+        orgs: {
+            title: "Professional Entertainment Organizations",
+            content: `
+                <h5>Major Entertainment Associations</h5>
+                <ul>
+                    <li><strong>Academy of Motion Picture Arts and Sciences</strong> - Film industry professionals</li>
+                    <li><strong>Recording Academy</strong> - Music industry professionals (Grammys)</li>
+                    <li><strong>Actors' Equity Association</strong> - Theater performers and stage managers</li>
+                    <li><strong>International Game Developers Association</strong> - Game development professionals</li>
+                    <li><strong>International Live Events Association</strong> - Event production professionals</li>
+                </ul>
+                <h5>Benefits of Membership</h5>
+                <ul>
+                    <li>Networking opportunities with industry professionals</li>
+                    <li>Access to industry publications and research</li>
+                    <li>Professional development resources and workshops</li>
+                    <li>Job boards and career services</li>
+                    <li>Student membership opportunities</li>
+                </ul>
+            `
+        }
+    };
+
+    // College data
+    const collegeData = {
+        usc: {
+            name: "University of Southern California (USC)",
+            rank: 1,
+            location: "Los Angeles, CA",
+            acceptance: "16%",
+            tuition: "$60,275",
+            programs: ["Cinema & Media Studies", "Music Industry", "Animation", "Theater"],
+            website: "https://www.usc.edu",
+            description: "Located in the entertainment capital of the world, USC offers unparalleled access to the film, television, and music industries through its renowned School of Cinematic Arts and Thornton School of Music."
+        },
+        nyu: {
+            name: "New York University (NYU)",
+            rank: 2,
+            location: "New York, NY",
+            acceptance: "21%",
+            tuition: "$56,500",
+            programs: ["Tisch School of the Arts", "Clive Davis Institute", "Game Design", "Performance Studies"],
+            website: "https://www.nyu.edu",
+            description: "Situated in the cultural capital of New York City, NYU offers world-class programs in performing arts, film, music, and media through its prestigious Tisch School of the Arts."
+        },
+        berklee: {
+            name: "Berklee College of Music",
+            rank: 3,
+            location: "Boston, MA",
+            acceptance: "52%",
+            tuition: "$46,950",
+            programs: ["Music Production", "Performance", "Music Business", "Film Scoring"],
+            website: "https://www.berklee.edu",
+            description: "As the world's premier contemporary music institution, Berklee offers comprehensive programs in performance, production, and music business with strong industry connections."
+        },
+        ucla: {
+            name: "University of California, Los Angeles (UCLA)",
+            rank: 4,
+            location: "Los Angeles, CA",
+            acceptance: "14%",
+            tuition: "$43,022 (out-of-state)",
+            programs: ["Film & Television", "Theater", "Digital Media", "World Arts and Cultures"],
+            website: "https://www.ucla.edu",
+            description: "As a top public university located in Los Angeles, UCLA offers exceptional programs in film, theater, and media with strong industry connections and research opportunities."
+        },
+        all: {
+            title: "Top Entertainment Schools",
+            content: `
+                <h5>Additional Top Entertainment Schools</h5>
+                <ul>
+                    <li><strong>California Institute of the Arts (CalArts)</strong> - Valencia, CA</li>
+                    <li><strong>Chapman University</strong> - Orange, CA</li>
+                    <li><strong>Emerson College</strong> - Boston, MA</li>
+                    <li><strong>Savannah College of Art and Design (SCAD)</strong> - Savannah, GA</li>
+                    <li><strong>Columbia University School of the Arts</strong> - New York, NY</li>
+                    <li><strong>Carnegie Mellon School of Drama</strong> - Pittsburgh, PA</li>
+                    <li><strong>University of North Carolina School of the Arts</strong> - Winston-Salem, NC</li>
+                </ul>
+                <h5>Selection Tips</h5>
+                <ul>
+                    <li>Consider location and proximity to entertainment hubs</li>
+                    <li>Look for strong industry connections and internship programs</li>
+                    <li>Research faculty who are working professionals in the industry</li>
+                    <li>Evaluate facilities and equipment available to students</li>
+                    <li>Consider alumni success in your field of interest</li>
+                </ul>
+            `
+        }
+    };
+
+    // Function to show entertainment field details
+    function showFieldDetails(field) {
+        const fieldData = fieldDetails[field];
+        const modalTitle = document.getElementById('fieldModalLabel');
+        const modalBody = document.getElementById('fieldModalBody');
+        
+        modalTitle.textContent = fieldData.title;
+        
+        modalBody.innerHTML = `
+            <h4>${fieldData.title}</h4>
+            <p>${fieldData.description}</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5>Key Skills</h5>
+                    <ul>
+                        ${fieldData.skills.map(skill => `<li>${skill}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>Career Outlook</h5>
+                    <p><strong>Salary Range:</strong> ${fieldData.salary}</p>
+                    <p><strong>Job Growth:</strong> ${fieldData.growth}</p>
+                    <p><strong>Education Required:</strong> ${fieldData.education}</p>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <h5>Best For</h5>
+                <p>${fieldData.bestFor}</p>
+            </div>
+        `;
+        
+        // Show the modal
+        const fieldModal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        fieldModal.show();
+    }
+
+    // Function to show field selection options
+    function showFieldSelection() {
+        const modalTitle = document.getElementById('fieldModalLabel');
+        const modalBody = document.getElementById('fieldModalBody');
+        
+        modalTitle.textContent = "Explore Entertainment Fields";
+        
+        modalBody.innerHTML = `
+            <h4>Which entertainment field interests you?</h4>
+            <p>Select a field to learn more about career opportunities, required skills, and educational pathways.</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-entertainment w-100" onclick="showFieldDetails('filmTv')">Film & Television</button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-entertainment w-100" onclick="showFieldDetails('music')">Music Industry</button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-entertainment w-100" onclick="showFieldDetails('performingArts')">Performing Arts</button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-entertainment w-100" onclick="showFieldDetails('gaming')">Gaming & Esports</button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-entertainment w-100" onclick="showFieldDetails('digitalMedia')">Digital Media</button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-entertainment w-100" onclick="showFieldDetails('eventProduction')">Event Production</button>
+                </div>
+            </div>
+        `;
+        
+        // Show the modal
+        const fieldModal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        fieldModal.show();
+    }
+
+    // Function to show resources
+    function showResources(resourceType) {
+        const resource = resourceData[resourceType];
+        const modalTitle = document.getElementById('resourcesModalLabel');
+        const modalBody = document.getElementById('resourcesModalBody');
+        
+        modalTitle.textContent = resource.title;
+        modalBody.innerHTML = resource.content;
+        
+        // Show the modal
+        const resourcesModal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        resourcesModal.show();
+    }
+
+    // Function to show college details
+    function showCollegeDetails(college) {
+        const collegeInfo = collegeData[college];
+        const modalTitle = document.getElementById('collegesModalLabel');
+        const modalBody = document.getElementById('collegesModalBody');
+        
+        modalTitle.textContent = collegeInfo.name;
+        
+        modalBody.innerHTML = `
+            <div class="d-flex align-items-center mb-3">
+                <span class="college-rank">#${collegeInfo.rank}</span>
+                <h4>${collegeInfo.name}</h4>
+            </div>
+            
+            <p>${collegeInfo.description}</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5>Key Information</h5>
+                    <p><strong>Location:</strong> ${collegeInfo.location}</p>
+                    <p><strong>Acceptance Rate:</strong> ${collegeInfo.acceptance}</p>
+                    <p><strong>Annual Tuition:</strong> ${collegeInfo.tuition}</p>
+                    <p><strong>Website:</strong> <a href="${collegeInfo.website}" target="_blank">${collegeInfo.website}</a></p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Top Entertainment Programs</h5>
+                    <ul>
+                        ${collegeInfo.programs.map(program => `<li>${program}</li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+        `;
+        
+        // Show the modal
+        const collegesModal = new bootstrap.Modal(document.getElementById('collegesModal'));
+        collegesModal.show();
+    }
+
+    // Function to show all colleges
+    function showAllColleges() {
+        const collegeInfo = collegeData.all;
+        const modalTitle = document.getElementById('collegesModalLabel');
+        const modalBody = document.getElementById('collegesModalBody');
+        
+        modalTitle.textContent = collegeInfo.title;
+        modalBody.innerHTML = collegeInfo.content;
+        
+        // Show the modal
+        const collegesModal = new bootstrap.Modal(document.getElementById('collegesModal'));
+        collegesModal.show();
+    }
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+        // The help button now uses Bootstrap's data attributes to trigger the modal
+        // No additional JavaScript needed for basic functionality
+        
+        // Optional: Add animation to help button
+        const helpBtn = document.getElementById('helpBtn');
+        helpBtn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        helpBtn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+</script>
+</body>
+</html>

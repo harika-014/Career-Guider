@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Career Guidance | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #dc3545; /* Red for sports theme */
+            --secondary-color: #f8f9fc;
+            --accent-color: #fd7e14; /* Orange */
+            --text-color: #5a5c69;
+            --dark-color: #c82333; /* Darker red */
+            --sports-color: #dc3545; /* Main sports theme color */
+        }
+        
+        body {
+            padding-top: 70px;
+            background-color: #f8f9fa;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #fff;
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .sports-hero {
+            background: linear-gradient(rgba(220, 53, 69, 0.85), rgba(220, 53, 69, 0.9)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* Sports-themed background with red tint */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Card Styles */
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--sports-color), var(--dark-color));
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 600;
+        }
+        
+        /* Sports Specific Styles */
+        .sports-badge {
+            background: linear-gradient(135deg, var(--sports-color), var(--dark-color));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .pathway-card {
+            border-left: 4px solid var(--sports-color);
+        }
+        
+        .specialization-card {
+            border-top: 3px solid var(--sports-color);
+        }
+        
+        .progress {
+            height: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Roadmap Styles */
+        .roadmap-container {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+        
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--sports-color);
+        }
+        
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--sports-color);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--sports-color);
+        }
+        
+        /* Button Styles */
+        .btn-sports {
+            background: linear-gradient(to right, var(--sports-color), var(--dark-color));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+        
+        .btn-sports:hover {
+            background: linear-gradient(to right, var(--dark-color), var(--sports-color));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Resource Cards */
+        .resource-card {
+            height: 100%;
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover {
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+        }
+        
+        /* Stats */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--sports-color);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--sports-color), var(--dark-color));
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        /* Sports Field Colors (for badges/cards if needed) */
+        .athlete { --field-color: #dc3545; } /* Red */
+        .coaching { --field-color: #007bff; } /* Blue */
+        .sports-medicine { --field-color: #20c997; } /* Greenish-blue */
+        .sports-management { --field-color: #6f42c1; } /* Purple */
+        .sports-media { --field-color: #ffc107; } /* Yellow */
+        .fitness { --field-color: #fd7e14; } /* Orange */
+        
+        .field-badge {
+            background-color: var(--field-color);
+            color: white;
+        }
+        
+        /* College ranking styles */
+        .college-rank {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--sports-color);
+            margin-right: 15px;
+        }
+        
+        .college-card {
+            transition: all 0.3s ease;
+        }
+        
+        .college-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Help Button Animation */
+        #helpBtn {
+            transition: all 0.3s ease;
+        }
+        
+        #helpBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(220, 53, 69, 0.5);
+        }
+        
+        /* Help Modal Styles */
+        .help-step {
+            border-left: 4px solid var(--sports-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .help-step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--sports-color);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .contact-support {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        /* Footer Links */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-running me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-warning me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Future Sports Pro!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Sports Hero Section -->
+    <div class="sports-hero rounded">
+        <div class="container">
+            <div class="sports-badge">
+                <i class="fas fa-trophy me-2"></i>Sports Excellence
+            </div>
+            <h1 class="display-4 fw-bold">Sports Career Pathways</h1>
+            <p class="lead">Congratulations on your outstanding assessment results! Your athletic ability, teamwork, and competitive spirit make you an ideal candidate for a sports career.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-dumbbell me-2"></i>Training Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search-plus me-2"></i>Explore Career Options
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">$40K-$100M+</div>
+                    <div class="stat-label">Salary Range (Varies by role)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">15%</div>
+                    <div class="stat-label">Job Growth (Coaches & Scouts)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Employment Rate (Sports Management)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">2-8 Years</div>
+                    <div class="stat-label">Typical Education Path</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sports Career Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-running me-2"></i>Sports Career Specializations</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 athlete">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Professional Athlete</span>
+                                    <h5 class="card-title">Professional Athlete</h5>
+                                    <p class="card-text">Compete at the highest level in your sport, representing teams or competing individually in professional leagues and tournaments.</p>
+                                    <ul class="mb-3">
+                                        <li>High earning potential</li>
+                                        <li>Global recognition</li>
+                                        <li>Physical and mental demands</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('athlete')">Explore Professional Athletics</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 coaching">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Coaching</span>
+                                    <h5 class="card-title">Coaching</h5>
+                                    <p class="card-text">Guide and develop athletes, create training programs, and lead teams to success through strategic planning and motivation.</p>
+                                    <ul class="mb-3">
+                                        <li>Leadership development</li>
+                                        <li>Impact on athlete growth</li>
+                                        <li>Diverse levels (youth to professional)</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('coaching')">Explore Coaching</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 sports-medicine">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Sports Medicine</span>
+                                    <h5 class="card-title">Sports Medicine</h5>
+                                    <p class="card-text">Specialize in preventing, diagnosing, and treating injuries related to sports and exercise, working directly with athletes.</p>
+                                    <ul class="mb-3">
+                                        <li>Direct athlete interaction</li>
+                                        <li>Medical knowledge application</li>
+                                        <li>Rehabilitation focus</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('sportsMedicine')">Explore Sports Medicine</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 sports-management">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Sports Management</span>
+                                    <h5 class="card-title">Sports Management</h5>
+                                    <p class="card-text">Oversee the business operations of sports organizations, including marketing, finance, facilities, and team administration.</p>
+                                    <ul class="mb-3">
+                                        <li>Business and sports combination</li>
+                                        <li>Diverse career paths</li>
+                                        <li>Behind-the-scenes impact</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('sportsManagement')">Explore Sports Management</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 sports-media">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Sports Media</span>
+                                    <h5 class="card-title">Sports Media</h5>
+                                    <p class="card-text">Report on sports events, analyze games, interview athletes, and create content for various media platforms.</p>
+                                    <ul class="mb-3">
+                                        <li>Creative expression</li>
+                                        <li>Access to events and athletes</li>
+                                        <li>Storytelling through sports</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('sportsMedia')">Explore Sports Media</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 fitness">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Fitness & Training</span>
+                                    <h5 class="card-title">Fitness & Training</h5>
+                                    <p class="card-text">Design exercise programs, provide personal training, and help individuals achieve their fitness and performance goals.</p>
+                                    <ul class="mb-3">
+                                        <li>Direct client impact</li>
+                                        <li>Health and wellness focus</li>
+                                        <li>Flexible work environments</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('fitness')">Explore Fitness & Training</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Top Sports Programs Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-university me-2"></i>Top Sports Programs</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Sports Program 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card college-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="college-rank">#1</span>
+                                        <h5 class="card-title mb-0">University of Michigan</h5>
+                                    </div>
+                                    <p class="card-text">Renowned for its comprehensive sports programs, excellent coaching education, and strong connections to professional sports organizations.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Ann Arbor, MI</span>
+                                        <span class="badge bg-success">Sports Management Rank: #3</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Sports Management, Kinesiology, Coaching</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showCollegeDetails('michigan')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sports Program 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card college-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="college-rank">#2</span>
+                                        <h5 class="card-title mb-0">University of Texas at Austin</h5>
+                                    </div>
+                                    <p class="card-text">Offers exceptional sports programs with state-of-the-art facilities and strong industry connections for internships and job placements.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Austin, TX</span>
+                                        <span class="badge bg-success">Kinesiology Rank: #5</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Kinesiology, Sports Media, Athletic Training</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showCollegeDetails('texas')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sports Program 3 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card college-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="college-rank">#3</span>
+                                        <h5 class="card-title mb-0">University of Florida</h5>
+                                    </div>
+                                    <p class="card-text">Known for its comprehensive sports sciences programs and strong connections to professional sports teams and organizations.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Gainesville, FL</span>
+                                        <span class="badge bg-success">Sports Sciences Rank: #4</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Sports Sciences, Athletic Training, Coaching</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showCollegeDetails('florida')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sports Program 4 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card college-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="college-rank">#4</span>
+                                        <h5 class="card-title mb-0">Ohio State University</h5>
+                                    </div>
+                                    <p class="card-text">Offers comprehensive sports education with excellent facilities and strong industry partnerships for practical experience.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Columbus, OH</span>
+                                        <span class="badge bg-success">Sports Management Rank: #6</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Sports Management, Exercise Science, Coaching Education</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showCollegeDetails('ohiostate')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn-sports" onclick="showAllColleges()">
+                            <i class="fas fa-list-alt me-2"></i>View More Sports Programs
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Emerging Sports Specializations -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-chart-line me-2"></i>Emerging Sports Specializations</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Esports Management</h5>
+                                    <p class="card-text">Managing competitive video gaming teams, events, and organizations in the rapidly growing esports industry.</p>
+                                    <span class="badge bg-primary mb-2">High Growth</span>
+                                    <span class="badge bg-info">Digital Innovation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sports Analytics</h5>
+                                    <p class="card-text">Using data analysis to improve team performance, player evaluation, and strategic decision-making in sports.</p>
+                                    <span class="badge bg-primary mb-2">Data-Driven</span>
+                                    <span class="badge bg-success">High Demand</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sports Technology</h5>
+                                    <p class="card-text">Developing and implementing technological solutions for athlete performance, fan engagement, and sports operations.</p>
+                                    <span class="badge bg-primary mb-2">Innovative</span>
+                                    <span class="badge bg-warning">Cutting-Edge</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-graduation-cap me-2"></i>Sports Career Education Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: High School Athletic Participation & Education</h5>
+                            <p>Participate in school sports, maintain good academic standing, and develop foundational athletic skills and sports knowledge.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: Undergraduate Degree (2-4 years)</h5>
+                            <p>Pursue a Bachelor's degree in Sports Management, Kinesiology, Exercise Science, or related fields. Consider NCAA participation if pursuing athletics.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Gain Practical Experience</h5>
+                            <p>Complete internships with sports organizations, volunteer at sporting events, or work in entry-level sports positions to build your resume.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: Professional Certifications (Optional)</h5>
+                            <p>Obtain relevant certifications such as Certified Personal Trainer (CPT), Strength and Conditioning Specialist (CSCS), or coaching certifications.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: Graduate Education (Optional)</h5>
+                            <p>Consider a Master's degree in Sports Administration, Sports Medicine, or MBA with sports concentration for advanced positions.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Entry into Professional Sports Career</h5>
+                            <p>Begin your career in your chosen specialization, continuing to network and develop skills through professional development opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Sports Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Training & Certification</h5>
+                                    <ul>
+                                        <li>NASM - Personal Trainer Certification</li>
+                                        <li>NSCA - Strength & Conditioning Specialist</li>
+                                        <li>USA Coaching - Coaching Education</li>
+                                        <li>Sports Management Worldwide - Online Courses</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showResources('courses')">Explore Certifications</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Books & Publications</h5>
+                                    <ul>
+                                        <li>"Moneyball" by Michael Lewis</li>
+                                        <li>"The Inner Game of Tennis" by W. Timothy Gallwey</li>
+                                        <li>ESPN The Magazine</li>
+                                        <li>Sports Business Journal</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showResources('books')">View Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Professional Organizations</h5>
+                                    <ul>
+                                        <li>National Association of Sports Commissions (NASC)</li>
+                                        <li>North American Society for Sport Management (NASSM)</li>
+                                        <li>National Strength and Conditioning Association (NSCA)</li>
+                                        <li>American College of Sports Medicine (ACSM)</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showResources('orgs')">Join Organizations</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Next Steps</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Short-Term Goals (0-6 months)</h5>
+                                    <ul>
+                                        <li>Research sports career paths and educational requirements</li>
+                                        <li>Volunteer at local sports events or with teams</li>
+                                        <li>Begin networking with sports professionals</li>
+                                        <li>Join a sports-related club or organization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Long-Term Goals (1-3 years)</h5>
+                                    <ul>
+                                        <li>Secure admission to a sports-focused academic program</li>
+                                        <li>Complete relevant internships in the sports industry</li>
+                                        <li>Obtain professional certifications in your chosen field</li>
+                                        <li>Build a strong professional network in sports</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-sports btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search-plus me-2"></i>Explore Sports Careers
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg" onclick="showResources('courses')">
+                            <i class="fas fa-dumbbell me-2"></i>Training Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping students discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('courses')">Training & Certification</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Books & Publications</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Professional Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Added navigation links -->
+        <div class="footer-links">
+            <a href="tabindex.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact Us</a>
+        </div>
+        
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2023 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Sports Career Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Sports Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Colleges Modal -->
+<div class="modal fade" id="collegesModal" tabindex="-1" aria-labelledby="collegesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="collegesModalLabel">Sports Programs</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="collegesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel"><i class="fas fa-question-circle me-2"></i>How to Use This Sports Career Guide</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="help-step">
+                    <span class="help-step-number">1</span>
+                    <strong>Explore Career Options</strong>
+                    <p>Review the different sports career specializations to understand the various paths available in the sports industry.</p>
+                </div>
+                
+                <div class="help-step">
+                    <span class="help-step-number">2</span>
+                    <strong>Research Education Requirements</strong>
+                    <p>Look at the top sports programs and education roadmap to understand the academic path for your chosen career.</p>
+                </div>
+                
+                <div class="help-step">
+                    <span class="help-step-number">3</span>
+                    <strong>Utilize Resources</strong>
+                    <p>Access the recommended resources including training programs, books, and professional organizations.</p>
+                </div>
+                
+                <div class="help-step">
+                    <span class="help-step-number">4</span>
+                    <strong>Plan Your Next Steps</strong>
+                    <p>Use the short-term and long-term goals to create a personalized action plan for your sports career journey.</p>
+                </div>
+                
+                <div class="contact-support">
+                    <h6><i class="fas fa-headset me-2"></i>Need More Help?</h6>
+                    <p>If you have specific questions about sports careers or need personalized guidance, our career counselors are available to help.</p>
+                    <button class="btn btn-sports">
+                        <i class="fas fa-envelope me-2"></i>Contact a Career Counselor
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Function to show field details in modal
+    function showFieldDetails(field) {
+        const modalBody = document.getElementById('fieldModalBody');
+        let content = '';
+        
+        switch(field) {
+            case 'athlete':
+                content = `
+                    <h4>Professional Athlete</h4>
+                    <p>Professional athletes compete in organized sports at the highest level. They may represent teams, organizations, or compete individually in their sport.</p>
+                    
+                    <h5>Key Requirements:</h5>
+                    <ul>
+                        <li>Exceptional athletic ability in specific sport</li>
+                        <li>Physical fitness and conditioning</li>
+                        <li>Mental toughness and competitive spirit</li>
+                        <li>Discipline and dedication to training</li>
+                    </ul>
+                    
+                    <h5>Education Path:</h5>
+                    <p>While formal education varies, many professional athletes have college experience through NCAA or other collegiate sports programs.</p>
+                    
+                    <h5>Potential Earnings:</h5>
+                    <p>Varies widely by sport, level, and success. Can range from $40,000 annually in minor leagues to millions in major professional sports.</p>
+                    
+                    <h5>Career Outlook:</h5>
+                    <p>Highly competitive with limited positions. Success requires exceptional talent, opportunity, and often some luck with injuries and timing.</p>
+                `;
+                break;
+                
+            case 'coaching':
+                content = `
+                    <h4>Coaching</h4>
+                    <p>Coaches teach and develop athletes, create training programs, and lead teams to success through strategic planning and motivation.</p>
+                    
+                    <h5>Key Requirements:</h5>
+                    <ul>
+                        <li>Deep knowledge of the sport</li>
+                        <li>Leadership and communication skills</li>
+                        <li>Ability to motivate and inspire</li>
+                        <li>Strategic thinking and game planning</li>
+                    </ul>
+                    
+                    <h5>Education Path:</h5>
+                    <p>Bachelor's degree in sports science, kinesiology, or related field. Coaching certifications specific to the sport are often required.</p>
+                    
+                    <h5>Potential Earnings:</h5>
+                    <p>Varies by level: Youth coaches ($25,000-$40,000), High school ($40,000-$60,000), College ($60,000-$500,000+), Professional ($100,000-$10M+).</p>
+                    
+                    <h5>Career Outlook:</h5>
+                    <p>15% growth projected for coaches and scouts. Opportunities exist at all levels from youth sports to professional teams.</p>
+                `;
+                break;
+                
+            case 'sportsMedicine':
+                content = `
+                    <h4>Sports Medicine</h4>
+                    <p>Sports medicine professionals specialize in preventing, diagnosing, and treating injuries related to sports and exercise.</p>
+                    
+                    <h5>Key Requirements:</h5>
+                    <ul>
+                        <li>Medical knowledge and training</li>
+                        <li>Understanding of sports physiology</li>
+                        <li>Communication skills with athletes</li>
+                        <li>Problem-solving abilities</li>
+                    </ul>
+                    
+                    <h5>Education Path:</h5>
+                    <p>Bachelor's degree followed by medical school, physical therapy school, or athletic training program. Board certification required for physicians.</p>
+                    
+                    <h5>Potential Earnings:</h5>
+                    <p>Varies by role: Athletic trainers ($50,000-$75,000), Physical therapists ($70,000-$100,000), Sports medicine physicians ($200,000-$500,000).</p>
+                    
+                    <h5>Career Outlook:</h5>
+                    <p>Strong growth as sports participation increases and awareness of sports injuries grows. Opportunities with teams, clinics, and hospitals.</p>
+                `;
+                break;
+                
+            case 'sportsManagement':
+                content = `
+                    <h4>Sports Management</h4>
+                    <p>Sports management professionals oversee the business operations of sports organizations including marketing, finance, and administration.</p>
+                    
+                    <h5>Key Requirements:</h5>
+                    <ul>
+                        <li>Business and management skills</li>
+                        <li>Understanding of sports industry</li>
+                        <li>Communication and negotiation skills</li>
+                        <li>Strategic planning abilities</li>
+                    </ul>
+                    
+                    <h5>Education Path:</h5>
+                    <p>Bachelor's degree in sports management, business administration, or related field. Master's degree often preferred for advancement.</p>
+                    
+                    <h5>Potential Earnings:</h5>
+                    <p>Entry-level: $35,000-$50,000; Mid-career: $60,000-$100,000; Executive level: $100,000-$1M+ depending on organization size.</p>
+                    
+                    <h5>Career Outlook:</h5>
+                    <p>Strong with 90% employment rate for sports management graduates. Opportunities with teams, leagues, facilities, and sports marketing firms.</p>
+                `;
+                break;
+                
+            case 'sportsMedia':
+                content = `
+                    <h4>Sports Media</h4>
+                    <p>Sports media professionals report on sports events, analyze games, interview athletes, and create content for various media platforms.</p>
+                    
+                    <h5>Key Requirements:</h5>
+                    <ul>
+                        <li>Strong writing and communication skills</li>
+                        <li>Knowledge of sports and athletes</li>
+                        <li>Technical skills for broadcasting or digital media</li>
+                        <li>Ability to work under deadline pressure</li>
+                    </ul>
+                    
+                    <h5>Education Path:</h5>
+                    <p>Bachelor's degree in journalism, communications, or broadcasting. Internships and portfolio development are crucial.</p>
+                    
+                    <h5>Potential Earnings:</h5>
+                    <p>Varies widely: Entry-level reporters ($30,000-$45,000), Experienced journalists ($50,000-$100,000), National broadcasters ($100,000-$5M+).</p>
+                    
+                    <h5>Career Outlook:</h5>
+                    <p>Competitive field with growth in digital media opportunities. Traditional media positions may be declining while digital roles increase.</p>
+                `;
+                break;
+                
+            case 'fitness':
+                content = `
+                    <h4>Fitness & Training</h4>
+                    <p>Fitness professionals design exercise programs, provide personal training, and help individuals achieve their fitness and performance goals.</p>
+                    
+                    <h5>Key Requirements:</h5>
+                    <ul>
+                        <li>Knowledge of exercise science and physiology</li>
+                        <li>Ability to motivate clients</li>
+                        <li>Communication and interpersonal skills</li>
+                        <li>Business skills for independent trainers</li>
+                    </ul>
+                    
+                    <h5>Education Path:</h5>
+                    <p>Certification from accredited organization (NASM, ACE, etc.). Degree in exercise science or kinesiology beneficial but not always required.</p>
+                    
+                    <h5>Potential Earnings:</h5>
+                    <p>Varies by setting: Gym employees ($30,000-$50,000), Independent trainers ($40,000-$100,000), Celebrity trainers ($100,000-$500,000+).</p>
+                    
+                    <h5>Career Outlook:</h5>
+                    <p>Strong growth as health and fitness awareness increases. Opportunities in gyms, corporate wellness, and independent training businesses.</p>
+                `;
+                break;
+        }
+        
+        modalBody.innerHTML = content;
+        const modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        modal.show();
+    }
+    
+    // Function to show resources in modal
+    function showResources(type) {
+        const modalBody = document.getElementById('resourcesModalBody');
+        let content = '';
+        
+        switch(type) {
+            case 'courses':
+                content = `
+                    <h4>Sports Training & Certification Programs</h4>
+                    <div class="mb-4">
+                        <h5>Personal Training Certifications</h5>
+                        <ul>
+                            <li><strong>NASM Certified Personal Trainer (CPT)</strong> - National Academy of Sports Medicine</li>
+                            <li><strong>ACE Personal Trainer Certification</strong> - American Council on Exercise</li>
+                            <li><strong>ISSA Personal Trainer Certification</strong> - International Sports Sciences Association</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Strength & Conditioning Certifications</h5>
+                        <ul>
+                            <li><strong>NSCA Certified Strength and Conditioning Specialist (CSCS)</strong></li>
+                            <li><strong>CSCCa Strength and Conditioning Coach Certified (SCCC)</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Coaching Education</h5>
+                        <ul>
+                            <li><strong>USA Coaching</strong> - Sport-specific coaching certifications</li>
+                            <li><strong>NFHS Coach Certification</strong> - National Federation of State High School Associations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Sports Management Education</h5>
+                        <ul>
+                            <li><strong>Sports Management Worldwide</strong> - Online courses and certificates</li>
+                            <li><strong>University of Florida Sports Management</strong> - Online master's program</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+                
+            case 'books':
+                content = `
+                    <h4>Recommended Sports Books & Publications</h4>
+                    <div class="mb-4">
+                        <h5>Must-Read Books</h5>
+                        <ul>
+                            <li><strong>"Moneyball: The Art of Winning an Unfair Game"</strong> by Michael Lewis</li>
+                            <li><strong>"The Inner Game of Tennis: The Classic Guide to the Mental Side of Peak Performance"</strong> by W. Timothy Gallwey</li>
+                            <li><strong>"Sacred Hoops: Spiritual Lessons of a Hardwood Warrior"</strong> by Phil Jackson</li>
+                            <li><strong>"The Book of Basketball: The NBA According to The Sports Guy"</strong> by Bill Simmons</li>
+                            <li><strong>"Friday Night Lights: A Town, a Team, and a Dream"</strong> by H.G. Bissinger</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Industry Publications</h5>
+                        <ul>
+                            <li><strong>Sports Business Journal</strong> - Business news of sports industry</li>
+                            <li><strong>ESPN The Magazine</strong> - Sports journalism and features</li>
+                            <li><strong>Athletic Business</strong> - For sports facility and program managers</li>
+                            <li><strong>Training & Conditioning</strong> - For sports medicine and performance professionals</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+                
+            case 'orgs':
+                content = `
+                    <h4>Professional Sports Organizations</h4>
+                    <div class="mb-4">
+                        <h5>Management & Administration</h5>
+                        <ul>
+                            <li><strong>North American Society for Sport Management (NASSM)</strong> - Academic and professional society</li>
+                            <li><strong>National Association of Sports Commissions (NASC)</strong> - Sports tourism and events</li>
+                            <li><strong>National Sports Marketing Network (NSMN)</strong> - Sports marketing professionals</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Medicine & Science</h5>
+                        <ul>
+                            <li><strong>American College of Sports Medicine (ACSM)</strong> - Sports medicine and exercise science</li>
+                            <li><strong>National Athletic Trainers' Association (NATA)</strong> - Athletic training professionals</li>
+                            <li><strong>National Strength and Conditioning Association (NSCA)</strong> - Strength and conditioning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Coaching</h5>
+                        <ul>
+                            <li><strong>National High School Athletic Coaches Association (NHSACA)</strong></li>
+                            <li><strong>United States Professional Tennis Association (USPTA)</strong> - Tennis coaching</li>
+                            <li><strong>PGA of America</strong> - Golf professionals</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+        }
+        
+        modalBody.innerHTML = content;
+        const modal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        modal.show();
+    }
+    
+    // Function to show college details
+    function showCollegeDetails(college) {
+        const modalBody = document.getElementById('collegesModalBody');
+        let content = '';
+        
+        switch(college) {
+            case 'michigan':
+                content = `
+                    <h4>University of Michigan</h4>
+                    <p><strong>Location:</strong> Ann Arbor, Michigan</p>
+                    <p><strong>Sports Programs Rank:</strong> #1</p>
+                    
+                    <h5>Top Sports-Related Programs:</h5>
+                    <ul>
+                        <li>Sports Management (Ranked #3 nationally)</li>
+                        <li>Kinesiology</li>
+                        <li>Movement Science</li>
+                        <li>Athletic Training</li>
+                    </ul>
+                    
+                    <h5>Notable Features:</h5>
+                    <ul>
+                        <li>Home to one of the most successful athletic programs in NCAA history</li>
+                        <li>Strong connections with professional sports organizations</li>
+                        <li>Extensive internship opportunities with Detroit professional teams</li>
+                        <li>State-of-the-art sports facilities including Michigan Stadium</li>
+                    </ul>
+                    
+                    <h5>Admission Requirements:</h5>
+                    <p>Competitive admission with average GPA of 3.9 and SAT scores between 1340-1520. Sports management program requires separate application.</p>
+                    
+                    <h5>Career Outcomes:</h5>
+                    <p>Graduates work with NFL, NBA, MLB teams, NCAA athletic departments, and major sports marketing firms.</p>
+                `;
+                break;
+                
+            case 'texas':
+                content = `
+                    <h4>University of Texas at Austin</h4>
+                    <p><strong>Location:</strong> Austin, Texas</p>
+                    <p><strong>Sports Programs Rank:</strong> #2</p>
+                    
+                    <h5>Top Sports-Related Programs:</h5>
+                    <ul>
+                        <li>Kinesiology and Health Education (Ranked #5 nationally)</li>
+                        <li>Sports Media</li>
+                        <li>Athletic Training</li>
+                        <li>Physical Culture and Sports</li>
+                    </ul>
+                    
+                    <h5>Notable Features:</h5>
+                    <ul>
+                        <li>Extensive media opportunities through Longhorn Network</li>
+                        <li>Strong industry connections in sports-crazed Texas market</li>
+                        <li>State-of-the-art athletic facilities including Darrell K Royal-Texas Memorial Stadium</li>
+                        <li>Diverse internship opportunities with professional and collegiate sports organizations</li>
+                    </ul>
+                    
+                    <h5>Admission Requirements:</h5>
+                    <p>Highly competitive with automatic admission for top 6% of Texas high school graduates. Out-of-state admission extremely competitive.</p>
+                    
+                    <h5>Career Outcomes:</h5>
+                    <p>Graduates work in sports media, athletic departments, professional sports teams, and fitness organizations nationwide.</p>
+                `;
+                break;
+        }
+        
+        modalBody.innerHTML = content;
+        const modal = new bootstrap.Modal(document.getElementById('collegesModal'));
+        modal.show();
+    }
+    
+    // Function to show all colleges
+    function showAllColleges() {
+        const modalBody = document.getElementById('collegesModalBody');
+        content = `
+            <h4>Additional Top Sports Programs</h4>
+            
+            <div class="mb-4">
+                <h5>University of North Carolina at Chapel Hill</h5>
+                <p><strong>Location:</strong> Chapel Hill, NC</p>
+                <p><strong>Notable Programs:</strong> Exercise and Sport Science, Sports Administration</p>
+                <p><strong>Rankings:</strong> Exercise Science #7, Sports Management #8</p>
+            </div>
+            
+            <div class="mb-4">
+                <h5>University of Connecticut</h5>
+                <p><strong>Location:</strong> Storrs, CT</p>
+                <p><strong>Notable Programs:</strong> Sports Management, Kinesiology</p>
+                <p><strong>Rankings:</strong> Sports Management #10</p>
+            </div>
+            
+            <div class="mb-4">
+                <h5>University of Oregon</h5>
+                <p><strong>Location:</strong> Eugene, OR</p>
+                <p><strong>Notable Programs:</strong> Sports Product Management, Sports Business</p>
+                <p><strong>Rankings:</strong> Sports Business #12</p>
+            </div>
+            
+            <div class="mb-4">
+                <h5>Syracuse University</h5>
+                <p><strong>Location:</strong> Syracuse, NY</p>
+                <p><strong>Notable Programs:</strong> Sports Management, Exercise Science</p>
+                <p><strong>Rankings:</strong> Sports Management #2</p>
+            </div>
+            
+            <div class="mb-4">
+                <h5>Indiana University Bloomington</h5>
+                <p><strong>Location:</strong> Bloomington, IN</p>
+                <p><strong>Notable Programs:</strong> Kinesiology, Sports Marketing and Management</p>
+                <p><strong>Rankings:</strong> Sports Management #5</p>
+            </div>
+            
+            <p>For more information about these programs, visit their official websites or contact their admissions offices.</p>
+        `;
+        
+        modalBody.innerHTML = content;
+        const modal = new bootstrap.Modal(document.getElementById('collegesModal'));
+        modal.show();
+    }
+    
+    // Function to show field selection
+    function showFieldSelection() {
+        const modalBody = document.getElementById('fieldModalBody');
+        content = `
+            <h4>Explore Sports Career Options</h4>
+            <p>Select a sports career field to learn more about requirements, education path, and career outlook:</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Professional Athlete</h5>
+                            <p class="card-text">Compete at the highest level in your sport</p>
+                            <button class="btn btn-sports" onclick="showFieldDetails('athlete')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Coaching</h5>
+                            <p class="card-text">Guide and develop athletes and teams</p>
+                            <button class="btn btn-sports" onclick="showFieldDetails('coaching')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Sports Medicine</h5>
+                            <p class="card-text">Prevent, diagnose, and treat sports injuries</p>
+                            <button class="btn btn-sports" onclick="showFieldDetails('sportsMedicine')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Sports Management</h5>
+                            <p class="card-text">Oversee business operations in sports</p>
+                            <button class="btn btn-sports" onclick="showFieldDetails('sportsManagement')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Sports Media</h5>
+                            <p class="card-text">Report on and analyze sports events</p>
+                            <button class="btn btn-sports" onclick="showFieldDetails('sportsMedia')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Fitness & Training</h5>
+                            <p class="card-text">Design exercise programs and train clients</p>
+                            <button class="btn btn-sports" onclick="showFieldDetails('fitness')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        modalBody.innerHTML = content;
+        const modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        modal.show();
+    }
+</script>
+</body>
+</html>

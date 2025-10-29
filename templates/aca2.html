@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Career Development | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        --primary-color: #6f42c1;
+        --secondary-color: #f8f9fc;
+        --accent-color: #e83e8c;
+        --text-color: #5a5c69;
+        --dark-color: #5a32a3;
+        --academic-color: #6f42c1;
+        --improvement-color: #6f42c1;
+    }
+    
+    body {
+        padding-top: 70px;
+        background-color: #f8f9fa;
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text-color);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid #fff;
+        transition: transform 0.3s;
+    }
+    
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Hero Section */
+    .academic-hero {
+        background: linear-gradient(rgba(111, 66, 193, 0.85), rgba(111, 66, 193, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 5rem 0;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    /* Card Styles */
+    .card {
+        margin-bottom: 20px;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, var(--academic-color), #5a32a3);
+        color: white;
+        border-radius: 10px 10px 0 0 !important;
+        font-weight: 600;
+    }
+    
+    /* Academic Specific Styles */
+    .academic-badge {
+        background: linear-gradient(135deg, var(--academic-color), #5a32a3);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    
+    .pathway-card {
+        border-left: 4px solid var(--academic-color);
+    }
+    
+    .specialization-card {
+        border-top: 3px solid var(--academic-color);
+    }
+    
+    .progress {
+        height: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Roadmap Styles */
+    .roadmap-container {
+        position: relative;
+        padding-left: 30px;
+        margin: 40px 0;
+    }
+    
+    .roadmap-container::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--academic-color);
+    }
+    
+    .roadmap-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: var(--academic-color);
+        border: 4px solid white;
+        box-shadow: 0 0 0 2px var(--academic-color);
+    }
+    
+    /* Button Styles */
+    .btn-academic {
+        background: linear-gradient(to right, var(--academic-color), #5a32a3);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: 600;
+    }
+    
+    .btn-academic:hover {
+        background: linear-gradient(to right, #5a32a3, var(--academic-color));
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Resource Cards */
+    .resource-card {
+        height: 100%;
+        transition: all 0.3s;
+    }
+    
+    .resource-card:hover {
+        box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--academic-color);
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+    
+    /* Modal Styles */
+    .modal-content {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, var(--academic-color), #5a32a3);
+        color: white;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    /* Academic Field Colors */
+    .humanities { --field-color: #6f42c1; }
+    .sciences { --field-color: #36b9cc; }
+    .social-sciences { --field-color: #1cc88a; }
+    .arts { --field-color: #f6c23e; }
+    .education { --field-color: #e74a3b; }
+    .business { --field-color: #4e73df; }
+    .health { --field-color: #fd7e14; }
+    
+    .field-badge {
+        background-color: var(--field-color);
+        color: white;
+    }
+    
+    /* College ranking styles */
+    .college-rank {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--academic-color);
+        margin-right: 15px;
+    }
+    
+    .college-card {
+        transition: all 0.3s ease;
+    }
+    
+    .college-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Help Button Animation */
+    #helpBtn {
+        transition: all 0.3s ease;
+    }
+    
+    #helpBtn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(111, 66, 193, 0.5);
+    }
+    
+    /* Help Modal Styles */
+    .help-step {
+        border-left: 4px solid var(--academic-color);
+        padding-left: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .help-step-number {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: var(--academic-color);
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .contact-support {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    /* Skill Development Section */
+    .skill-dev-card {
+        border-top: 3px solid var(--academic-color);
+    }
+    
+    .skill-pill {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background-color: #e9ecef;
+        color: #495057;
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .improvement-plan {
+        background-color: #e9ecef;
+        border-left: 4px solid var(--academic-color);
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-graduation-cap me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-info me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Academic Student!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Academic Hero Section -->
+    <div class="academic-hero rounded">
+        <div class="container">
+            <div class="academic-badge">
+                <i class="fas fa-book me-2"></i>Academic Career Development
+            </div>
+            <h1 class="display-4 fw-bold">Academic Career Pathways</h1>
+            <p class="lead">Your assessment shows strong potential for academic careers! With the right focus and development, you can build a successful career in research, teaching, or academic administration.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Academic Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Skill Development Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-brain me-2"></i>Key Skills for Academic Success</h4>
+                </div>
+                <div class="card-body">
+                    <div class="improvement-plan">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Your Development Plan</h5>
+                        <p>Based on your assessment results, we recommend focusing on these essential skills for academic careers:</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Research & Analysis</h5>
+                                    <p class="card-text">Essential for all academic disciplines:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Critical Thinking</span>
+                                        <span class="skill-pill">Literature Review</span>
+                                        <span class="skill-pill">Data Analysis</span>
+                                        <span class="skill-pill">Methodology</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showSkillResources('research')">Improve Research Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Writing & Communication</h5>
+                                    <p class="card-text">Core academic communication skills:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Academic Writing</span>
+                                        <span class="skill-pill">Presentation Skills</span>
+                                        <span class="skill-pill">Grant Writing</span>
+                                        <span class="skill-pill">Peer Review</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showSkillResources('writing')">Improve Writing Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Teaching & Mentoring</h5>
+                                    <p class="card-text">Key skills for academic instruction:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Curriculum Design</span>
+                                        <span class="skill-pill">Pedagogical Methods</span>
+                                        <span class="skill-pill">Student Assessment</span>
+                                        <span class="skill-pill">Classroom Management</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showSkillResources('teaching')">Improve Teaching Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialized Knowledge</h5>
+                                    <p class="card-text">Deep expertise in your chosen field:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Theoretical Frameworks</span>
+                                        <span class="skill-pill">Current Research</span>
+                                        <span class="skill-pill">Interdisciplinary Connections</span>
+                                        <span class="skill-pill">Field-Specific Methods</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showSkillResources('specialized')">Build Expertise</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Academic Networking</h5>
+                                    <p class="card-text">Building professional relationships:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Conference Participation</span>
+                                        <span class="skill-pill">Collaborative Research</span>
+                                        <span class="skill-pill">Professional Organizations</span>
+                                        <span class="skill-pill">Mentorship Relationships</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showSkillResources('networking')">Improve Networking</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Academic Administration</h5>
+                                    <p class="card-text">Leadership in educational institutions:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Program Development</span>
+                                        <span class="skill-pill">Budget Management</span>
+                                        <span class="skill-pill">Policy Implementation</span>
+                                        <span class="skill-pill">Faculty Development</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showSkillResources('administration')">Learn Administration</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">5-7 Years</div>
+                    <div class="stat-label">Typical PhD Timeline</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">78%</div>
+                    <div class="stat-label">PhD Graduates in Academic Roles</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">12%</div>
+                    <div class="stat-label">Projected Growth in Postsecondary Teaching</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">$80,000+</div>
+                    <div class="stat-label">Average Professor Salary</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Academic Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Academic Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>These academic fields offer diverse career opportunities in research, teaching, and administration.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 humanities">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Humanities</span>
+                                    <h5 class="card-title">Humanities & Liberal Arts</h5>
+                                    <p class="card-text">Study human culture, history, literature, philosophy, and languages. Career paths include:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">University Professor</span>
+                                        <span class="skill-pill">Researcher</span>
+                                        <span class="skill-pill">Archivist</span>
+                                        <span class="skill-pill">Museum Curator</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('humanities')">Explore Humanities</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 sciences">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Sciences</span>
+                                    <h5 class="card-title">Natural & Physical Sciences</h5>
+                                    <p class="card-text">Research in biology, chemistry, physics, and environmental science. Career paths include:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Research Scientist</span>
+                                        <span class="skill-pill">Lab Director</span>
+                                        <span class="skill-pill">Science Professor</span>
+                                        <span class="skill-pill">Grant Writer</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('sciences')">Explore Sciences</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 social-sciences">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Social Sciences</span>
+                                    <h5 class="card-title">Social & Behavioral Sciences</h5>
+                                    <p class="card-text">Study human society, behavior, psychology, economics, and political systems. Career paths include:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Professor</span>
+                                        <span class="skill-pill">Policy Analyst</span>
+                                        <span class="skill-pill">Researcher</span>
+                                        <span class="skill-pill">Data Scientist</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('social-sciences')">Explore Social Sciences</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 education">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Education</span>
+                                    <h5 class="card-title">Education & Pedagogy</h5>
+                                    <p class="card-text">Focus on teaching methods, educational theory, and curriculum development. Career paths include:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Education Professor</span>
+                                        <span class="skill-pill">Curriculum Developer</span>
+                                        <span class="skill-pill">Academic Administrator</span>
+                                        <span class="skill-pill">Instructional Designer</span>
+                                    </div>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('education')">Explore Education</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Most academic careers require advanced degrees (Master's or PhD) and a strong publication record.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alternative Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-random me-2"></i>Alternative Academic Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Community College Teaching</h5>
+                                    <p class="card-text">Teach at community colleges with a Master's degree rather than a PhD.</p>
+                                    <ul>
+                                        <li>Focus on teaching rather than research</li>
+                                        <li>Master's degree sufficient for most positions</li>
+                                        <li>Strong job stability</li>
+                                        <li>Opportunity to mentor diverse student populations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Academic Administration</h5>
+                                    <p class="card-text">Pursue leadership roles in educational institutions.</p>
+                                    <ul>
+                                        <li>Department chair or dean positions</li>
+                                        <li>Student affairs administration</li>
+                                        <li>Academic program coordination</li>
+                                        <li>Institutional research</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Research-Intensive Positions</h5>
+                                    <p class="card-text">Focus on research outside of traditional faculty roles.</p>
+                                    <ul>
+                                        <li>Postdoctoral researcher</li>
+                                        <li>Research scientist in university labs</li>
+                                        <li>Grant-funded project director</li>
+                                        <li>Policy research institutes</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Academic Publishing</h5>
+                                    <p class="card-text">Work in scholarly publishing and communications.</p>
+                                    <ul>
+                                        <li>Journal editor</li>
+                                        <li>Academic book publishing</li>
+                                        <li>Peer review coordination</li>
+                                        <li>Digital scholarship initiatives</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Academic Career Development Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: Undergraduate Preparation (4 years)</h5>
+                            <p>Excel in your bachelor's degree, develop relationships with professors, and gain research experience.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: Graduate School Applications (1 year)</h5>
+                            <p>Research programs, prepare applications, take required exams (GRE), and secure strong letters of recommendation.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Master's Degree (2-3 years)</h5>
+                            <p>Complete coursework, begin specialized research, present at conferences, and publish early work.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: PhD Program (4-6 years)</h5>
+                            <p>Advance to candidacy, conduct dissertation research, publish in peer-reviewed journals, and gain teaching experience.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: Postdoctoral Position (2-4 years)</h5>
+                            <p>Concentrate on research, build publication record, develop independent research agenda, and expand professional network.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Faculty Position</h5>
+                            <p>Secure tenure-track position, balance teaching and research responsibilities, and work toward tenure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Academic Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Research Skills Development</h5>
+                                    <ul>
+                                        <li>"The Craft of Research" by Booth, Colomb, and Williams</li>
+                                        <li>Purdue Online Writing Lab (OWL)</li>
+                                        <li>Research Methods courses on Coursera</li>
+                                        <li>Discipline-specific methodology texts</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showResources('research')">Research Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Academic Writing Resources</h5>
+                                    <ul>
+                                        <li>"They Say/I Say" by Graff and Birkenstein</li>
+                                        <li>Academic Phrasebank (University of Manchester)</li>
+                                        <li>Writing centers at universities</li>
+                                        <li>Style guides (APA, MLA, Chicago)</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showResources('writing')">Writing Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Graduate School Preparation</h5>
+                                    <ul>
+                                        <li>"The Professor Is In" by Karen Kelsky</li>
+                                        <li>Graduate school admissions guides</li>
+                                        <li>GRE preparation materials</li>
+                                        <li>Statement of purpose writing workshops</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showResources('gradschool')">Graduate School Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Academic Development Plan</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Immediate Actions (0-12 months)</h5>
+                                    <ul>
+                                        <li>Excel in current coursework and maintain high GPA</li>
+                                        <li>Develop relationships with professors for future recommendations</li>
+                                        <li>Gain research experience through assistantships or independent projects</li>
+                                        <li>Begin preparing for graduate entrance exams</li>
+                                        <li>Attend academic conferences and departmental seminars</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Medium-Term Goals (1-3 years)</h5>
+                                    <ul>
+                                        <li>Complete undergraduate degree with honors or distinction</li>
+                                        <li>Present research at conferences or publish in undergraduate journals</li>
+                                        <li>Secure strong letters of recommendation</li>
+                                        <li>Apply to graduate programs aligned with research interests</li>
+                                        <li>Develop a writing sample or research portfolio</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-academic btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Academic Fields
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg" onclick="showResources('gradschool')">
+                            <i class="fas fa-graduation-cap me-2"></i>Graduate School Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="text-center mt-5">YouTube Videos Related to Academic Careers</h1>
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <h3><a href="https://youtu.be/5sSeLa2DNEU?si=1zO0vV9Em3yTW1ZO" target="_blank">1.  Academic Life</a></h3>
+
+        </div>
+        <div class="col-md-6 mb-3">
+            <h3><a href="https://youtu.be/166FXhGd9T4?si=k2DSBJnz6MFZ5VgE" target="_blank">2. Writing a Successful Research Proposal</a></h3>
+        </div>
+        <div class="col-md-6 mb-3">
+            <h3><a href="https://youtu.be/6c7eAUwrYmU?si=olGccAMyLI78a65F" target="_blank">3. Balancing Teaching and Research</a></h3>
+        </div>
+        <div class="col-md-6 mb-3">
+            <h3><a href="https://youtu.be/x0NO4f5UCUY?si=8C870SYlfwfsb_oB" target="_blank">4. Academic Job Search Strategies</a></h3>
+        </div>
+    </div>
+</div>
+
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping students discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('courses')">Academic Resources</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Books & Publications</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Academic Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2025 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Academic Field Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Academic Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel">Academic Career Guidance Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>How to Use This Academic Career Guide</h5>
+                <div class="help-step">
+                    <span class="help-step-number">1</span>
+                    <strong>Review Your Skill Development Plan</strong>
+                    <p>Start with the skills assessment to identify areas for improvement in your academic career preparation.</p>
+                </div>
+                <div class="help-step">
+                    <span class="help-step-number">2</span>
+                    <strong>Explore Academic Pathways</strong>
+                    <p>Learn about different academic fields and the career opportunities they offer in research, teaching, and administration.</p>
+                </div>
+                <div class="help-step">
+                    <span class="help-step-number">3</span>
+                    <strong>Follow the Development Roadmap</strong>
+                    <p>Use the step-by-step roadmap to plan your academic career progression from undergraduate studies to faculty positions.</p>
+                </div>
+                <div class="help-step">
+                    <span class="help-step-number">4</span>
+                    <strong>Access Recommended Resources</strong>
+                    <p>Utilize the curated resources for research skills, academic writing, and graduate school preparation.</p>
+                </div>
+                <div class="help-step">
+                    <span class="help-step-number">5</span>
+                    <strong>Create Your Action Plan</strong>
+                    <p>Develop a personalized plan with immediate actions and medium-term goals for your academic career development.</p>
+                </div>
+                
+                <div class="contact-support">
+                    <h5>Need More Help?</h5>
+                    <p>If you need additional guidance with your academic career planning:</p>
+                    <ul>
+                        <li>Consult with academic advisors at your institution</li>
+                        <li>Talk to professors in your field of interest</li>
+                        <li>Visit your university's career services center</li>
+                        <li>Connect with graduate students or recent PhDs in your field</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Function to show field details
+    function showFieldDetails(field) {
+        const fieldData = {
+            'humanities': {
+                title: 'Humanities & Liberal Arts',
+                description: 'Humanities disciplines focus on the study of human culture, history, literature, philosophy, languages, and arts. These fields develop critical thinking, analytical, and communication skills essential for academic careers.',
+                skills: ['Critical Analysis', 'Historical Contextualization', 'Textual Interpretation', 'Cultural Theory', 'Research Methodology'],
+                careers: ['University Professor', 'Researcher', 'Archivist', 'Museum Curator', 'Editor', 'Cultural Analyst'],
+                requirements: 'PhD typically required for tenure-track positions; MA for some community college or adjunct positions',
+                resources: ['Modern Language Association (MLA)', 'American Historical Association (AHA)', 'National Endowment for the Humanities (NEH)']
+            },
+            'sciences': {
+                title: 'Natural & Physical Sciences',
+                description: 'Scientific disciplines involve systematic study of the natural world through observation and experimentation. These fields require strong analytical skills and methodological rigor.',
+                skills: ['Experimental Design', 'Data Analysis', 'Laboratory Techniques', 'Statistical Methods', 'Scientific Writing'],
+                careers: ['Research Scientist', 'Lab Director', 'Science Professor', 'Grant Writer', 'Policy Advisor', 'Industry Researcher'],
+                requirements: 'PhD required for most research and teaching positions; postdoctoral experience increasingly expected',
+                resources: ['American Association for the Advancement of Science (AAAS)', 'National Science Foundation (NSF)', 'Discipline-specific professional organizations']
+            },
+            'social-sciences': {
+                title: 'Social & Behavioral Sciences',
+                description: 'Social sciences examine human society, behavior, and social relationships through empirical research methods. These fields bridge humanities and sciences in their approaches.',
+                skills: ['Research Design', 'Statistical Analysis', 'Theoretical Frameworks', 'Policy Analysis', 'Ethnographic Methods'],
+                careers: ['Professor', 'Policy Analyst', 'Researcher', 'Data Scientist', 'Program Evaluator', 'Consultant'],
+                requirements: 'PhD typically required for academic positions; MA for some research or applied positions',
+                resources: ['American Sociological Association (ASA)', 'American Political Science Association (APSA)', 'American Psychological Association (APA)']
+            },
+            'education': {
+                title: 'Education & Pedagogy',
+                description: 'Education fields focus on teaching methods, learning theories, curriculum development, and educational policy. These disciplines prepare professionals for academic and administrative roles.',
+                skills: ['Curriculum Design', 'Pedagogical Methods', 'Educational Assessment', 'Program Evaluation', 'Instructional Technology'],
+                careers: ['Education Professor', 'Curriculum Developer', 'Academic Administrator', 'Instructional Designer', 'Education Policy Analyst'],
+                requirements: 'PhD or EdD for most higher education positions; teaching experience often required',
+                resources: ['American Educational Research Association (AERA)', 'Association for the Study of Higher Education (ASHE)', 'National Council of Teachers of English (NCTE)']
+            }
+        };
+        
+        const fieldInfo = fieldData[field];
+        const modalBody = document.getElementById('fieldModalBody');
+        
+        modalBody.innerHTML = `
+            <h4>${fieldInfo.title}</h4>
+            <p>${fieldInfo.description}</p>
+            
+            <h5>Key Skills</h5>
+            <div class="mb-3">
+                ${fieldInfo.skills.map(skill => `<span class="skill-pill">${skill}</span>`).join('')}
+            </div>
+            
+            <h5>Career Paths</h5>
+            <ul>
+                ${fieldInfo.careers.map(career => `<li>${career}</li>`).join('')}
+            </ul>
+            
+            <h5>Educational Requirements</h5>
+            <p>${fieldInfo.requirements}</p>
+            
+            <h5>Professional Organizations</h5>
+            <ul>
+                ${fieldInfo.resources.map(resource => `<li>${resource}</li>`).join('')}
+            </ul>
+            
+            <div class="alert alert-info">
+                <i class="fas fa-lightbulb me-2"></i>To succeed in ${fieldInfo.title}, focus on developing a strong publication record, securing research funding, and building professional networks through conferences and collaborations.
+            </div>
+        `;
+        
+        const modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        modal.show();
+    }
+    
+    // Function to show resources
+    function showResources(type) {
+        const resourceData = {
+            'research': {
+                title: 'Research Skills Development Resources',
+                content: `
+                    <h5>Essential Research Resources</h5>
+                    <ul>
+                        <li><strong>Books:</strong> "The Craft of Research" by Booth, Colomb, and Williams; "Research Design" by Creswell</li>
+                        <li><strong>Online Courses:</strong> Coursera's "Research Methods" specialization; edX research methodology courses</li>
+                        <li><strong>Tools:</strong> Zotero or Mendeley for citation management; NVivo for qualitative data analysis</li>
+                        <li><strong>Websites:</strong> Purdue OWL for citation styles; discipline-specific methodology guides</li>
+                        <li><strong>Practice:</strong> Undergraduate research journals; conference presentation opportunities</li>
+                    </ul>
+                    
+                    <h5>Developing Your Research Profile</h5>
+                    <p>Start building your research identity early by:</p>
+                    <ul>
+                        <li>Working with faculty on research projects</li>
+                        <li>Presenting at undergraduate research symposia</li>
+                        <li>Submitting to undergraduate research journals</li>
+                        <li>Attending academic conferences in your field</li>
+                        <li>Developing a research interest statement</li>
+                    </ul>
+                `
+            },
+            'writing': {
+                title: 'Academic Writing Resources',
+                content: `
+                    <h5>Writing Improvement Resources</h5>
+                    <ul>
+                        <li><strong>Books:</strong> "They Say/I Say" by Graff and Birkenstein; "Academic Writing for Graduate Students" by Swales and Feak</li>
+                        <li><strong>Online Resources:</strong> University of Manchester's Academic Phrasebank; Purdue Online Writing Lab (OWL)</li>
+                        <li><strong>Style Guides:</strong> APA, MLA, Chicago, or discipline-specific style manuals</li>
+                        <li><strong>Writing Support:</strong> University writing centers; writing groups; writing retreats</li>
+                    </ul>
+                    
+                    <h5>Developing Your Academic Voice</h5>
+                    <p>Improve your academic writing through:</p>
+                    <ul>
+                        <li>Regular writing practice and feedback</li>
+                        <li>Analyzing writing in your discipline's top journals</li>
+                        <li>Learning discipline-specific conventions and terminology</li>
+                        <li>Developing effective revision strategies</li>
+                        <li>Practicing different academic genres (reviews, research articles, proposals)</li>
+                    </ul>
+                `
+            },
+            'gradschool': {
+                title: 'Graduate School Preparation Resources',
+                content: `
+                    <h5>Graduate School Planning Resources</h5>
+                    <ul>
+                        <li><strong>Books:</strong> "The Professor Is In" by Karen Kelsky; "Graduate Admissions Essays" by Donald Asher</li>
+                        <li><strong>Test Preparation:</strong> Official GRE guides; test prep courses; practice exams</li>
+                        <li><strong>Application Resources:</strong> Grad school fair information; program databases; funding databases</li>
+                        <li><strong>Admissions Advice:</strong> Faculty mentors; graduate student mentors; admissions workshops</li>
+                    </ul>
+                    
+                    <h5>Graduate Application Timeline</h5>
+                    <ul>
+                        <li><strong>12-18 months before:</strong> Research programs, prepare for exams, identify recommenders</li>
+                        <li><strong>6-12 months before:</strong> Take required exams, request recommendations, draft statements</li>
+                        <li><strong>3-6 months before:</strong> Finalize application materials, submit applications</li>
+                        <li><strong>1-3 months before:</strong> Prepare for interviews, visit campuses, make final decision</li>
+                    </ul>
+                `
+            }
+        };
+        
+        const resourceInfo = resourceData[type] || resourceData['research'];
+        const modalBody = document.getElementById('resourcesModalBody');
+        
+        modalBody.innerHTML = resourceInfo.content;
+        document.getElementById('resourcesModalLabel').textContent = resourceInfo.title;
+        
+        const modal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        modal.show();
+    }
+    
+    // Function to show skill-specific resources
+    function showSkillResources(skill) {
+        const skillResources = {
+            'research': 'research',
+            'writing': 'writing',
+            'teaching': 'gradschool',
+            'specialized': 'research',
+            'networking': 'gradschool',
+            'administration': 'gradschool'
+        };
+        
+        showResources(skillResources[skill] || 'research');
+    }
+    
+    // Function to show field selection
+    function showFieldSelection() {
+        const modalBody = document.getElementById('fieldModalBody');
+        
+        modalBody.innerHTML = `
+            <h4>Explore Academic Fields</h4>
+            <p>Select an academic field to learn more about career opportunities, required skills, and educational pathways:</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5>Humanities & Liberal Arts</h5>
+                            <p>Literature, history, philosophy, languages, cultural studies</p>
+                            <button class="btn btn-academic" onclick="showFieldDetails('humanities')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5>Natural & Physical Sciences</h5>
+                            <p>Biology, chemistry, physics, environmental science</p>
+                            <button class="btn btn-academic" onclick="showFieldDetails('sciences')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5>Social & Behavioral Sciences</h5>
+                            <p>Sociology, psychology, economics, political science</p>
+                            <button class="btn btn-academic" onclick="showFieldDetails('social-sciences')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5>Education & Pedagogy</h5>
+                            <p>Teaching methods, curriculum development, educational policy</p>
+                            <button class="btn btn-academic" onclick="showFieldDetails('education')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('fieldModalLabel').textContent = 'Explore Academic Fields';
+        const modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        modal.show();
+    }
+</script>
+</body>
+</html>

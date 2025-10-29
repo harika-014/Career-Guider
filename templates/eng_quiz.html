@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineering Career Ability Quiz</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4e73df;
+      --secondary-color: #f8f9fc;
+      --accent-color: #36b9cc;
+      --text-color: #5a5c69;
+      --dark-color: #2e59d9;
+    }
+    
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text-color);
+      padding-top: 20px;
+    }
+    
+    .quiz-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      margin-bottom: 20px;
+      box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+      border: none;
+      border-radius: 10px;
+    }
+    
+    .card-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+      color: white;
+      border-radius: 10px 10px 0 0 !important;
+      font-weight: 600;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary-color), var(--dark-color));
+      border: none;
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: 600;
+    }
+    
+    .btn-primary:hover {
+      background: linear-gradient(to right, var(--dark-color), var(--primary-color));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-secondary {
+      background: rgba(148,163,184,.2);
+      color: var(--text-color);
+      border: none;
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: 600;
+    }
+    
+    .progress {
+      height: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .option-btn {
+      text-align: left;
+      margin-bottom: 10px;
+      padding: 15px;
+      border: 1px solid #dee2e6;
+      border-radius: 8px;
+      transition: all 0.3s;
+      background-color: white;
+      width: 100%;
+    }
+    
+    .option-btn:hover {
+      background-color: #f8f9fa;
+      border-color: var(--primary-color);
+    }
+    
+    .option-btn.selected {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+    
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+    
+    .badge {
+      font-size: 0.9rem;
+      padding: 8px 12px;
+    }
+    
+    .result-card {
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .footer {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+      color: white;
+      padding: 1rem 0;
+      margin-top: 2rem;
+      border-radius: 0 0 10px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container quiz-container">
+    <div class="card" id="app">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h1 class="h4 mb-0"><i class="fas fa-cogs me-2"></i>Engineering Career Ability Quiz</h1>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="badge bg-info" title="Progress"><span id="counter">Q 1 / 20</span></span>
+          <span class="badge bg-warning" title="Time left for full quiz"><span id="timer">05:00</span></span>
+        </div>
+      </div>
+      
+      <div class="card-body">
+        <div class="progress">
+          <div class="progress-bar" id="bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        
+        <div id="quizPane">
+          <!-- Question will render here -->
+        </div>
+      </div>
+      
+      <div class="footer text-center">
+        <small>Tip: This quiz helps assess your aptitude and interests in engineering.</small>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /********************
+     * CONFIG
+     ********************/
+    const QUIZ_MINUTES = 5; // full quiz timer (minutes)
+
+    // Guidance URLs based on score
+    const HIGH_GUIDANCE_URL = "/eng1"; // for >= 70%
+    const LOW_GUIDANCE_URL  = "/eng2";  // for < 70%
+
+    // Auto-redirect after showing results for a few seconds
+    const AUTO_REDIRECT = true;
+
+    /********************
+     * QUESTIONS BANK
+     * - 20 total (10 technical scored + 10 personality unscored)
+     * - Each option is a string. correctIndex is an integer for scored questions, or null for personality.
+     ********************/
+    const questions = [
+      // --- Technical (scored) ---
+      {
+        text: "Ohm's Law relates voltage (V), current (I) and resistance (R). Which is correct?",
+        options: ["V = I / R", "V = I × R", "I = V × R", "R = V + I"],
+        correctIndex: 1,
+      },
+      {
+        text: "What is the SI unit of force?",
+        options: ["Joule", "Watt", "Newton", "Pascal"],
+        correctIndex: 2,
+      },
+      {
+        text: "Binary representation of decimal 13 is:",
+        options: ["1011", "1101", "1110", "1001"],
+        correctIndex: 1,
+      },
+      {
+        text: "Young's modulus measures a material's:",
+        options: ["Density", "Elastic stiffness (stress/strain)", "Thermal conductivity", "Hardness"],
+        correctIndex: 1,
+      },
+      {
+        text: "Bernoulli's principle states that as fluid speed increases, static pressure:",
+        options: ["Increases", "Decreases", "Becomes zero", "Is unaffected"],
+        correctIndex: 1,
+      },
+      {
+        text: "In India, the standard frequency of AC mains supply is:",
+        options: ["60 Hz", "110 Hz", "50 Hz", "25 Hz"],
+        correctIndex: 2,
+      },
+      {
+        text: "The most efficient cross-section for resisting bending in beams is typically:",
+        options: ["Circular solid", "Square solid", "I-section (I-beam)", "Triangle"],
+        correctIndex: 2,
+      },
+      {
+        text: "CAD stands for:",
+        options: ["Computer Aided Drafting", "Computer Aided Design", "Civil Architecture Design", "Controlled Analog Device"],
+        correctIndex: 1,
+      },
+      {
+        text: "The pH of pure water at 25°C is approximately:",
+        options: ["5", "7", "9", "11"],
+        correctIndex: 1,
+      },
+      {
+        text: "In Boolean logic, the result of 1 AND 0 is:",
+        options: ["1", "0", "Depends on base", "Undefined"],
+        correctIndex: 1,
+      },
+
+      // --- Personality (unscored) ---
+      {
+        text: "Which activity do you enjoy more?",
+        options: ["Building gadgets / robots", "Designing structures / layouts", "Writing code / automations", "Analyzing chemical processes"],
+        correctIndex: null,
+      },
+      {
+        text: "You prefer problems that are:",
+        options: ["Hands‑on and mechanical", "Large‑scale infrastructure", "Abstract and logical", "Bio/chemistry related"],
+        correctIndex: null,
+      },
+      {
+        text: "In a team, your natural role is:",
+        options: ["Prototype builder", "Planner/architect", "Algorithm designer", "Quality/safety analyst"],
+        correctIndex: null,
+      },
+      {
+        text: "What excites you most?",
+        options: ["Engines & machines", "Smart cities & bridges", "AI & apps", "Materials & reactions"],
+        correctIndex: null,
+      },
+      {
+        text: "Which lab would you pick?",
+        options: ["Mechatronics lab", "Concrete/soil lab", "Computer lab", "Chemistry lab"],
+        correctIndex: null,
+      },
+      {
+        text: "You value work that is:",
+        options: ["Precision manufacturing", "Public infrastructure impact", "Digital transformation", "Sustainable processing"],
+        correctIndex: null,
+      },
+      {
+        text: "Preferred tools:",
+        options: ["Lathe/CNC", "AutoCAD/Revit", "Git/IDEs", "Reactors/Simulators"],
+        correctIndex: null,
+      },
+      {
+        text: "Favorite study topic:",
+        options: ["Thermodynamics", "Structural Analysis", "Data Structures", "Organic Chemistry"],
+        correctIndex: null,
+      },
+      {
+        text: "Ideal internship:",
+        options: ["Automobile plant", "Construction firm", "Software company", "Pharma plant"],
+        correctIndex: null,
+      },
+      {
+        text: "Long‑term aspiration:",
+        options: ["Robotics innovator", "City infrastructure leader", "Tech startup founder", "Green energy chemist"],
+        correctIndex: null,
+      },
+    ];
+
+    // state
+    let idx = 0;
+    const answers = new Array(questions.length).fill(null); // stores selected option index
+
+    // helpers
+    const $ = (q) => document.querySelector(q);
+
+    function render(){
+      const q = questions[idx];
+      const total = questions.length;
+      const selected = answers[idx];
+
+      // header counters
+      $('#counter').textContent = `Q ${idx+1} / ${total}`;
+      const pct = Math.round(((idx) / (total)) * 100);
+      $('#bar').style.width = `${pct}%`;
+
+      // question html
+      const opts = q.options.map((op, i) => `
+        <button type="button" class="option-btn ${selected===i? 'selected':''}" data-value="${i}">
+          <input type="radio" name="opt" value="${i}" ${selected===i? 'checked':''} />
+          ${op}
+        </button>
+      `).join('');
+
+      const canPrev = idx>0;
+      const isLast = idx === total-1;
+
+      $('#quizPane').innerHTML = `
+        <div class="mb-2 text-muted">Section: ${q.correctIndex===null? 'Personality' : 'Technical'}</div>
+        <h4 class="mb-3">${q.text}</h4>
+        <div class="mb-4">${opts}</div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-secondary" ${!canPrev? 'disabled':''} id="prevBtn">Previous</button>
+          <div class="text-muted">${q.correctIndex===null? 'No right/wrong here — choose what fits you.' : 'Choose one correct answer.'}</div>
+          <button class="btn btn-primary" id="nextBtn">${isLast? 'Submit' : 'Next'}</button>
+        </div>
+        <div class="mt-3 text-muted small">Your choice is saved automatically when you click Next/Previous.</div>
+      `;
+
+      $('#prevBtn')?.addEventListener('click', (e)=>{ e.preventDefault(); saveSelection(); idx--; render(); });
+      $('#nextBtn')?.addEventListener('click', (e)=>{ e.preventDefault(); saveSelection(); isLast ? finish() : (idx++, render()); });
+
+      // handle change
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.addEventListener('click', (e)=>{
+          // Remove selected class from all options
+          document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+          // Add selected class to clicked option
+          btn.classList.add('selected');
+          // Update the radio button
+          const radio = btn.querySelector('input[type="radio"]');
+          radio.checked = true;
+          // Save selection
+          answers[idx] = Number(btn.getAttribute('data-value'));
+        });
+      });
+    }
+
+    function saveSelection(){
+      const picked = document.querySelector('input[name="opt"]:checked');
+      if(picked){ answers[idx] = Number(picked.value); }
+    }
+
+    function computeScore(){
+      let correct = 0, total = 0;
+      questions.forEach((q,i)=>{
+        if(q.correctIndex===null) return; // unscored personality questions
+        total++; // Only count technical questions for the total score
+        if(answers[i] === q.correctIndex) correct++;
+      });
+      const percent = Math.round((correct/total)*100);
+      return {correct, total, percent};
+    }
+
+    function finish(auto=false){
+      const {correct, total, percent} = computeScore();
+      const high = percent >= 70;
+
+      // results UI - This will be shown briefly before redirecting
+      $('#quizPane').innerHTML = `
+        <div class="result-card">
+          <h2 class="mb-3">🎯 Your Score: ${correct}/${total}</h2>
+          <h3 class="mb-4">📊 Percentage: ${percent}%</h3>
+          <p class="mb-4">${high ? '✅ You Passed! Great job! Redirecting to guidance...' : '❌ You Scored Below 70%. Redirecting to guidance...'}</p>
+          <div class="d-flex justify-content-center gap-3">
+            <a class="btn btn-primary" id="goGuidance">Go to Guidance Page</a>
+            <button class="btn btn-secondary" id="retryBtn">Restart Quiz</button>
+          </div>
+        </div>
+      `;
+
+      const target = high ? HIGH_GUIDANCE_URL : LOW_GUIDANCE_URL;
+
+      document.getElementById('goGuidance').addEventListener('click', (e)=>{
+        e.preventDefault(); if(target){ window.location.href = target; }
+      });
+      document.getElementById('retryBtn').addEventListener('click', ()=>{ location.reload(); });
+
+      if(AUTO_REDIRECT && target){
+        setTimeout(()=>
+          window.location.href = target,4000); // Redirect after 4 seconds
+      }
+      clearInterval(t);
+    }
+
+    // Timer
+    let remaining = QUIZ_MINUTES * 60; // seconds
+    function updateTimer(){
+      const m = Math.floor(remaining/60).toString().padStart(2,'0');
+      const s = Math.floor(remaining%60).toString().padStart(2,'0');
+      $('#timer').textContent = `${m}:${s}`;
+      if(remaining<=0){
+        clearInterval(t);
+        finish();
+        return;
+      }
+      remaining--;
+    }
+
+    // init
+    render();
+    updateTimer();
+    const t=setInterval(updateTimer,1000);
+  </script>
+</body>
+</html>

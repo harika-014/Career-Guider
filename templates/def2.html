@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defense Career Development | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        --primary-color: #2e7d32;
+        --secondary-color: #f8f9fc;
+        --accent-color: #388e3c;
+        --text-color: #5a5c69;
+        --dark-color: #1b5e20;
+        --defense-color: #2e7d32;
+        --improvement-color: #2e7d32;
+    }
+    
+    body {
+        padding-top: 70px;
+        background-color: #f8f9fa;
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text-color);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid #fff;
+        transition: transform 0.3s;
+    }
+    
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Hero Section */
+    .defense-hero {
+        background: linear-gradient(rgba(46, 125, 50, 0.85), rgba(46, 125, 50, 0.9)), url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 5rem 0;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    /* Card Styles */
+    .card {
+        margin-bottom: 20px;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, var(--defense-color), #1b5e20);
+        color: white;
+        border-radius: 10px 10px 0 0 !important;
+        font-weight: 600;
+    }
+    
+    /* Defense Specific Styles */
+    .defense-badge {
+        background: linear-gradient(135deg, var(--defense-color), #1b5e20);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    
+    .pathway-card {
+        border-left: 4px solid var(--defense-color);
+    }
+    
+    .specialization-card {
+        border-top: 3px solid var(--defense-color);
+    }
+    
+    .progress {
+        height: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Roadmap Styles */
+    .roadmap-container {
+        position: relative;
+        padding-left: 30px;
+        margin: 40px 0;
+    }
+    
+    .roadmap-container::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--defense-color);
+    }
+    
+    .roadmap-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: var(--defense-color);
+        border: 4px solid white;
+        box-shadow: 0 0 0 2px var(--defense-color);
+    }
+    
+    /* Button Styles */
+    .btn-defense {
+        background: linear-gradient(to right, var(--defense-color), #1b5e20);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: 600;
+    }
+    
+    .btn-defense:hover {
+        background: linear-gradient(to right, #1b5e20, var(--defense-color));
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Resource Cards */
+    .resource-card {
+        height: 100%;
+        transition: all 0.3s;
+    }
+    
+    .resource-card:hover {
+        box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--defense-color);
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+    
+    /* Modal Styles */
+    .modal-content {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, var(--defense-color), #1b5e20);
+        color: white;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    /* Defense Field Colors */
+    .army { --field-color: #2e7d32; }
+    .navy { --field-color: #0d47a1; }
+    .airforce { --field-color: #01579b; }
+    .marines { --field-color: #d32f2f; }
+    .coast-guard { --field-color: #ff6f00; }
+    .cyber { --field-color: #6a1b9a; }
+    .intelligence { --field-color: #5d4037; }
+    
+    .field-badge {
+        background-color: var(--field-color);
+        color: white;
+    }
+    
+    /* College ranking styles */
+    .college-rank {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--defense-color);
+        margin-right: 15px;
+    }
+    
+    .college-card {
+        transition: all 0.3s ease;
+    }
+    
+    .college-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Help Button Animation */
+    #helpBtn {
+        transition: all 0.3s ease;
+    }
+    
+    #helpBtn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(46, 125, 50, 0.5);
+    }
+    
+    /* Help Modal Styles */
+    .help-step {
+        border-left: 4px solid var(--defense-color);
+        padding-left: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .help-step-number {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: var(--defense-color);
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .contact-support {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    /* Skill Development Section */
+    .skill-dev-card {
+        border-top: 3px solid var(--defense-color);
+    }
+    
+    .skill-pill {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background-color: #e9ecef;
+        color: #495057;
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .improvement-plan {
+        background-color: #e9ecef;
+        border-left: 4px solid var(--defense-color);
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+    }
+    
+    /* Video Modal Styles */
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        border-radius: 10px;
+        margin: 15px 0;
+    }
+    
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    
+    .video-thumbnail {
+        cursor: pointer;
+        transition: transform 0.3s;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .video-thumbnail:hover {
+        transform: scale(1.03);
+    }
+    
+    .video-thumbnail img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .video-title {
+        margin-top: 10px;
+        font-weight: 600;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-graduation-cap me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-info me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Future Defense Professional!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Defense Hero Section -->
+    <div class="defense-hero rounded">
+        <div class="container">
+            <div class="defense-badge">
+                <i class="fas fa-shield-alt me-2"></i>Defense Career Development
+            </div>
+            <h1 class="display-4 fw-bold">Defense Career Pathways</h1>
+            <p class="lead">Your assessment shows potential for a career in defense. With dedication and the right preparation, you can serve your country in various defense roles.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('training')">
+                    <i class="fas fa-book me-2"></i>Training Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Defense Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Skill Development Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-brain me-2"></i>Key Skills for Defense Careers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="improvement-plan">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Your Development Plan</h5>
+                        <p>Based on your assessment results, we recommend focusing on these essential skills for a defense career:</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Physical Fitness</h5>
+                                    <p class="card-text">Essential for most defense roles:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Endurance</span>
+                                        <span class="skill-pill">Strength</span>
+                                        <span class="skill-pill">Agility</span>
+                                        <span class="skill-pill">Stamina</span>
+                                    </div>
+                                    <button class="btn btn-defense" onclick="showSkillResources('fitness')">Fitness Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Leadership & Teamwork</h5>
+                                    <p class="card-text">Critical for defense operations:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Decision Making</span>
+                                        <span class="skill-pill">Communication</span>
+                                        <span class="skill-pill">Collaboration</span>
+                                        <span class="skill-pill">Conflict Resolution</span>
+                                    </div>
+                                    <button class="btn btn-defense" onclick="showSkillResources('leadership')">Leadership Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Technical Skills</h5>
+                                    <p class="card-text">Modern defense requires technical expertise:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Technology Operation</span>
+                                        <span class="skill-pill">Cybersecurity</span>
+                                        <span class="skill-pill">Equipment Maintenance</span>
+                                        <span class="skill-pill">Technical Analysis</span>
+                                    </div>
+                                    <button class="btn btn-defense" onclick="showSkillResources('technical')">Technical Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Strategic Thinking</h5>
+                                    <p class="card-text">Essential for defense planning:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Analytical Skills</span>
+                                        <span class="skill-pill">Problem-Solving</span>
+                                        <span class="skill-pill">Risk Assessment</span>
+                                        <span class="skill-pill">Situational Awareness</span>
+                                    </div>
+                                    <button class="btn btn-defense" onclick="showSkillResources('strategy')">Strategy Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Discipline & Resilience</h5>
+                                    <p class="card-text">Core attributes for defense personnel:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Self-Discipline</span>
+                                        <span class="skill-pill">Stress Management</span>
+                                        <span class="skill-pill">Adaptability</span>
+                                        <span class="skill-pill">Perseverance</span>
+                                    </div>
+                                    <button class="btn btn-defense" onclick="showSkillResources('discipline')">Discipline Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Specialized Knowledge</h5>
+                                    <p class="card-text">Field-specific expertise:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Military History</span>
+                                        <span class="skill-pill">Geopolitics</span>
+                                        <span class="skill-pill">Defense Systems</span>
+                                        <span class="skill-pill">International Relations</span>
+                                    </div>
+                                    <button class="btn btn-defense" onclick="showSkillResources('knowledge')">Knowledge Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">6-18 Months</div>
+                    <div class="stat-label">Training Timeline</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Success Rate with Proper Preparation</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">75%</div>
+                    <div class="stat-label">Candidates Who Improve Through Training</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">1-on-1</div>
+                    <div class="stat-label">Coaching Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Defense Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Defense Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>These defense fields offer various career opportunities. Each field lists the specific skills and preparation needed.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 army">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Army</span>
+                                    <h5 class="card-title">Army Careers</h5>
+                                    <p class="card-text">Serve in land-based operations with diverse roles from combat to support services.</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Physical Fitness</span>
+                                        <span class="skill-pill">Leadership</span>
+                                        <span class="skill-pill">Tactical Skills</span>
+                                        <span class="skill-pill">Teamwork</span>
+                                    </div>
+                                    <button class="btn btn-defense" onclick="showFieldDetails('army')">Explore Army Careers</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 navy">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Navy</span>
+                                  

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Career Development | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        --primary-color: #1e7e34;
+        --secondary-color: #f8f9fc;
+        --accent-color: #20c997;
+        --text-color: #5a5c69;
+        --dark-color: #155724;
+        --sports-color: #1e7e34;
+        --improvement-color: #1e7e34;
+    }
+    
+    body {
+        padding-top: 70px;
+        background-color: #f8f9fa;
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text-color);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid #fff;
+        transition: transform 0.3s;
+    }
+    
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Hero Section */
+    .sports-hero {
+        background: linear-gradient(rgba(30, 126, 52, 0.85), rgba(30, 126, 52, 0.9)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 5rem 0;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    /* Card Styles */
+    .card {
+        margin-bottom: 20px;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, var(--sports-color), #155724);
+        color: white;
+        border-radius: 10px 10px 0 0 !important;
+        font-weight: 600;
+    }
+    
+    /* Sports Specific Styles */
+    .sports-badge {
+        background: linear-gradient(135deg, var(--sports-color), #155724);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    
+    .pathway-card {
+        border-left: 4px solid var(--sports-color);
+    }
+    
+    .specialization-card {
+        border-top: 3px solid var(--sports-color);
+    }
+    
+    .progress {
+        height: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Roadmap Styles */
+    .roadmap-container {
+        position: relative;
+        padding-left: 30px;
+        margin: 40px 0;
+    }
+    
+    .roadmap-container::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--sports-color);
+    }
+    
+    .roadmap-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: var(--sports-color);
+        border: 4px solid white;
+        box-shadow: 0 0 0 2px var(--sports-color);
+    }
+    
+    /* Button Styles */
+    .btn-sports {
+        background: linear-gradient(to right, var(--sports-color), #155724);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: 600;
+    }
+    
+    .btn-sports:hover {
+        background: linear-gradient(to right, #155724, var(--sports-color));
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Resource Cards */
+    .resource-card {
+        height: 100%;
+        transition: all 0.3s;
+    }
+    
+    .resource-card:hover {
+        box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--sports-color);
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+    
+    /* Modal Styles */
+    .modal-content {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, var(--sports-color), #155724);
+        color: white;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    /* Sports Field Colors */
+    .team-sports { --field-color: #1e7e34; }
+    .individual-sports { --field-color: #20c997; }
+    .coaching { --field-color: #fd7e14; }
+    .sports-medicine { --field-color: #e74a3b; }
+    .sports-management { --field-color: #6f42c1; }
+    .fitness-training { --field-color: #f6c23e; }
+    .sports-media { --field-color: #36b9cc; }
+    
+    .field-badge {
+        background-color: var(--field-color);
+        color: white;
+    }
+    
+    /* College ranking styles */
+    .college-rank {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--sports-color);
+        margin-right: 15px;
+    }
+    
+    .college-card {
+        transition: all 0.3s ease;
+    }
+    
+    .college-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Help Button Animation */
+    #helpBtn {
+        transition: all 0.3s ease;
+    }
+    
+    #helpBtn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(30, 126, 52, 0.5);
+    }
+    
+    /* Help Modal Styles */
+    .help-step {
+        border-left: 4px solid var(--sports-color);
+        padding-left: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .help-step-number {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: var(--sports-color);
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .contact-support {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    /* Skill Development Section */
+    .skill-dev-card {
+        border-top: 3px solid var(--sports-color);
+    }
+    
+    .skill-pill {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background-color: #e9ecef;
+        color: #495057;
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .improvement-plan {
+        background-color: #e9ecef;
+        border-left: 4px solid var(--sports-color);
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-running me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-success me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Sports Enthusiast!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Sports Hero Section -->
+    <div class="sports-hero rounded">
+        <div class="container">
+            <div class="sports-badge">
+                <i class="fas fa-running me-2"></i>Sports Career Development
+            </div>
+            <h1 class="display-4 fw-bold">Sports Career Pathways</h1>
+            <p class="lead">Your assessment shows potential in sports-related fields! With dedication and the right skill development plan, you can build a successful career in the sports industry.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Skill Development Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Skill Development Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-brain me-2"></i>Key Skills to Develop for Sports Careers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="improvement-plan">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Your Development Plan</h5>
+                        <p>Based on your assessment results, we recommend focusing on these foundational skills to prepare for a sports career:</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Physical Fitness & Conditioning</h5>
+                                    <p class="card-text">Essential for athletic performance and coaching:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Strength Training</span>
+                                        <span class="skill-pill">Cardiovascular Endurance</span>
+                                        <span class="skill-pill">Flexibility</span>
+                                        <span class="skill-pill">Nutrition</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showSkillResources('fitness')">Improve Fitness Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sports Technique & Strategy</h5>
+                                    <p class="card-text">Core knowledge needed for performance and coaching:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Sport-Specific Skills</span>
+                                        <span class="skill-pill">Game Strategy</span>
+                                        <span class="skill-pill">Tactical Analysis</span>
+                                        <span class="skill-pill">Performance Metrics</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showSkillResources('technique')">Improve Technical Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mental Preparation & Psychology</h5>
+                                    <p class="card-text">Key mindset skills for peak performance:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Visualization</span>
+                                        <span class="skill-pill">Focus & Concentration</span>
+                                        <span class="skill-pill">Resilience</span>
+                                        <span class="skill-pill">Goal Setting</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showSkillResources('psychology')">Improve Mental Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sports Science & Medicine</h5>
+                                    <p class="card-text">Understanding the science behind performance:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Anatomy & Physiology</span>
+                                        <span class="skill-pill">Biomechanics</span>
+                                        <span class="skill-pill">Injury Prevention</span>
+                                        <span class="skill-pill">Recovery Methods</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showSkillResources('science')">Improve Sports Science Knowledge</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Leadership & Communication</h5>
+                                    <p class="card-text">Essential for coaching and team sports:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Team Building</span>
+                                        <span class="skill-pill">Motivational Skills</span>
+                                        <span class="skill-pill">Effective Communication</span>
+                                        <span class="skill-pill">Conflict Resolution</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showSkillResources('leadership')">Improve Leadership Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sports Business & Management</h5>
+                                    <p class="card-text">Understanding the business side of sports:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Marketing</span>
+                                        <span class="skill-pill">Event Management</span>
+                                        <span class="skill-pill">Sponsorship</span>
+                                        <span class="skill-pill">Financial Management</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showSkillResources('business')">Improve Business Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">6-18 Months</div>
+                    <div class="stat-label">Skill Development Timeline</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">80%</div>
+                    <div class="stat-label">Success Rate with Proper Training</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">65%</div>
+                    <div class="stat-label">Athletes Who Transition to Sports Careers</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">1-on-1</div>
+                    <div class="stat-label">Coaching Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Sports Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Sports Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>These sports fields are accessible with dedicated skill development. Each field lists the specific areas you should focus on.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 team-sports">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Team Sports</span>
+                                    <h5 class="card-title">Professional Athlete (Team Sports)</h5>
+                                    <p class="card-text">Compete at the highest level in sports like basketball, soccer, football, etc. With focused improvement in these areas, you can succeed:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Teamwork</span>
+                                        <span class="skill-pill">Sport-Specific Skills</span>
+                                        <span class="skill-pill">Physical Conditioning</span>
+                                        <span class="skill-pill">Game Intelligence</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('team-sports')">Explore Team Sports</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 individual-sports">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Individual Sports</span>
+                                    <h5 class="card-title">Professional Athlete (Individual Sports)</h5>
+                                    <p class="card-text">Excel in sports like tennis, golf, swimming, athletics, etc. Focus on improving these key areas:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Self-Motivation</span>
+                                        <span class="skill-pill">Technical Mastery</span>
+                                        <span class="skill-pill">Mental Toughness</span>
+                                        <span class="skill-pill">Competition Strategy</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('individual-sports')">Explore Individual Sports</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 coaching">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Coaching</span>
+                                    <h5 class="card-title">Sports Coaching</h5>
+                                    <p class="card-text">Guide and develop athletes at various levels. Develop these skills:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Leadership</span>
+                                        <span class="skill-pill">Technical Knowledge</span>
+                                        <span class="skill-pill">Communication</span>
+                                        <span class="skill-pill">Player Development</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('coaching')">Explore Coaching</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 sports-medicine">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Sports Medicine</span>
+                                    <h5 class="card-title">Sports Medicine & Therapy</h5>
+                                    <p class="card-text">Help athletes prevent and recover from injuries. Improve these areas:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Anatomy Knowledge</span>
+                                        <span class="skill-pill">Rehabilitation Techniques</span>
+                                        <span class="skill-pill">Injury Assessment</span>
+                                        <span class="skill-pill">Preventive Care</span>
+                                    </div>
+                                    <button class="btn btn-sports" onclick="showFieldDetails('sports-medicine')">Explore Sports Medicine</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Consider starting with local clubs or community sports programs to build foundational skills before pursuing professional opportunities.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alternative Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-random me-2"></i>Alternative Pathways in Sports</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Community Sports Pathway</h5>
+                                    <p class="card-text">Start with local clubs and community programs to build skills before moving to higher levels.</p>
+                                    <ul>
+                                        <li>Accessible entry points</li>
+                                        <li>Lower competition pressure initially</li>
+                                        <li>Ability to develop fundamental skills</li>
+                                        <li>Pathway to regional and national teams</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">College Sports Programs</h5>
+                                    <p class="card-text">Utilize collegiate athletics as a pathway to professional sports or sports careers.</p>
+                                    <ul>
+                                        <li>Combine education with athletic development</li>
+                                        <li>Structured training environment</li>
+                                        <li>Exposure to scouts and recruiters</li>
+                                        <li>Academic qualifications as backup</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sports Management & Administration</h5>
+                                    <p class="card-text">Pursue careers in the business side of sports without being a professional athlete.</p>
+                                    <ul>
+                                        <li>Wide range of career options</li>
+                                        <li>Transferable business skills</li>
+                                        <li>Long-term career stability</li>
+                                        <li>Opportunities at all levels of sports</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sports Media & Journalism</h5>
+                                    <p class="card-text">Combine passion for sports with communication skills in broadcasting, writing, or digital media.</p>
+                                    <ul>
+                                        <li>Multiple media platforms</li>
+                                        <li>Creative expression</li>
+                                        <li>Access to sporting events</li>
+                                        <li>Growing digital opportunities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Skill Development Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: Foundational Skill Assessment (1-2 months)</h5>
+                            <p>Identify specific athletic abilities, strengths, and areas needing improvement through testing and expert evaluation.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: Targeted Skill Development (3-9 months)</h5>
+                            <p>Focus on improving sport-specific techniques, physical conditioning, and mental skills through coaching and practice.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Competitive Experience (6-12 months)</h5>
+                            <p>Participate in local and regional competitions to gain experience and test skills under pressure.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: Specialized Training</h5>
+                            <p>Work with specialized coaches to refine techniques and develop advanced strategies for your sport.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: Performance Optimization</h5>
+                            <p>Utilize sports science, nutrition, and recovery strategies to maximize performance potential.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Professional Development</h5>
+                            <p>Pursue opportunities at higher competitive levels or transition to coaching, management, or other sports careers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Skill Development Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Physical Training Resources</h5>
+                                    <ul>
+                                        <li>NSCA - Strength & Conditioning Resources</li>
+                                        <li>EXOS - Athletic Performance Training</li>
+                                        <li>Precision Nutrition - Sports Nutrition</li>
+                                        <li>Yoga for Athletes - Flexibility & Recovery</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showResources('fitness')">Training Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Technical Skill Development</h5>
+                                    <ul>
+                                        <li>Sport-specific coaching manuals</li>
+                                        <li>Video analysis software</li>
+                                        <li>Skill acquisition research</li>
+                                        <li>Masterclass sessions with experts</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showResources('technique')">Technical Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mental Performance Resources</h5>
+                                    <ul>
+                                        <li>"The Inner Game of Tennis" by Timothy Gallwey</li>
+                                        <li>Headspace - Sports Meditation</li>
+                                        <li>Peak Performance Sports Psychology</li>
+                                        <li>Visualization techniques for athletes</li>
+                                    </ul>
+                                    <button class="btn btn-sports" onclick="showResources('psychology')">Mental Performance Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Skill Development Plan</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Immediate Actions (0-3 months)</h5>
+                                    <ul>
+                                        <li>Get a comprehensive sports assessment</li>
+                                        <li>Create a structured training schedule</li>
+                                        <li>Find a qualified coach or mentor</li>
+                                        <li>Join a local club or team</li>
+                                        <li>Establish nutrition and recovery habits</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Medium-Term Goals (3-12 months)</h5>
+                                    <ul>
+                                        <li>Compete in local/regional competitions</li>
+                                        <li>Develop advanced technical skills</li>
+                                        <li>Build competition experience</li>
+                                        <li>Establish performance metrics</li>
+                                        <li>Explore scholarship or professional opportunities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-sports btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Sports Fields
+                        </button>
+                        <button class="btn btn-outline-success btn-lg" onclick="showResources('courses')">
+                            <i class="fas fa-book me-2"></i>Learning Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="container mt-5">Some YouTube Videos Related to Sports Careers</h1>
+<div class="container mb-5">
+    <h3><a href="https://youtu.be/EhMxLC4COH0?si=jqj6S6fwiZQ9XEx2" target="_blank">1.Mindset of champions</a></h3>
+    <h3><a href="https://youtu.be/o_liuXHaZcg?si=iSP5l3QlT3Yk3iqY" target="_blank">2.how to become a world class athlete</a></h3>
+    <h3><a href="https://youtu.be/B9WnbQSejm4?si=rBxMlLUv85R7be5m" target="_blank">3.Three pillars of training</a></h3>
+    <h3><a href="https://youtu.be/KdNeA8jk3rI?si=EYQgqr-yyKEy6a17" target="_blank">4. Careers in Sports Management</a></h3>
+
+
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping athletes and sports enthusiasts discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('courses')">Skill Development</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Books & Publications</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Sports Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2025 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Sports Career Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Sports Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel">Sports Career Development Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="help-step">
+                    <span class="help-step-number">1</span>
+                    <strong>Understand Your Assessment Results</strong>
+                    <p>Your assessment shows potential in sports-related fields. This means you likely have physical abilities, coordination, or strategic thinking that aligns with sports careers.</p>
+                </div>
+                
+                <div class="help-step">
+                    <span class="help-step-number">2</span>
+                    <strong>Explore Different Sports Fields</strong>
+                    <p>Browse through the various sports career paths to understand the requirements and opportunities in each field. Consider your interests and strengths when exploring.</p>
+                </div>
+                
+                <div class="help-step">
+                    <span class="help-step-number">3</span>
+                    <strong>Develop Key Skills</strong>
+                    <p>Focus on improving the foundational skills needed for your chosen sports field. Use the recommended resources and training programs to build your abilities.</p>
+                </div>
+                
+                <div class="help-step">
+                    <span class="help-step-number">4</span>
+                    <strong>Create a Development Plan</strong>
+                    <p>Follow the skill development roadmap and create a personalized training schedule. Set both short-term and long-term goals for your sports career.</p>
+                </div>
+                
+                <div class="help-step">
+                    <span class="help-step-number">5</span>
+                    <strong>Seek Guidance</strong>
+                    <p>Connect with coaches, mentors, or sports professionals who can provide guidance and feedback on your development.</p>
+                </div>
+                
+                <div class="contact-support mt-4">
+                    <h5>Need More Help?</h5>
+                    <p>If you have specific questions about your sports career path or need personalized advice, contact our sports career specialists:</p>
+                    <ul>
+                        <li>Email: sports-careers@careerguider.com</li>
+                        <li>Phone: 1-800-SPORTS-CAREER</li>
+                        <li>Live Chat: Available Monday-Friday, 9am-5pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Field details data
+const fieldDetails = {
+    'team-sports': {
+        title: 'Professional Team Sports',
+        description: 'Team sports involve organized groups competing against each other. Success in team sports requires coordination, communication, and collective strategy.',
+        skills: ['Teamwork', 'Communication', 'Sport-specific technical skills', 'Game intelligence', 'Physical conditioning'],
+        pathways: ['Join local clubs', 'Participate in school/college teams', 'Try out for regional teams', 'Professional league drafts/trials'],
+        resources: ['Team training programs', 'Game strategy resources', 'Team building exercises', 'Communication skills development']
+    },
+    'individual-sports': {
+        title: 'Professional Individual Sports',
+        description: 'Individual sports focus on personal performance and achievement. These require self-motivation, discipline, and personal accountability.',
+        skills: ['Self-discipline', 'Technical mastery', 'Mental toughness', 'Competition strategy', 'Personal fitness'],
+        pathways: ['Find a personal coach', 'Join training facilities', 'Enter local competitions', 'Progress to national/international events'],
+        resources: ['Individual training programs', 'Mental preparation techniques', 'Technical skill development', 'Competition preparation guides']
+    },
+    'coaching': {
+        title: 'Sports Coaching',
+        description: 'Coaching involves developing athletes and teams to achieve their full potential. Coaches provide technical instruction, motivation, and strategic guidance.',
+        skills: ['Leadership', 'Communication', 'Technical knowledge', 'Player development', 'Game strategy'],
+        pathways: ['Assistant coaching roles', 'Youth/community coaching', 'Certification programs', 'Specialized coaching positions'],
+        resources: ['Coaching certification programs', 'Leadership development', 'Sports psychology resources', 'Technical training materials']
+    },
+    'sports-medicine': {
+        title: 'Sports Medicine & Therapy',
+        description: 'Sports medicine professionals focus on athlete health, injury prevention, and rehabilitation. This field combines medical knowledge with sports science.',
+        skills: ['Anatomy knowledge', 'Injury assessment', 'Rehabilitation techniques', 'Preventive care', 'Medical expertise'],
+        pathways: ['Sports medicine education', 'Certification programs', 'Internships with teams', 'Clinical experience'],
+        resources: ['Sports medicine courses', 'Anatomy and physiology resources', 'Rehabilitation techniques', 'Injury prevention research']
+    }
+};
+
+// Resource data
+const resourceData = {
+    'fitness': {
+        title: 'Physical Training Resources',
+        resources: [
+            'NSCA - Strength & Conditioning Certification',
+            'EXOS - Athletic Performance Training System',
+            'Precision Nutrition - Sports Nutrition Certification',
+            'Yoga for Athletes - Flexibility & Recovery Programs',
+            'Functional Movement Screen (FMS) Assessment',
+            'Plyometric Training for Power Development'
+        ]
+    },
+    'technique': {
+        title: 'Technical Skill Development Resources',
+        resources: [
+            'Sport-specific coaching manuals and videos',
+            'Hudl Technique - Video analysis software',
+            'Skill acquisition research from sports science',
+            'Masterclass sessions with professional athletes',
+            'Technical drills and practice plans',
+            'Biomechanical analysis tools'
+        ]
+    },
+    'psychology': {
+        title: 'Mental Performance Resources',
+        resources: [
+            '"The Inner Game of Tennis" by Timothy Gallwey',
+            'Headspace - Sports Meditation programs',
+            'Peak Performance Sports Psychology resources',
+            'Visualization techniques for athletes',
+            'Mindfulness training for sports performance',
+            'Resilience and mental toughness development'
+        ]
+    },
+    'science': {
+        title: 'Sports Science Resources',
+        resources: [
+            'Exercise Physiology textbooks and courses',
+            'Biomechanics analysis software and tools',
+            'Sports nutrition certification programs',
+            'Recovery and regeneration techniques',
+            'Performance testing and evaluation methods',
+            'Sports technology and wearables'
+        ]
+    },
+    'leadership': {
+        title: 'Leadership & Communication Resources',
+        resources: [
+            'Sports leadership development programs',
+            'Team building and motivation techniques',
+            'Effective communication in sports settings',
+            'Conflict resolution for teams and athletes',
+            'Captaincy and leadership roles development',
+            'Mentoring and coaching communication'
+        ]
+    },
+    'business': {
+        title: 'Sports Business & Management Resources',
+        resources: [
+            'Sports marketing and sponsorship courses',
+            'Event management for sports organizations',
+            'Sports law and contract negotiation',
+            'Financial management for sports entities',
+            'Facility and operations management',
+            'Sports analytics and data interpretation'
+        ]
+    },
+    'courses': {
+        title: 'Recommended Sports Courses & Certifications',
+        resources: [
+            'NSCA Certified Strength and Conditioning Specialist (CSCS)',
+            'EXOS Performance Specialist Certification',
+            'Precision Nutrition Level 1 Certification',
+            'National Academy of Sports Medicine (NASM) Certifications',
+            'American Council on Exercise (ACE) Certifications',
+            'International Sports Sciences Association (ISSA) Certifications'
+        ]
+    }
+};
+
+// Function to show field details in modal
+function showFieldDetails(fieldId) {
+    const field = fieldDetails[fieldId];
+    const modalBody = document.getElementById('fieldModalBody');
+    
+    modalBody.innerHTML = `
+        <h4>${field.title}</h4>
+        <p>${field.description}</p>
+        
+        <h5>Key Skills Required:</h5>
+        <ul>
+            ${field.skills.map(skill => `<li>${skill}</li>`).join('')}
+        </ul>
+        
+        <h5>Development Pathways:</h5>
+        <ul>
+            ${field.pathways.map(pathway => `<li>${pathway}</li>`).join('')}
+        </ul>
+        
+        <h5>Recommended Resources:</h5>
+        <ul>
+            ${field.resources.map(resource => `<li>${resource}</li>`).join('')}
+        </ul>
+        
+        <div class="alert alert-info mt-3">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>Tip:</strong> Start with foundational skills and progressively build toward more advanced techniques and competitive opportunities.
+        </div>
+    `;
+    
+    const modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+    modal.show();
+}
+
+// Function to show resources in modal
+function showResources(resourceType) {
+    const resource = resourceData[resourceType];
+    const modalBody = document.getElementById('resourcesModalBody');
+    
+    modalBody.innerHTML = `
+        <h4>${resource.title}</h4>
+        <ul>
+            ${resource.resources.map(item => `<li>${item}</li>`).join('')}
+        </ul>
+        
+        <div class="alert alert-success mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            Many of these resources offer free introductory content or trial periods. Start with free options before committing to paid programs.
+        </div>
+    `;
+    
+    const modal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+    modal.show();
+}
+
+// Function to show skill-specific resources
+function showSkillResources(skillType) {
+    showResources(skillType);
+}
+
+// Function to show field selection
+function showFieldSelection() {
+    const modalBody = document.getElementById('resourcesModalBody');
+    
+    modalBody.innerHTML = `
+        <h4>Explore Sports Career Fields</h4>
+        <p>Select a sports field to learn more about career opportunities and requirements:</p>
+        
+        <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Team Sports</h5>
+                        <p class="card-text">Basketball, Soccer, Football, Hockey, etc.</p>
+                        <button class="btn btn-sports" onclick="showFieldDetails('team-sports')">Explore</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Individual Sports</h5>
+                        <p class="card-text">Tennis, Golf, Swimming, Athletics, etc.</p>
+                        <button class="btn btn-sports" onclick="showFieldDetails('individual-sports')">Explore</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Coaching</h5>
+                        <p class="card-text">Developing athletes and teams</p>
+                        <button class="btn btn-sports" onclick="showFieldDetails('coaching')">Explore</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sports Medicine</h5>
+                        <p class="card-text">Athlete health and injury management</p>
+                        <button class="btn btn-sports" onclick="showFieldDetails('sports-medicine')">Explore</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    const modal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+    modal.show();
+}
+
+// Initialize tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+});
+</script>
+</body>
+</html>

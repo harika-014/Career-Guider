@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture Career Development | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        --primary-color: #28a745;
+        --secondary-color: #f8f9fc;
+        --accent-color: #20c997;
+        --text-color: #5a5c69;
+        --dark-color: #1e7e34;
+        --agriculture-color: #28a745;
+        --improvement-color: #28a745;
+    }
+    
+    body {
+        padding-top: 70px;
+        background-color: #f8f9fa;
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text-color);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid #fff;
+        transition: transform 0.3s;
+    }
+    
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Hero Section */
+    .agriculture-hero {
+        background: linear-gradient(rgba(40, 167, 69, 0.85), rgba(30, 126, 52, 0.9)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 5rem 0;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    /* Card Styles */
+    .card {
+        margin-bottom: 20px;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, var(--agriculture-color), #1e7e34);
+        color: white;
+        border-radius: 10px 10px 0 0 !important;
+        font-weight: 600;
+    }
+    
+    /* Agriculture Specific Styles */
+    .agriculture-badge {
+        background: linear-gradient(135deg, var(--agriculture-color), #1e7e34);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    
+    .pathway-card {
+        border-left: 4px solid var(--agriculture-color);
+    }
+    
+    .specialization-card {
+        border-top: 3px solid var(--agriculture-color);
+    }
+    
+    .progress {
+        height: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Roadmap Styles */
+    .roadmap-container {
+        position: relative;
+        padding-left: 30px;
+        margin: 40px 0;
+    }
+    
+    .roadmap-container::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--agriculture-color);
+    }
+    
+    .roadmap-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: var(--agriculture-color);
+        border: 4px solid white;
+        box-shadow: 0 0 0 2px var(--agriculture-color);
+    }
+    
+    /* Button Styles */
+    .btn-agriculture {
+        background: linear-gradient(to right, var(--agriculture-color), #1e7e34);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: 600;
+    }
+    
+    .btn-agriculture:hover {
+        background: linear-gradient(to right, #1e7e34, var(--agriculture-color));
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Resource Cards */
+    .resource-card {
+        height: 100%;
+        transition: all 0.3s;
+    }
+    
+    .resource-card:hover {
+        box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--agriculture-color);
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+    
+    /* Modal Styles */
+    .modal-content {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, var(--agriculture-color), #1e7e34);
+        color: white;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    /* Agriculture Field Colors */
+    .agribusiness { --field-color: #28a745; }
+    .crop-science { --field-color: #20c997; }
+    .animal-science { --field-color: #fd7e14; }
+    .sustainable-ag { --field-color: #6f42c1; }
+    .food-science { --field-color: #e74a3b; }
+    .horticulture { --field-color: #36b9cc; }
+    .agricultural-engineering { --field-color: #4e73df; }
+    
+    .field-badge {
+        background-color: var(--field-color);
+        color: white;
+    }
+    
+    /* College ranking styles */
+    .college-rank {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--agriculture-color);
+        margin-right: 15px;
+    }
+    
+    .college-card {
+        transition: all 0.3s ease;
+    }
+    
+    .college-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Help Button Animation */
+    #helpBtn {
+        transition: all 0.3s ease;
+    }
+    
+    #helpBtn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(40, 167, 69, 0.5);
+    }
+    
+    /* Help Modal Styles */
+    .help-step {
+        border-left: 4px solid var(--agriculture-color);
+        padding-left: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .help-step-number {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: var(--agriculture-color);
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .contact-support {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    /* Skill Development Section */
+    .skill-dev-card {
+        border-top: 3px solid var(--agriculture-color);
+    }
+    
+    .skill-pill {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background-color: #e9ecef;
+        color: #495057;
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .improvement-plan {
+        background-color: #e9ecef;
+        border-left: 4px solid var(--agriculture-color);
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-graduation-cap me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-success me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Future Agriculture Professional!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Agriculture Hero Section -->
+    <div class="agriculture-hero rounded">
+        <div class="container">
+            <div class="agriculture-badge">
+                <i class="fas fa-seedling me-2"></i>Agriculture Skill Development
+            </div>
+            <h1 class="display-4 fw-bold">Agriculture Career Pathways</h1>
+            <p class="lead">Agriculture offers diverse career opportunities from farm to table. With the right skill development plan, you can build a rewarding career in this essential field that feeds the world.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Skill Development Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Skill Development Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-brain me-2"></i>Key Skills to Develop for Agriculture</h4>
+                </div>
+                <div class="card-body">
+                    <div class="improvement-plan">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Your Development Plan</h5>
+                        <p>Agriculture careers require a diverse skill set. We recommend focusing on these foundational skills to prepare for an agriculture career:</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Plant & Soil Science</h5>
+                                    <p class="card-text">Essential for understanding crop production:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Botany Basics</span>
+                                        <span class="skill-pill">Soil Chemistry</span>
+                                        <span class="skill-pill">Plant Nutrition</span>
+                                        <span class="skill-pill">Crop Rotation</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showSkillResources('plant_science')">Improve Plant Science Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Animal Science</h5>
+                                    <p class="card-text">Core knowledge for livestock management:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Animal Nutrition</span>
+                                        <span class="skill-pill">Husbandry Practices</span>
+                                        <span class="skill-pill">Genetics Basics</span>
+                                        <span class="skill-pill">Health Management</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showSkillResources('animal_science')">Improve Animal Science Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Business & Economics</h5>
+                                    <p class="card-text">Key for successful agricultural operations:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Market Analysis</span>
+                                        <span class="skill-pill">Financial Management</span>
+                                        <span class="skill-pill">Supply Chain</span>
+                                        <span class="skill-pill">Resource Economics</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showSkillResources('business')">Improve Business Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sustainability Practices</h5>
+                                    <p class="card-text">Modern agriculture requires environmental awareness:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Conservation Methods</span>
+                                        <span class="skill-pill">Water Management</span>
+                                        <span class="skill-pill">Organic Practices</span>
+                                        <span class="skill-pill">Renewable Energy</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showSkillResources('sustainability')">Improve Sustainability Knowledge</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Technology & Equipment</h5>
+                                    <p class="card-text">Modern agriculture relies on technology:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Precision Agriculture</span>
+                                        <span class="skill-pill">GIS Applications</span>
+                                        <span class="skill-pill">Equipment Operation</span>
+                                        <span class="skill-pill">Data Analysis</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showSkillResources('technology')">Improve Technical Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Communication & Leadership</h5>
+                                    <p class="card-text">Essential professional skills:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Community Engagement</span>
+                                        <span class="skill-pill">Team Management</span>
+                                        <span class="skill-pill">Policy Understanding</span>
+                                        <span class="skill-pill">Extension Education</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showSkillResources('communication')">Improve Communication</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">60,000+</div>
+                    <div class="stat-label">Annual Job Openings in Agriculture</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">$74,000</div>
+                    <div class="stat-label">Average Starting Salary with Bachelor's</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">7.4%</div>
+                    <div class="stat-label">Projected Job Growth (2020-2030)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">1-in-8</div>
+                    <div class="stat-label">Jobs in the U.S. Related to Agriculture</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Agriculture Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Agriculture Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-success">
+                        <i class="fas fa-info-circle me-2"></i>Agriculture offers diverse career opportunities beyond traditional farming. Each field has unique requirements and opportunities.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 agribusiness">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Agribusiness</span>
+                                    <h5 class="card-title">Agribusiness Management</h5>
+                                    <p class="card-text">Combine business expertise with agricultural knowledge to manage agricultural operations:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Financial Management</span>
+                                        <span class="skill-pill">Marketing</span>
+                                        <span class="skill-pill">Supply Chain</span>
+                                        <span class="skill-pill">Strategic Planning</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showFieldDetails('agribusiness')">Explore Agribusiness</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 crop-science">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Crop Science</span>
+                                    <h5 class="card-title">Crop & Soil Science</h5>
+                                    <p class="card-text">Focus on improving crop production and soil health through scientific approaches:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Plant Genetics</span>
+                                        <span class="skill-pill">Soil Chemistry</span>
+                                        <span class="skill-pill">Pest Management</span>
+                                        <span class="skill-pill">Precision Agriculture</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showFieldDetails('crop_science')">Explore Crop Science</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 animal-science">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Animal Science</span>
+                                    <h5 class="card-title">Animal Science & Production</h5>
+                                    <p class="card-text">Work with livestock and animal production systems to improve efficiency and welfare:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Animal Nutrition</span>
+                                        <span class="skill-pill">Genetics</span>
+                                        <span class="skill-pill">Health Management</span>
+                                        <span class="skill-pill">Production Systems</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showFieldDetails('animal_science')">Explore Animal Science</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 sustainable-ag">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Sustainable Ag</span>
+                                    <h5 class="card-title">Sustainable Agriculture</h5>
+                                    <p class="card-text">Develop and implement environmentally responsible farming practices:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Organic Farming</span>
+                                        <span class="skill-pill">Conservation</span>
+                                        <span class="skill-pill">Water Management</span>
+                                        <span class="skill-pill">Renewable Energy</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showFieldDetails('sustainable_ag')">Explore Sustainable Ag</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 food-science">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Food Science</span>
+                                    <h5 class="card-title">Food Science & Technology</h5>
+                                    <p class="card-text">Work on processing, preservation, and development of agricultural products:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Food Safety</span>
+                                        <span class="skill-pill">Processing Technology</span>
+                                        <span class="skill-pill">Product Development</span>
+                                        <span class="skill-pill">Quality Control</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showFieldDetails('food_science')">Explore Food Science</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 horticulture">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Horticulture</span>
+                                    <h5 class="card-title">Horticulture & Landscape</h5>
+                                    <p class="card-text">Specialize in ornamental plants, landscape design, and nursery management:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Plant Propagation</span>
+                                        <span class="skill-pill">Landscape Design</span>
+                                        <span class="skill-pill">Greenhouse Management</span>
+                                        <span class="skill-pill">Floriculture</span>
+                                    </div>
+                                    <button class="btn btn-agriculture" onclick="showFieldDetails('horticulture')">Explore Horticulture</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Consider starting with a general agriculture program to explore different specialties before declaring a specific major.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alternative Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-random me-2"></i>Alternative Pathways to Agriculture Careers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Community College Transfer Pathway</h5>
+                                    <p class="card-text">Start at a community college to build foundational skills before transferring to a 4-year program.</p>
+                                    <ul>
+                                        <li>Hands-on agricultural experience</li>
+                                        <li>Lower cost for initial coursework</li>
+                                        <li>Ability to improve GPA before transfer</li>
+                                        <li>Articulation agreements with universities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Apprenticeships & On-the-Job Training</h5>
+                                    <p class="card-text">Gain practical experience while learning essential agricultural skills.</p>
+                                    <ul>
+                                        <li>Earn while you learn</li>
+                                        <li>Direct industry experience</li>
+                                        <li>Networking opportunities</li>
+                                        <li>Pathway to certification programs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Certificate Programs</h5>
+                                    <p class="card-text">Short-term programs focused on specific agricultural skills and knowledge.</p>
+                                    <ul>
+                                        <li>Focused skill development</li>
+                                        <li>Quicker entry into workforce</li>
+                                        <li>Specialized training</li>
+                                        <li>Stackable credentials</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Extension & Outreach Programs</h5>
+                                    <p class="card-text">Programs designed to provide agricultural education and training to communities.</p>
+                                    <ul>
+                                        <li>Community-based learning</li>
+                                        <li>Practical application focus</li>
+                                        <li>Networking with professionals</li>
+                                        <li>Often low-cost or free</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Skill Development Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: Foundational Skill Assessment (1-2 months)</h5>
+                            <p>Identify specific areas of interest and needed skills through self-assessment and career exploration.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: Basic Skill Development (3-6 months)</h5>
+                            <p>Focus on developing basic knowledge in plant science, animal science, and agricultural business principles.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Hands-On Experience (6-12 months)</h5>
+                            <p>Gain practical experience through internships, volunteering, or entry-level positions in agriculture.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: Formal Education & Training</h5>
+                            <p>Enroll in certificate programs, associate degrees, or bachelor's programs in agricultural fields.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: Specialization & Certification</h5>
+                            <p>Pursue specialized training and certifications in your chosen agricultural field.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Professional Development</h5>
+                            <p>Continue learning through workshops, conferences, and advanced certifications to advance your career.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Skill Development Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Plant Science Resources</h5>
+                                    <ul>
+                                        <li>USDA Plant Guides</li>
+                                        <li>Khan Academy - Biology</li>
+                                        <li>Extension Foundation Courses</li>
+                                        <li>Botany in a Day Tutorial</li>
+                                    </ul>
+                                    <button class="btn btn-agriculture" onclick="showResources('plant_science')">Plant Science Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Agricultural Business</h5>
+                                    <ul>
+                                        <li>Farm Management Resources</li>
+                                        <li>Agricultural Marketing Service</li>
+                                        <li>Small Farm Business Planning</li>
+                                        <li>Commodity Market Analysis</li>
+                                    </ul>
+                                    <button class="btn btn-agriculture" onclick="showResources('ag_business')">Business Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sustainable Practices</h5>
+                                    <ul>
+                                        <li>Sustainable Agriculture Research</li>
+                                        <li>Organic Farming Guidelines</li>
+                                        <li>Water Conservation Methods</li>
+                                        <li>Renewable Energy in Agriculture</li>
+                                    </ul>
+                                    <button class="btn btn-agriculture" onclick="showResources('sustainability')">Sustainability Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Skill Development Plan</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Immediate Actions (0-3 months)</h5>
+                                    <ul>
+                                        <li>Research different agriculture career paths</li>
+                                        <li>Visit local farms or agricultural businesses</li>
+                                        <li>Start a small garden or agricultural project</li>
+                                        <li>Enroll in introductory agriculture courses online</li>
+                                        <li>Join agriculture-related clubs or organizations</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Medium-Term Goals (3-12 months)</h5>
+                                    <ul>
+                                        <li>Secure an internship or volunteer position in agriculture</li>
+                                        <li>Complete certificate programs in specific agricultural skills</li>
+                                        <li>Develop a network of agriculture professionals</li>
+                                        <li>Gain hands-on experience with agricultural equipment</li>
+                                        <li>Apply to formal education programs in agriculture</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-agriculture btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Agriculture Fields
+                        </button>
+                        <button class="btn btn-outline-success btn-lg" onclick="showResources('courses')">
+                            <i class="fas fa-book me-2"></i>Learning Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h1>Some YouTube videos which is related to argiculture field </h1>
+<h3><a href="https://youtu.be/W3P9deLFkk8?si=oJjoOsJMeusgyaoC" target="_blank">1.INDIAN ARGICULTURE </a></h3>
+<h3><a href="https://youtu.be/zgdIQyM__w4?feature=shared" target="_blank">2.TYPES OF FRAMING IN INDIA </a></h3>
+<h3><a href="https://youtu.be/CfMEYWrdi3M?si=P8FyoE-aKi4OcFIK" target="_blank">3.10 PROBLEMS FACED BY FARMERS IN INDIA </a></h3>
+
+<!-- Footer -->
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping students discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('courses')">Skill Development</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Books & Publications</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Support Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2023 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Agriculture Field Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Skill Development Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel">Need Help With Your Agriculture Career Path?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="help-step">
+                    <h5><span class="help-step-number">1</span>Identify Your Interests</h5>
+                    <p>Think about what aspects of agriculture interest you most - working with plants, animals, technology, business, or sustainability.</p>
+                </div>
+                <div class="help-step">
+                    <h5><span class="help-step-number">2</span>Assess Your Skills</h5>
+                    <p>Evaluate your current skills and identify areas where you need development to succeed in your chosen agricultural field.</p>
+                </div>
+                <div class="help-step">
+                    <h5><span class="help-step-number">3</span>Explore Career Options</h5>
+                    <p>Research different agriculture careers to understand the requirements, opportunities, and growth potential.</p>
+                </div>
+                <div class="help-step">
+                    <h5><span class="help-step-number">4</span>Develop a Plan</h5>
+                    <p>Create a step-by-step plan to acquire the necessary skills and experience for your chosen agricultural career.</p>
+                </div>
+                <div class="help-step">
+                    <h5><span class="help-step-number">5</span>Take Action</h5>
+                    <p>Start implementing your plan by enrolling in courses, gaining experience, and building your network in the agriculture industry.</p>
+                </div>
+                
+                <div class="contact-support">
+                    <h5>Need More Help?</h5>
+                    <p>Contact our career advisors for personalized guidance:</p>
+                    <ul>
+                        <li><strong>Email:</strong> support@careerguider.com</li>
+                        <li><strong>Phone:</strong> (800) 555-AGRI</li>
+                        <li><strong>Hours:</strong> Monday-Friday, 9am-5pm EST</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-agriculture">Contact Support</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Function to show field details in modal
+    function showFieldDetails(field) {
+        const modalBody = document.getElementById('fieldModalBody');
+        let content = '';
+        
+        switch(field) {
+            case 'agribusiness':
+                content = `
+                    <h4 class="text-success">Agribusiness Management</h4>
+                    <p>Agribusiness combines agricultural knowledge with business expertise to manage agricultural operations efficiently and profitably.</p>
+                    <h5>Key Skills Needed:</h5>
+                    <ul>
+                        <li>Financial management and accounting</li>
+                        <li>Marketing and sales</li>
+                        <li>Supply chain management</li>
+                        <li>Strategic planning</li>
+                        <li>Risk management</li>
+                    </ul>
+                    <h5>Career Opportunities:</h5>
+                    <ul>
+                        <li>Farm Manager</li>
+                        <li>Agricultural Loan Officer</li>
+                        <li>Commodity Trader</li>
+                        <li>Agricultural Supply Manager</li>
+                        <li>Food Distribution Manager</li>
+                    </ul>
+                    <h5>Recommended Development Path:</h5>
+                    <ol>
+                        <li>Complete courses in business fundamentals</li>
+                        <li>Gain experience through internships with agricultural businesses</li>
+                        <li>Pursue a degree in Agricultural Business or related field</li>
+                        <li>Obtain industry certifications (e.g., Certified Agricultural Banker)</li>
+                    </ol>
+                `;
+                break;
+            case 'crop_science':
+                content = `
+                    <h4 class="text-success">Crop & Soil Science</h4>
+                    <p>Crop and soil scientists work to improve crop production, develop sustainable farming practices, and address challenges in plant health and soil management.</p>
+                    <h5>Key Skills Needed:</h5>
+                    <ul>
+                        <li>Plant biology and genetics</li>
+                        <li>Soil chemistry and fertility</li>
+                        <li>Pest and disease management</li>
+                        <li>Precision agriculture technologies</li>
+                        <li>Research and data analysis</li>
+                    </ul>
+                    <h5>Career Opportunities:</h5>
+                    <ul>
+                        <li>Agronomist</li>
+                        <li>Soil Scientist</li>
+                        <li>Crop Consultant</li>
+                        <li>Plant Breeder</li>
+                        <li>Extension Agent</li>
+                    </ul>
+                    <h5>Recommended Development Path:</h5>
+                    <ol>
+                        <li>Study biology and chemistry fundamentals</li>
+                        <li>Gain hands-on experience through farm work or research</li>
+                        <li>Pursue a degree in Agronomy, Crop Science, or Soil Science</li>
+                        <li>Obtain Certified Crop Adviser (CCA) certification</li>
+                    </ol>
+                `;
+                break;
+            // Additional cases for other fields would be added here
+            default:
+                content = `<p>Details for this field are coming soon. Please check back later.</p>`;
+        }
+        
+        modalBody.innerHTML = content;
+        const modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        modal.show();
+    }
+    
+    // Function to show resources in modal
+    function showResources(type) {
+        const modalBody = document.getElementById('resourcesModalBody');
+        let content = '';
+        
+        switch(type) {
+            case 'plant_science':
+                content = `
+                    <h4 class="text-success">Plant Science Resources</h4>
+                    <div class="mb-3">
+                        <h5>Online Courses:</h5>
+                        <ul>
+                            <li><a href="#">Introduction to Plant Biology - Coursera</a></li>
+                            <li><a href="#">Plant Physiology and Development - edX</a></li>
+                            <li><a href="#">Botany for Gardeners - Udemy</a></li>
+                        </ul>
+                    </div>
+                    <div class="mb-3">
+                        <h5>Books:</h5>
+                        <ul>
+                            <li>Botany for Gardeners by Brian Capon</li>
+                            <li>Plant Physiology and Development by Lincoln Taiz</li>
+                            <li>The Botany of Desire by Michael Pollan</li>
+                        </ul>
+                    </div>
+                    <div class="mb-3">
+                        <h5>Websites:</h5>
+                        <ul>
+                            <li>USDA Plants Database</li>
+                            <li>American Society of Agronomy</li>
+                            <li>Extension Foundation</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'courses':
+                content = `
+                    <h4 class="text-success">Agriculture Skill Development Courses</h4>
+                    <div class="mb-3">
+                        <h5>Free Online Courses:</h5>
+                        <ul>
+                            <li><a href="#">Introduction to Sustainable Agriculture - Coursera</a></li>
+                            <li><a href="#">Animal Behavior and Welfare - edX</a></li>
+                            <li><a href="#">Agricultural Economics - Khan Academy</a></li>
+                        </ul>
+                    </div>
+                    <div class="mb-3">
+                        <h5>Certificate Programs:</h5>
+                        <ul>
+                            <li>Organic Farming Certificate - University of California</li>
+                            <li>Agricultural Business Management - Purdue University</li>
+                            <li>Precision Agriculture Technology - Pennsylvania State University</li>
+                        </ul>
+                    </div>
+                    <div class="mb-3">
+                        <h5>Hands-On Training:</h5>
+                        <ul>
+                            <li>Apprenticeship programs through local farms</li>
+                            <li>Workshops at agricultural extension offices</li>
+                            <li>Volunteer opportunities with conservation organizations</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            default:
+                content = `<p>Resources for this category are coming soon. Please check back later.</p>`;
+        }
+        
+        modalBody.innerHTML = content;
+        const modal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        modal.show();
+    }
+    
+    // Function to show skill-specific resources
+    function showSkillResources(skill) {
+        // This would be similar to showResources but focused on specific skills
+        showResources('courses'); // For now, redirect to general courses
+    }
+    
+    // Function to show field selection
+    function showFieldSelection() {
+        const modalBody = document.getElementById('fieldModalBody');
+        modalBody.innerHTML = `
+            <h4 class="text-success mb-4">Explore Agriculture Career Fields</h4>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Agribusiness</h5>
+                            <p class="card-text">Business and management careers in agriculture.</p>
+                            <button class="btn btn-sm btn-success" onclick="showFieldDetails('agribusiness')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Crop Science</h5>
+                            <p class="card-text">Focus on plant production and soil management.</p>
+                            <button class="btn btn-sm btn-success" onclick="showFieldDetails('crop_science')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Animal Science</h5>
+                            <p class="card-text">Careers working with livestock and animal production.</p>
+                            <button class="btn btn-sm btn-success" onclick="showFieldDetails('animal_science')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Sustainable Agriculture</h5>
+                            <p class="card-text">Environmentally responsible farming practices.</p>
+                            <button class="btn btn-sm btn-success" onclick="showFieldDetails('sustainable_ag')">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        const modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        modal.show();
+    }
+</script>
+</body>
+</html>

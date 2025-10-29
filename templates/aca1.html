@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Career Guidance | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #f8f9fc;
+            --accent-color: #36b9cc;
+            --text-color: #5a5c69;
+            --dark-color: #224abe;
+            --academic-color: #2e7d32;
+        }
+        
+        body {
+            padding-top: 70px;
+            background-color: #f8f9fa;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #fff;
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .academic-hero {
+            background: linear-gradient(rgba(46, 125, 50, 0.85), rgba(46, 125, 50, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Card Styles */
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--academic-color), #1b5e20);
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 600;
+        }
+        
+        /* Academic Specific Styles */
+        .academic-badge {
+            background: linear-gradient(135deg, var(--academic-color), #1b5e20);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .pathway-card {
+            border-left: 4px solid var(--academic-color);
+        }
+        
+        .specialization-card {
+            border-top: 3px solid var(--academic-color);
+        }
+        
+        .progress {
+            height: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Roadmap Styles */
+        .roadmap-container {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+        
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--academic-color);
+        }
+        
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--academic-color);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--academic-color);
+        }
+        
+        /* Button Styles */
+        .btn-academic {
+            background: linear-gradient(to right, var(--academic-color), #1b5e20);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+        
+        .btn-academic:hover {
+            background: linear-gradient(to right, #1b5e20, var(--academic-color));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Resource Cards */
+        .resource-card {
+            height: 100%;
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover {
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+        }
+        
+        /* Stats */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--academic-color);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--academic-color), #1b5e20);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        /* Academic Field Colors */
+        .stem { --field-color: #8e7cc3; }
+        .humanities { --field-color: #3498db; }
+        .social-sciences { --field-color: #2ecc71; }
+        .business { --field-color: #e74c3c; }
+        .arts { --field-color: #f39c12; }
+        .health-sciences { --field-color: #9b59b6; }
+        
+        .field-badge {
+            background-color: var(--field-color);
+            color: white;
+        }
+        
+        /* University ranking styles */
+        .university-rank {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--academic-color);
+            margin-right: 15px;
+        }
+        
+        .university-card {
+            transition: all 0.3s ease;
+        }
+        
+        .university-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1.5rem rgba(46, 125, 50, 0.5);
+        }
+        
+        /* Help Button Animation */
+        #helpBtn {
+            transition: all 0.3s ease;
+        }
+        
+        #helpBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(46, 125, 50, 0.5);
+        }
+        
+        /* Help Modal Styles */
+        .help-step {
+            border-left: 4px solid var(--academic-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .help-step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--academic-color);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .contact-support {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        /* Footer Links */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-graduation-cap me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-info me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Future Academic Professional!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Academic Hero Section -->
+    <div class="academic-hero rounded">
+        <div class="container">
+            <div class="academic-badge">
+                <i class="fas fa-medal me-2"></i>Higher Education
+            </div>
+            <h1 class="display-4 fw-bold">Academic Career Pathways</h1>
+            <p class="lead">Your passion for knowledge and learning makes you an ideal candidate for a rewarding career in academia.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Learning Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">$50K-$90K</div>
+                    <div class="stat-label">Average Starting Salary</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">9%</div>
+                    <div class="stat-label">Job Growth (2022-2032)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Employment Rate</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">4-7 Years</div>
+                    <div class="stat-label">Education Commitment</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Academic Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Academic Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 stem">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">STEM</span>
+                                    <h5 class="card-title">Science, Technology, Engineering & Math</h5>
+                                    <p class="card-text">Pursue careers in research, development, and innovation across scientific and technical fields.</p>
+                                    <ul class="mb-3">
+                                        <li>High-demand technical skills</li>
+                                        <li>Research opportunities</li>
+                                        <li>Industry and academic positions</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('stem')">Explore STEM</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 humanities">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Humanities</span>
+                                    <h5 class="card-title">Humanities</h5>
+                                    <p class="card-text">Study human culture, history, philosophy, literature, and languages to understand the human experience.</p>
+                                    <ul class="mb-3">
+                                        <li>Critical thinking development</li>
+                                        <li>Cultural understanding</li>
+                                        <li>Communication skills</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('humanities')">Explore Humanities</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 social-sciences">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Social Sciences</span>
+                                    <h5 class="card-title">Social Sciences</h5>
+                                    <p class="card-text">Examine human society and relationships through psychology, sociology, economics, and political science.</p>
+                                    <ul class="mb-3">
+                                        <li>Research methodology</li>
+                                        <li>Data analysis skills</li>
+                                        <li>Policy and social impact</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('social-sciences')">Explore Social Sciences</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 business">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Business</span>
+                                    <h5 class="card-title">Business & Management</h5>
+                                    <p class="card-text">Develop leadership, strategy, and management skills for careers in corporate and entrepreneurial settings.</p>
+                                    <ul class="mb-3">
+                                        <li>Leadership development</li>
+                                        <li>Strategic thinking</li>
+                                        <li>Networking opportunities</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('business')">Explore Business</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 arts">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Arts</span>
+                                    <h5 class="card-title">Fine & Performing Arts</h5>
+                                    <p class="card-text">Express creativity through visual arts, music, theater, dance, and design in academic and professional settings.</p>
+                                    <ul class="mb-3">
+                                        <li>Creative expression</li>
+                                        <li>Portfolio development</li>
+                                        <li>Performance opportunities</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('arts')">Explore Arts</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 health-sciences">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Health Sciences</span>
+                                    <h5 class="card-title">Health Sciences</h5>
+                                    <p class="card-text">Prepare for careers in healthcare, medicine, nursing, public health, and biomedical research.</p>
+                                    <ul class="mb-3">
+                                        <li>Clinical training</li>
+                                        <li>Healthcare knowledge</li>
+                                        <li>Patient care focus</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showFieldDetails('health-sciences')">Explore Health Sciences</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Top Universities Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-university me-2"></i>Top Universities</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- University 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card university-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="university-rank">#1</span>
+                                        <h5 class="card-title mb-0">Harvard University</h5>
+                                    </div>
+                                    <p class="card-text">Ivy League institution renowned for excellence across disciplines with world-class faculty and resources.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Cambridge, MA</span>
+                                        <span class="badge bg-success">Acceptance: 5%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Law, Medicine, Business, Arts & Sciences</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showUniversityDetails('harvard')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- University 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card university-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="university-rank">#2</span>
+                                        <h5 class="card-title mb-0">Stanford University</h5>
+                                    </div>
+                                    <p class="card-text">Leading research university with strengths in technology, entrepreneurship, and interdisciplinary studies.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Stanford, CA</span>
+                                        <span class="badge bg-success">Acceptance: 4%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Computer Science, Engineering, Business</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showUniversityDetails('stanford')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- University 3 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card university-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="university-rank">#3</span>
+                                        <h5 class="card-title mb-0">Massachusetts Institute of Technology</h5>
+                                    </div>
+                                    <p class="card-text">World leader in science, technology, and engineering education with emphasis on innovation and research.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Cambridge, MA</span>
+                                        <span class="badge bg-success">Acceptance: 7%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Engineering, Computer Science, Physics</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showUniversityDetails('mit')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- University 4 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card university-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="university-rank">#4</span>
+                                        <h5 class="card-title mb-0">University of California, Berkeley</h5>
+                                    </div>
+                                    <p class="card-text">Premier public research university with strengths across disciplines and commitment to public service.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Berkeley, CA</span>
+                                        <span class="badge bg-success">Acceptance: 17%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Engineering, Computer Science, Social Sciences</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showUniversityDetails('berkeley')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn-academic" onclick="showAllUniversities()">
+                            <i class="fas fa-list me-2"></i>View More Universities
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Specializations -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-star me-2"></i>Academic Specializations</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Research & Development</h5>
+                                    <p class="card-text">Conduct original research to advance knowledge in your field and contribute to scientific or scholarly progress.</p>
+                                    <span class="badge bg-primary mb-2">Publication Focus</span>
+                                    <span class="badge bg-success">Innovation</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Teaching & Education</h5>
+                                    <p class="card-text">Educate the next generation of students through classroom instruction, curriculum development, and mentoring.</p>
+                                    <span class="badge bg-primary mb-2">Student Focus</span>
+                                    <span class="badge bg-info">Pedagogy</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Academic Administration</h5>
+                                    <p class="card-text">Manage academic programs, departments, or institutions to support educational missions and operations.</p>
+                                    <span class="badge bg-success mb-2">Leadership</span>
+                                    <span class="badge bg-warning">Management</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Academic Career Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: Undergraduate Studies (4 years)</h5>
+                            <p>Complete a bachelor's degree in your chosen field, maintaining strong academic performance and exploring research opportunities.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: Graduate School Preparation (6-12 months)</h5>
+                            <p>Prepare for graduate school applications, including standardized tests (GRE/GMAT), recommendation letters, and personal statements.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Master's Degree (1-3 years)</h5>
+                            <p>Complete a master's program to deepen knowledge in your specialization and develop advanced research or professional skills.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: Doctoral Studies (3-6 years)</h5>
+                            <p>Pursue a Ph.D. with original research, comprehensive exams, and dissertation defense to become an expert in your field.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: Postdoctoral Position (2-4 years)</h5>
+                            <p>Gain additional research experience, publish findings, and develop an independent research agenda before seeking faculty positions.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Faculty Appointment</h5>
+                            <p>Secure a tenure-track position combining teaching, research, and service responsibilities with a path toward tenure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Learning Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Preparation Resources</h5>
+                                    <ul>
+                                        <li>GRE/GMAT Study Guides</li>
+                                        <li>Academic Writing Guides</li>
+                                        <li>Research Methodology Books</li>
+                                        <li>Graduate School Application Guides</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showResources('preparation')">Explore Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Books & Publications</h5>
+                                    <ul>
+                                        <li>"The Professor Is In" by Karen Kelsky</li>
+                                        <li>"How to Write a Lot" by Paul J. Silvia</li>
+                                        <li>Academic journals in your field</li>
+                                        <li>Chronicle of Higher Education</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showResources('books')">View Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Organizations</h5>
+                                    <ul>
+                                        <li>Graduate Student Associations</li>
+                                        <li>Professional Academic Societies</li>
+                                        <li>Research Consortia</li>
+                                        <li>Academic Publishing Associations</li>
+                                    </ul>
+                                    <button class="btn btn-academic" onclick="showResources('orgs')">Explore Organizations</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Next Steps</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Short-Term Goals (0-6 months)</h5>
+                                    <ul>
+                                        <li>Research graduate programs</li>
+                                        <li>Prepare for standardized tests</li>
+                                        <li>Connect with faculty mentors</li>
+                                        <li>Develop research interests</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Long-Term Goals (1-3 years)</h5>
+                                    <ul>
+                                        <li>Complete graduate applications</li>
+                                        <li>Secure research opportunities</li>
+                                        <li>Present at academic conferences</li>
+                                        <li>Publish research findings</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-academic btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Academic Fields
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg" onclick="showResources('preparation')">
+                            <i class="fas fa-book me-2"></i>Preparation Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping students discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('preparation')">Preparation Resources</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Books & Publications</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Academic Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Added navigation links -->
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="#" onclick="loadContent('about')">About</a>
+            <a href="#" onclick="loadContent('contact')">Contact Us</a>
+        </div>
+        
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2023 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Academic Field Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Academic Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Universities Modal -->
+<div class="modal fade" id="universitiesModal" tabindex="-1" aria-labelledby="universitiesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="universitiesModalLabel">Top Universities</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="universitiesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel"><i class="fas fa-question-circle me-2"></i>Academic Career Guidance Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>How to Use This Academic Career Guide</h4>
+                <p>This personalized guide is designed to help you explore academic career options based on your interests. Here's how to make the most of it:</p>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">1</span>Explore Academic Fields</h5>
+                    <p>Review the different academic career pathways to understand the opportunities available in each discipline.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">2</span>Check University Requirements</h5>
+                    <p>Look at the top universities and their programs to understand admission requirements and program details.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">3</span>Review the Career Roadmap</h5>
+                    <p>Follow the step-by-step academic career roadmap to understand the educational path required for your chosen field.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">4</span>Access Learning Resources</h5>
+                    <p>Utilize the recommended resources to prepare for graduate school applications and academic success.</p>
+                </div>
+                
+                <div class="contact-support">
+                    <h5>Need More Help?</h5>
+                    <p>If you have specific questions about academic careers or need personalized guidance, our career advisors are here to help.</p>
+                    <button class="btn btn-academic">
+                        <i class="fas fa-envelope me-2"></i>Contact Academic Advisor
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Field details data
+    const fieldDetails = {
+        'stem': {
+            title: 'Science, Technology, Engineering & Mathematics (STEM)',
+            description: 'STEM fields focus on scientific inquiry, technological innovation, engineering design, and mathematical analysis. These disciplines are at the forefront of solving complex global challenges and driving economic growth.',
+            careers: [
+                'Research Scientist',
+                'Data Scientist',
+                'Engineer',
+                'Academic Researcher',
+                'University Professor'
+            ],
+            skills: [
+                'Analytical Thinking',
+                'Problem Solving',
+                'Research Methodology',
+                'Quantitative Analysis',
+                'Technical Writing'
+            ],
+            education: 'Ph.D. typically required for research and faculty positions; Master\'s for some industry roles',
+            salary: '$70,000 - $120,000+ (varies by specialization and experience)'
+        },
+        'humanities': {
+            title: 'Humanities',
+            description: 'Humanities disciplines explore human culture, history, philosophy, literature, languages, and arts. These fields develop critical thinking, communication skills, and cultural understanding essential for diverse careers.',
+            careers: [
+                'Professor of Literature',
+                'Historian',
+                'Philosophy Scholar',
+                'Cultural Studies Researcher',
+                'Language Specialist'
+            ],
+            skills: [
+                'Critical Analysis',
+                'Written Communication',
+                'Cultural Interpretation',
+                'Research Synthesis',
+                'Argumentation'
+            ],
+            education: 'Ph.D. required for most faculty positions; Master\'s for some teaching and research roles',
+            salary: '$50,000 - $90,000 (varies by institution and specialization)'
+        },
+        'social-sciences': {
+            title: 'Social Sciences',
+            description: 'Social sciences examine human society and relationships through disciplines like psychology, sociology, economics, political science, and anthropology. These fields apply scientific methods to understand social phenomena.',
+            careers: [
+                'Sociology Professor',
+                'Psychology Researcher',
+                'Economics Scholar',
+                'Political Scientist',
+                'Anthropology Field Researcher'
+            ],
+            skills: [
+                'Research Design',
+                'Statistical Analysis',
+                'Theoretical Frameworks',
+                'Ethnographic Methods',
+                'Policy Analysis'
+            ],
+            education: 'Ph.D. required for research and faculty positions; Master\'s for applied research roles',
+            salary: '$55,000 - $100,000 (varies by specialization and research focus)'
+        },
+        'business': {
+            title: 'Business & Management',
+            description: 'Business academia focuses on developing knowledge in management, finance, marketing, operations, and strategy. These fields prepare students for leadership roles in corporate, nonprofit, and entrepreneurial settings.',
+            careers: [
+                'Business School Professor',
+                'Management Researcher',
+                'Finance Scholar',
+                'Marketing Academic',
+                'Entrepreneurship Educator'
+            ],
+            skills: [
+                'Quantitative Analysis',
+                'Strategic Thinking',
+                'Case Method Teaching',
+                'Business Research',
+                'Leadership Development'
+            ],
+            education: 'Ph.D. or DBA required for tenure-track positions; MBA for some teaching roles',
+            salary: '$90,000 - $200,000+ (varies by business school ranking and specialization)'
+        },
+        'arts': {
+            title: 'Fine & Performing Arts',
+            description: 'Arts academia combines creative practice with scholarly research in visual arts, music, theater, dance, and design. These fields emphasize both technical mastery and theoretical understanding.',
+            careers: [
+                'Studio Art Professor',
+                'Music Theory Scholar',
+                'Theater History Professor',
+                'Dance Ethnologist',
+                'Art Historian'
+            ],
+            skills: [
+                'Creative Practice',
+                'Artistic Critique',
+                'Historical Contextualization',
+                'Performance Analysis',
+                'Aesthetic Theory'
+            ],
+            education: 'MFA or Ph.D. required depending on discipline; professional experience valued',
+            salary: '$45,000 - $85,000 (varies by institution and artistic discipline)'
+        },
+        'health-sciences': {
+            title: 'Health Sciences',
+            description: 'Health sciences academia focuses on biomedical research, clinical practice, public health, and healthcare policy. These fields prepare professionals for roles in medical education, research, and healthcare leadership.',
+            careers: [
+                'Medical School Professor',
+                'Biomedical Researcher',
+                'Public Health Scholar',
+                'Nursing Educator',
+                'Health Policy Analyst'
+            ],
+            skills: [
+                'Clinical Knowledge',
+                'Research Methodology',
+                'Evidence-Based Practice',
+                'Healthcare Systems',
+                'Medical Education'
+            ],
+            education: 'M.D., Ph.D., or both required for most positions; additional certifications often needed',
+            salary: '$80,000 - $180,000+ (varies by medical specialty and research focus)'
+        }
+    };
+
+    // University details data
+    const universityDetails = {
+        'harvard': {
+            name: 'Harvard University',
+            location: 'Cambridge, Massachusetts',
+            acceptance: '5%',
+            ranking: '#1 National University',
+            programs: [
+                'Harvard Law School',
+                'Harvard Medical School',
+                'Harvard Business School',
+                'Faculty of Arts and Sciences',
+                'Harvard Graduate School of Education'
+            ],
+            description: 'Founded in 1636, Harvard is the oldest institution of higher education in the United States. It comprises ten academic faculties plus the Radcliffe Institute for Advanced Study.',
+            website: 'https://www.harvard.edu'
+        },
+        'stanford': {
+            name: 'Stanford University',
+            location: 'Stanford, California',
+            acceptance: '4%',
+            ranking: '#2 National University',
+            programs: [
+                'School of Engineering',
+                'School of Medicine',
+                'Graduate School of Business',
+                'School of Humanities and Sciences',
+                'School of Earth, Energy & Environmental Sciences'
+            ],
+            description: 'Located in the heart of Silicon Valley, Stanford has played a crucial role in the development of the technology industry and entrepreneurial culture.',
+            website: 'https://www.stanford.edu'
+        },
+        'mit': {
+            name: 'Massachusetts Institute of Technology',
+            location: 'Cambridge, Massachusetts',
+            acceptance: '7%',
+            ranking: '#3 National University',
+            programs: [
+                'School of Engineering',
+                'School of Science',
+                'Sloan School of Management',
+                'School of Architecture and Planning',
+                'School of Humanities, Arts, and Social Sciences'
+            ],
+            description: 'MIT is known for its cutting-edge research and education in physical sciences, engineering, and related fields, with a strong emphasis on innovation and entrepreneurship.',
+            website: 'https://www.mit.edu'
+        },
+        'berkeley': {
+            name: 'University of California, Berkeley',
+            location: 'Berkeley, California',
+            acceptance: '17%',
+            ranking: '#4 Top Public School',
+            programs: [
+                'College of Engineering',
+                'College of Letters and Science',
+                'Haas School of Business',
+                'School of Public Health',
+                'Graduate School of Education'
+            ],
+            description: 'As the flagship campus of the University of California system, Berkeley is renowned for its academic excellence, research contributions, and public mission.',
+            website: 'https://www.berkeley.edu'
+        }
+    };
+
+    // Show field details in modal
+    function showFieldDetails(field) {
+        const fieldData = fieldDetails[field];
+        const modalBody = document.getElementById('fieldModalBody');
+        
+        modalBody.innerHTML = `
+            <h4>${fieldData.title}</h4>
+            <p>${fieldData.description}</p>
+            
+            <h5>Potential Academic Careers</h5>
+            <ul>
+                ${fieldData.careers.map(career => `<li>${career}</li>`).join('')}
+            </ul>
+            
+            <h5>Key Skills Developed</h5>
+            <div class="mb-3">
+                ${fieldData.skills.map(skill => `<span class="badge bg-primary me-1 mb-1">${skill}</span>`).join('')}
+            </div>
+            
+            <h5>Education Requirements</h5>
+            <p>${fieldData.education}</p>
+            
+            <h5>Average Salary Range</h5>
+            <p>${fieldData.salary}</p>
+            
+            <div class="alert alert-info mt-4">
+                <h6><i class="fas fa-lightbulb me-2"></i>Academic Career Tip</h6>
+                <p class="mb-0">Start building your academic profile early by seeking research opportunities, connecting with faculty mentors, and presenting at undergraduate research conferences.</p>
+            </div>
+        `;
+        
+        document.getElementById('fieldModalLabel').textContent = fieldData.title;
+        const fieldModal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        fieldModal.show();
+    }
+
+    // Show field selection
+    function showFieldSelection() {
+        const modalBody = document.getElementById('fieldModalBody');
+        
+        modalBody.innerHTML = `
+            <h4>Explore Academic Fields</h4>
+            <p>Select an academic field to learn more about career opportunities, requirements, and pathways:</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-outline-primary w-100" onclick="showFieldDetails('stem')">
+                        <i class="fas fa-atom me-2"></i>STEM Fields
+                    </button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-outline-primary w-100" onclick="showFieldDetails('humanities')">
+                        <i class="fas fa-book me-2"></i>Humanities
+                    </button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-outline-primary w-100" onclick="showFieldDetails('social-sciences')">
+                        <i class="fas fa-users me-2"></i>Social Sciences
+                    </button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-outline-primary w-100" onclick="showFieldDetails('business')">
+                        <i class="fas fa-chart-line me-2"></i>Business
+                    </button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-outline-primary w-100" onclick="showFieldDetails('arts')">
+                        <i class="fas fa-palette me-2"></i>Arts
+                    </button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-outline-primary w-100" onclick="showFieldDetails('health-sciences')">
+                        <i class="fas fa-heartbeat me-2"></i>Health Sciences
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('fieldModalLabel').textContent = 'Explore Academic Fields';
+        const fieldModal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        fieldModal.show();
+    }
+
+    // Show resources in modal
+    function showResources(type) {
+        const modalBody = document.getElementById('resourcesModalBody');
+        let content = '';
+        
+        if (type === 'preparation') {
+            content = `
+                <h4>Graduate School Preparation Resources</h4>
+                <p>These resources will help you prepare for graduate school applications and succeed in your academic career:</p>
+                
+                <h5>Standardized Test Preparation</h5>
+                <ul>
+                    <li>Official GRE Guide (ETS)</li>
+                    <li>GMAT Official Guide</li>
+                    <li>Test preparation courses (Kaplan, Princeton Review)</li>
+                    <li>Free online practice resources (Khan Academy)</li>
+                </ul>
+                
+                <h5>Application Resources</h5>
+                <ul>
+                    <li>"Graduate Admissions Essays" by Donald Asher</li>
+                    <li>"The Complete Guide to Graduate School Admission" by Patricia Keith-Spiegel</li>
+                    <li>University-specific application guides</li>
+                    <li>Sample statements of purpose</li>
+                </ul>
+                
+                <h5>Online Platforms</h5>
+                <ul>
+                    <li>GraduateCafe.com - Forums and application results</li>
+                    <li>PhDs.org - Graduate program rankings and advice</li>
+                    <li>InsideHigherEd.com - Academic news and career advice</li>
+                </ul>
+            `;
+        } else if (type === 'books') {
+            content = `
+                <h4>Recommended Books & Publications</h4>
+                <p>These publications will help you navigate the academic world and develop your scholarly profile:</p>
+                
+                <h5>Career Development</h5>
+                <ul>
+                    <li>"The Professor Is In: The Essential Guide to Turning Your Ph.D. Into a Job" by Karen Kelsky</li>
+                    <li>"How to Write a Lot: A Practical Guide to Productive Academic Writing" by Paul J. Silvia</li>
+                    <li>"The Academic's Handbook" by A. Leigh DeNeef and Craufurd D. Goodwin</li>
+                </ul>
+                
+                <h5>Research & Writing</h5>
+                <ul>
+                    <li>"They Say/I Say: The Moves That Matter in Academic Writing" by Gerald Graff and Cathy Birkenstein</li>
+                    <li>"Writing Your Journal Article in 12 Weeks" by Wendy Laura Belcher</li>
+                    <li>"The Craft of Research" by Wayne C. Booth, Gregory G. Colomb, and Joseph M. Williams</li>
+                </ul>
+                
+                <h5>Academic Publications</h5>
+                <ul>
+                    <li>Chronicle of Higher Education</li>
+                    <li>Inside Higher Ed</li>
+                    <li>Nature, Science, and field-specific journals</li>
+                </ul>
+            `;
+        } else if (type === 'orgs') {
+            content = `
+                <h4>Academic Organizations</h4>
+                <p>Joining these organizations can provide networking opportunities, resources, and professional development:</p>
+                
+                <h5>General Academic Organizations</h5>
+                <ul>
+                    <li>American Association of University Professors (AAUP)</li>
+                    <li>National Education Association (NEA)</li>
+                    <li>Modern Language Association (MLA) - For humanities</li>
+                    <li>American Chemical Society (ACS) - For sciences</li>
+                </ul>
+                
+                <h5>Graduate Student Organizations</h5>
+                <ul>
+                    <li>National Association of Graduate-Professional Students (NAGPS)</li>
+                    <li>Graduate Student Associations at your university</li>
+                    <li>Discipline-specific graduate student groups</li>
+                </ul>
+                
+                <h5>Research Organizations</h5>
+                <ul>
+                    <li>Association of American Universities (AAU)</li>
+                    <li>Council of Graduate Schools (CGS)</li>
+                    <li>Field-specific research consortia</li>
+                </ul>
+            `;
+        } else {
+            content = `
+                <h4>Academic Learning Resources</h4>
+                <p>Select a category to explore specific resources:</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-3">
+                        <button class="btn btn-academic w-100" onclick="showResources('preparation')">
+                            <i class="fas fa-graduation-cap me-2"></i>Graduate School Preparation
+                        </button>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <button class="btn btn-academic w-100" onclick="showResources('books')">
+                            <i class="fas fa-book me-2"></i>Books & Publications
+                        </button>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <button class="btn btn-academic w-100" onclick="showResources('orgs')">
+                            <i class="fas fa-users me-2"></i>Academic Organizations
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+        
+        modalBody.innerHTML = content;
+        document.getElementById('resourcesModalLabel').textContent = 'Academic Resources';
+        const resourcesModal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        resourcesModal.show();
+    }
+
+    // Show university details
+    function showUniversityDetails(university) {
+        const universityData = universityDetails[university];
+        const modalBody = document.getElementById('universitiesModalBody');
+        
+        modalBody.innerHTML = `
+            <h4>${universityData.name}</h4>
+            <p><strong>Location:</strong> ${universityData.location}</p>
+            <p><strong>Acceptance Rate:</strong> ${universityData.acceptance}</p>
+            <p><strong>Ranking:</strong> ${universityData.ranking}</p>
+            
+            <h5>Notable Graduate Programs</h5>
+            <ul>
+                ${universityData.programs.map(program => `<li>${program}</li>`).join('')}
+            </ul>
+            
+            <h5>About</h5>
+            <p>${universityData.description}</p>
+            
+            <div class="alert alert-info mt-4">
+                <h6><i class="fas fa-info-circle me-2"></i>Application Tip</h6>
+                <p class="mb-0">When applying to ${universityData.name}, emphasize your research experience, academic achievements, and fit with specific faculty research interests in your statement of purpose.</p>
+            </div>
+            
+            <a href="${universityData.website}" target="_blank" class="btn btn-academic">
+                <i class="fas fa-external-link-alt me-2"></i>Visit University Website
+            </a>
+        `;
+        
+        document.getElementById('universitiesModalLabel').textContent = universityData.name;
+        const universitiesModal = new bootstrap.Modal(document.getElementById('universitiesModal'));
+        universitiesModal.show();
+    }
+
+    // Show all universities
+    function showAllUniversities() {
+        const modalBody = document.getElementById('universitiesModalBody');
+        
+        let content = `
+            <h4>Top Universities for Academic Careers</h4>
+            <p>These institutions are renowned for their graduate programs and research opportunities:</p>
+            
+            <div class="table-responsive mt-4">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>University</th>
+                            <th>Location</th>
+                            <th>Acceptance Rate</th>
+                            <th>Top Programs</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+        
+        Object.keys(universityDetails).forEach(key => {
+            const uni = universityDetails[key];
+            content += `
+                <tr>
+                    <td>${uni.name}</td>
+                    <td>${uni.location}</td>
+                    <td>${uni.acceptance}</td>
+                    <td>${uni.programs.slice(0, 2).join(', ')}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" onclick="showUniversityDetails('${key}')">
+                            Details
+                        </button>
+                    </td>
+                </tr>
+            `;
+        });
+        
+        content += `
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="alert alert-warning mt-4">
+                <h6><i class="fas fa-lightbulb me-2"></i>Selection Strategy</h6>
+                <p class="mb-0">When selecting graduate programs, consider faculty research interests, funding opportunities, program culture, and career outcomes in addition to university rankings.</p>
+            </div>
+        `;
+        
+        modalBody.innerHTML = content;
+        document.getElementById('universitiesModalLabel').textContent = 'Top Universities';
+        const universitiesModal = new bootstrap.Modal(document.getElementById('universitiesModal'));
+        universitiesModal.show();
+    }
+
+    // Load content function for navigation
+    function loadContent(page) {
+        alert(`This would load the ${page} page in a real application.`);
+        // In a real application, this would load different content based on the page parameter
+    }
+</script>
+</body>
+</html>

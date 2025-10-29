@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defence Career Guidance | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #f8f9fc;
+            --accent-color: #36b9cc;
+            --text-color: #5a5c69;
+            --dark-color: #224abe;
+            --defence-color: #224abe;
+        }
+        
+        body {
+            padding-top: 70px;
+            background-color: #f8f9fa;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #fff;
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .defence-hero {
+            background: linear-gradient(rgba(34, 74, 190, 0.85), rgba(34, 74, 190, 0.9)), url('https://images.unsplash.com/photo-1582058091505-6b8c3a6c9a3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Card Styles */
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--defence-color), #1e40af);
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 600;
+        }
+        
+        /* Defence Specific Styles */
+        .defence-badge {
+            background: linear-gradient(135deg, var(--defence-color), #1e40af);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .pathway-card {
+            border-left: 4px solid var(--defence-color);
+        }
+        
+        .specialization-card {
+            border-top: 3px solid var(--defence-color);
+        }
+        
+        .progress {
+            height: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Roadmap Styles */
+        .roadmap-container {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+        
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--defence-color);
+        }
+        
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--defence-color);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--defence-color);
+        }
+        
+        /* Button Styles */
+        .btn-defence {
+            background: linear-gradient(to right, var(--defence-color), #1e40af);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+        
+        .btn-defence:hover {
+            background: linear-gradient(to right, #1e40af, var(--defence-color));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Resource Cards */
+        .resource-card {
+            height: 100%;
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover {
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+        }
+        
+        /* Stats */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--defence-color);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--defence-color), #1e40af);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        /* Defence Field Colors */
+        .army { --field-color: #8e7cc3; }
+        .navy { --field-color: #3498db; }
+        .air-force { --field-color: #2ecc71; }
+        .marines { --field-color: #e74c3c; }
+        .cyber-security { --field-color: #f39c12; }
+        .defence-tech { --field-color: #9b59b6; }
+        
+        .field-badge {
+            background-color: var(--field-color);
+            color: white;
+        }
+        
+        /* Academy ranking styles */
+        .academy-rank {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--defence-color);
+            margin-right: 15px;
+        }
+        
+        .academy-card {
+            transition: all 0.3s ease;
+        }
+        
+        .academy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1.5rem rgba(13, 110, 253, 0.5);
+        }
+        
+        /* Help Button Animation */
+        #helpBtn {
+            transition: all 0.3s ease;
+        }
+        
+        #helpBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+        }
+        
+        /* Help Modal Styles */
+        .help-step {
+            border-left: 4px solid var(--defence-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .help-step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--defence-color);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .contact-support {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        /* Footer Links */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-shield-alt me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-info me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Future Defence Professional!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Defence Hero Section -->
+    <div class="defence-hero rounded">
+        <div class="container">
+            <div class="defence-badge">
+                <i class="fas fa-medal me-2"></i>National Service
+            </div>
+            <h1 class="display-4 fw-bold">Defence Career Pathways</h1>
+            <p class="lead">Your dedication to service and national security makes you an ideal candidate for a rewarding career in defence.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Learning Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">$40K-$80K</div>
+                    <div class="stat-label">Average Starting Salary</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">7%</div>
+                    <div class="stat-label">Job Growth (2022-2032)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Employment Rate</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">4-5 Years</div>
+                    <div class="stat-label">Service Commitment</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Defence Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Defence Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 army">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Army</span>
+                                    <h5 class="card-title">Army</h5>
+                                    <p class="card-text">Serve as a ground forces specialist with opportunities in combat, engineering, intelligence, and support roles.</p>
+                                    <ul class="mb-3">
+                                        <li>Diverse career specializations</li>
+                                        <li>Leadership development</li>
+                                        <li>Comprehensive benefits package</li>
+                                    </ul>
+                                    <button class="btn btn-defence" onclick="showFieldDetails('army')">Explore Army</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 navy">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Navy</span>
+                                    <h5 class="card-title">Navy</h5>
+                                    <p class="card-text">Serve at sea with roles in navigation, engineering, aviation, and submarine operations across global waters.</p>
+                                    <ul class="mb-3">
+                                        <li>Global travel opportunities</li>
+                                        <li>Technical training</li>
+                                        <li>Maritime operations</li>
+                                    </ul>
+                                    <button class="btn btn-defence" onclick="showFieldDetails('navy')">Explore Navy</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 air-force">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Air Force</span>
+                                    <h5 class="card-title">Air Force</h5>
+                                    <p class="card-text">Specialize in air and space operations with careers in aviation, missile technology, and space systems.</p>
+                                    <ul class="mb-3">
+                                        <li>Advanced technical training</li>
+                                        <li>Aviation opportunities</li>
+                                        <li>High-tech equipment</li>
+                                    </ul>
+                                    <button class="btn btn-defence" onclick="showFieldDetails('air-force')">Explore Air Force</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 marines">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Marines</span>
+                                    <h5 class="card-title">Marine Corps</h5>
+                                    <p class="card-text">Join an elite force specializing in expeditionary warfare, rapid response, and amphibious operations.</p>
+                                    <ul class="mb-3">
+                                        <li>Elite training standards</li>
+                                        <li>Rapid deployment focus</li>
+                                        <li>Strong camaraderie</li>
+                                    </ul>
+                                    <button class="btn btn-defence" onclick="showFieldDetails('marines')">Explore Marines</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 cyber-security">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Cyber Security</span>
+                                    <h5 class="card-title">Cyber Security</h5>
+                                    <p class="card-text">Protect national security interests in the digital domain through cyber defence and information security.</p>
+                                    <ul class="mb-3">
+                                        <li>High-demand skills</li>
+                                        <li>Critical national security role</li>
+                                        <li>Transferable to civilian careers</li>
+                                    </ul>
+                                    <button class="btn btn-defence" onclick="showFieldDetails('cyber-security')">Explore Cyber Security</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 defence-tech">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Defence Tech</span>
+                                    <h5 class="card-title">Defence Technology</h5>
+                                    <p class="card-text">Work with cutting-edge military technology, from drone systems to advanced communications and weapons systems.</p>
+                                    <ul class="mb-3">
+                                        <li>Technology development</li>
+                                        <li>Research and innovation</li>
+                                        <li>Technical specialization</li>
+                                    </ul>
+                                    <button class="btn btn-defence" onclick="showFieldDetails('defence-tech')">Explore Defence Tech</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Top Defence Academies Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-university me-2"></i>Top Defence Academies</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Academy 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card academy-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="academy-rank">#1</span>
+                                        <h5 class="card-title mb-0">United States Military Academy (West Point)</h5>
+                                    </div>
+                                    <p class="card-text">Premier institution for Army officers with rigorous academic, military, and physical training programs.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">West Point, NY</span>
+                                        <span class="badge bg-success">Acceptance: 10%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Engineering, Leadership, Military Strategy</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showAcademyDetails('westpoint')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Academy 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card academy-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="academy-rank">#2</span>
+                                        <h5 class="card-title mb-0">United States Naval Academy</h5>
+                                    </div>
+                                    <p class="card-text">Elite institution preparing officers for the Navy and Marine Corps with focus on leadership and maritime studies.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Annapolis, MD</span>
+                                        <span class="badge bg-success">Acceptance: 9%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Naval Architecture, Oceanography, Systems Engineering</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showAcademyDetails('naval')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Academy 3 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card academy-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="academy-rank">#3</span>
+                                        <h5 class="card-title mb-0">United States Air Force Academy</h5>
+                                    </div>
+                                    <p class="card-text">Premier institution for Air Force and Space Force officers with focus on aeronautics and space studies.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Colorado Springs, CO</span>
+                                        <span class="badge bg-success">Acceptance: 11%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Aeronautical Engineering, Astronautics, Cyber Science</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showAcademyDetails('airforce')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Academy 4 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card academy-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="academy-rank">#4</span>
+                                        <h5 class="card-title mb-0">Norwich University</h5>
+                                    </div>
+                                    <p class="card-text">The oldest private military college in the U.S. with both civilian and corps of cadets programs.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Northfield, VT</span>
+                                        <span class="badge bg-success">Acceptance: 74%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Criminal Justice, Cybersecurity, Leadership Studies</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showAcademyDetails('norwich')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn-defence" onclick="showAllAcademies()">
+                            <i class="fas fa-list me-2"></i>View More Defence Academies
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Specializations -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-star me-2"></i>Defence Specializations</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Military Intelligence</h5>
+                                    <p class="card-text">Gather, analyze, and disseminate critical information to support military operations and decision-making.</p>
+                                    <span class="badge bg-primary mb-2">High Security</span>
+                                    <span class="badge bg-success">Critical Role</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Special Operations</h5>
+                                    <p class="card-text">Elite units trained for unconventional warfare, counter-terrorism, and specialized missions.</p>
+                                    <span class="badge bg-primary mb-2">Elite Training</span>
+                                    <span class="badge bg-info">Selective</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Military Engineering</h5>
+                                    <p class="card-text">Design, construct, and maintain military infrastructure, equipment, and defensive systems.</p>
+                                    <span class="badge bg-success mb-2">Technical</span>
+                                    <span class="badge bg-warning">Infrastructure Focus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Defence Career Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: Research & Preparation (6-12 months)</h5>
+                            <p>Research different military branches, speak with recruiters, and begin physical training preparation.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: Application Process (3-6 months)</h5>
+                            <p>Complete applications, testing (ASVAB), medical examinations, and background checks.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Basic Training (8-12 weeks)</h5>
+                            <p>Complete basic military training to learn fundamental skills, discipline, and military customs.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: Advanced Training (2-6 months)</h5>
+                            <p>Receive specialized training in your chosen Military Occupational Specialty (MOS).</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: First Assignment (2-4 years)</h5>
+                            <p>Begin your military career with your first assignment, gaining experience and demonstrating leadership potential.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Career Advancement (2-5 years)</h5>
+                            <p>Pursue advanced training, education, and promotions to advance your military career.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Learning Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Preparation Resources</h5>
+                                    <ul>
+                                        <li>ASVAB Study Guides</li>
+                                        <li>Military Fitness Training Programs</li>
+                                        <li>Leadership Development Books</li>
+                                        <li>Service Branch Specific Guides</li>
+                                    </ul>
+                                    <button class="btn btn-defence" onclick="showResources('preparation')">Explore Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Books & Publications</h5>
+                                    <ul>
+                                        <li>"About Face" by Col. David H. Hackworth</li>
+                                        <li>"The Mission, The Men, and Me" by Pete Blaber</li>
+                                        <li>Army Times / Navy Times Publications</li>
+                                        <li>Journal of Military History</li>
+                                    </ul>
+                                    <button class="btn btn-defence" onclick="showResources('books')">View Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Organizations</h5>
+                                    <ul>
+                                        <li>ROTC Programs</li>
+                                        <li>Veterans of Foreign Wars (VFW)</li>
+                                        <li>American Legion</li>
+                                        <li>Military Officers Association of America (MOAA)</li>
+                                    </ul>
+                                    <button class="btn btn-defence" onclick="showResources('orgs')">Explore Organizations</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Next Steps</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Short-Term Goals (0-6 months)</h5>
+                                    <ul>
+                                        <li>Research different military branches</li>
+                                        <li>Begin physical fitness training</li>
+                                        <li>Study for the ASVAB test</li>
+                                        <li>Speak with military recruiters</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Long-Term Goals (1-3 years)</h5>
+                                    <ul>
+                                        <li>Complete basic training</li>
+                                        <li>Excel in advanced specialty training</li>
+                                        <li>Pursue leadership opportunities</li>
+                                        <li>Consider officer candidate programs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-defence btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Defence Fields
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg" onclick="showResources('preparation')">
+                            <i class="fas fa-book me-2"></i>Preparation Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping students discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('preparation')">Preparation Resources</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Books & Publications</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Military Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Added navigation links -->
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="#" onclick="loadContent('about')">About</a>
+            <a href="#" onclick="loadContent('contact')">Contact Us</a>
+        </div>
+        
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2023 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Defence Field Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Defence Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Academies Modal -->
+<div class="modal fade" id="academiesModal" tabindex="-1" aria-labelledby="academiesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="academiesModalLabel">Defence Academies</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="academiesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel"><i class="fas fa-question-circle me-2"></i>Defence Career Guidance Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>How to Use This Defence Career Guide</h4>
+                <p>This personalized guide is designed to help you explore defence career options based on your interests. Here's how to make the most of it:</p>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">1</span>Explore Defence Fields</h5>
+                    <p>Review the different defence career pathways to understand the opportunities available in each branch of service.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">2</span>Check Academy Requirements</h5>
+                    <p>Look at the top defence academies and their requirements to understand the educational paths available.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">3</span>Review Specializations</h5>
+                    <p>Explore the various specializations within defence careers to find the best fit for your skills and interests.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">4</span>Follow the Roadmap</h5>
+                    <p>Use the career roadmap to plan your path into a defence career, from preparation to advancement.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">5</span>Utilize Resources</h5>
+                    <p>Take advantage of the recommended resources to prepare for your defence career journey.</p>
+                </div>
+                
+                <div class="contact-support mt-4">
+                    <h5>Need Additional Help?</h5>
+                    <p>If you have specific questions about defence careers or need personalized guidance, our career counselors are available to help.</p>
+                    <button class="btn btn-primary mt-2" onclick="alert('Defence career counselor contact information: defence-careers@careerguider.edu | (800) 555-MILITARY')">
+                        <i class="fas fa-envelope me-2"></i>Contact Defence Career Counselor
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Function to show field details in modal
+    function showFieldDetails(field) {
+        const fieldTitles = {
+            'army': 'Army Careers',
+            'navy': 'Navy Careers',
+            'air-force': 'Air Force Careers',
+            'marines': 'Marine Corps Careers',
+            'cyber-security': 'Cyber Security Careers',
+            'defence-tech': 'Defence Technology Careers'
+        };
+        
+        const fieldDescriptions = {
+            'army': '<p>The Army is the largest military branch and offers diverse career opportunities in combat, engineering, intelligence, logistics, and more. Army careers emphasize leadership development, technical skills, and teamwork.</p><h6>Key Requirements:</h6><ul><li>Age: 17-35 years</li><li>ASVAB Score: Varies by specialty</li><li>Physical fitness standards</li><li>High school diploma or equivalent</li></ul>',
+            'navy': '<p>The Navy operates globally, protecting sea lanes and projecting power. Careers range from naval aviation and surface warfare to submarine operations and naval special warfare.</p><h6>Key Requirements:</h6><ul><li>Age: 17-34 years</li><li>ASVAB Score: Varies by rating</li><li>Swimming proficiency</li><li>Vision requirements for specific roles</li></ul>',
+            'air-force': '<p>The Air Force focuses on air and space superiority with careers in aviation, space operations, cyber warfare, intelligence, and technical fields. It emphasizes technology and education.</p><h6>Key Requirements:</h6><ul><li>Age: 17-39 years</li><li>ASVAB Score: Generally higher requirements</li><li>Strict physical and medical standards</li><li>Height and weight standards</li></ul>',
+            'marines': '<p>The Marine Corps is an expeditionary force focused on rapid response. Marines train extensively in combat skills and emphasize physical fitness, discipline, and mental toughness.</p><h6>Key Requirements:</h6><ul><li>Age: 17-29 years</li><li>ASVAB Score: Minimum 32</li><li>Highest physical fitness standards</li><li>Combat training requirement</li></ul>',
+            'cyber-security': '<p>Cyber security specialists protect military networks and systems from cyber threats. This field offers technical challenges and opportunities for advanced training in information security.</p><h6>Key Requirements:</h6><ul><li>Background in IT or computer science</li><li>Security clearance eligibility</li><li>Analytical skills</li><li>Continuous learning mindset</li></ul>',
+            'defence-tech': '<p>Defence technology specialists work with advanced military systems, from drones and radar to communications and weapons systems. This field combines technical expertise with military applications.</p><h6>Key Requirements:</h6><ul><li>Technical or engineering background</li><li>Problem-solving skills</li><li>Attention to detail</li><li>Security clearance</li></ul>'
+        };
+        
+        document.getElementById('fieldModalLabel').innerText = fieldTitles[field];
+        document.getElementById('fieldModalBody').innerHTML = fieldDescriptions[field];
+        
+        const fieldModal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        fieldModal.show();
+    }
+    
+    // Function to show resources in modal
+    function showResources(type) {
+        const resourceTitles = {
+            'preparation': 'Defence Career Preparation Resources',
+            'books': 'Defence Career Books & Publications',
+            'orgs': 'Military Organizations',
+            'courses': 'Defence Learning Resources'
+        };
+        
+        const resourceContent = {
+            'preparation': '<h6>ASVAB Study Resources:</h6><ul><li>Official ASVAB Study Guide</li><li>Kaplan ASVAB Prep Plus</li><li>ASVAB for Dummies</li><li>Online ASVAB practice tests</li></ul><h6>Physical Training Guides:</h6><ul><li>Military Fitness Training Manuals</li><li>Navy SEAL Fitness Guide</li><li>Army Physical Readiness Training</li></ul>',
+            'books': '<h6>Recommended Reading:</h6><ul><li>"About Face" by Col. David H. Hackworth</li><li>"The Mission, The Men, and Me" by Pete Blaber</li><li>"Make Your Bed" by Admiral William H. McRaven</li><li>"Starship Troopers" by Robert A. Heinlein</li><li>"On Combat" by Lt. Col. Dave Grossman</li></ul><h6>Publications:</h6><ul><li>Army Times</li><li>Navy Times</li><li>Air Force Times</li><li>Marine Corps Times</li></ul>',
+            'orgs': '<h6>Student Military Organizations:</h6><ul><li>ROTC Programs (Army, Navy, Air Force)</li><li>Junior Reserve Officers\' Training Corps (JROTC)</li><li>Student Veterans of America</li><li>Young Marines</li></ul><h6>Professional Organizations:</h6><ul><li>Veterans of Foreign Wars (VFW)</li><li>American Legion</li><li>Military Officers Association of America (MOAA)</li><li>Armed Forces Communications and Electronics Association (AFCEA)</li></ul>',
+            'courses': '<h6>Recommended Learning Paths:</h6><ul><li>Military History Courses</li><li>Leadership Development Programs</li><li>Physical Training Certification</li><li>First Aid and Emergency Response Training</li><li>Orienteering and Navigation Skills</li></ul><h6>Online Resources:</h6><ul><li>Khan Academy - ASVAB Preparation</li><li>Military.com Education Section</li><li>Today\'s Military Learning Resources</li></ul>'
+        };
+        
+        document.getElementById('resourcesModalLabel').innerText = resourceTitles[type];
+        document.getElementById('resourcesModalBody').innerHTML = resourceContent[type];
+        
+        const resourcesModal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        resourcesModal.show();
+    }
+    
+    // Function to show academy details
+    function showAcademyDetails(academy) {
+        const academyNames = {
+            'westpoint': 'United States Military Academy (West Point)',
+            'naval': 'United States Naval Academy',
+            'airforce': 'United States Air Force Academy',
+            'norwich': 'Norwich University'
+        };
+        
+        const academyDetails = {
+            'westpoint': '<p><strong>Location:</strong> West Point, New York</p><p><strong>Established:</strong> 1802</p><p><strong>Acceptance Rate:</strong> 10%</p><p><strong>Programs:</strong> Engineering, Social Sciences, Humanities, Basic Sciences</p><p><strong>Service Commitment:</strong> 5 years active duty, 3 years reserve</p><p><strong>Notable Alumni:</strong> Ulysses S. Grant, Dwight D. Eisenhower, Douglas MacArthur</p>',
+            'naval': '<p><strong>Location:</strong> Annapolis, Maryland</p><p><strong>Established:</strong> 1845</p><p><strong>Acceptance Rate:</strong> 9%</p><p><strong>Programs:</strong> Engineering, Mathematics, Science, Economics</p><p><strong>Service Commitment:</strong> 5 years active duty</p><p><strong>Notable Alumni:</strong> Jimmy Carter, John McCain, Alan Shepard</p>',
+            'airforce': '<p><strong>Location:</strong> Colorado Springs, Colorado</p><p><strong>Established:</strong> 1954</p><p><strong>Acceptance Rate:</strong> 11%</p><p><strong>Programs:</strong> Aeronautical Engineering, Astronautics, Management, Humanities</p><p><strong>Service Commitment:</strong> 5 years active duty</p><p><strong>Notable Alumni:</strong> Heather Wilson, Charles Bolden, Edward Rice Jr.</p>',
+            'norwich': '<p><strong>Location:</strong> Northfield, Vermont</p><p><strong>Established:</strong> 1819</p><p><strong>Acceptance Rate:</strong> 74%</p><p><strong>Programs:</strong> Criminal Justice, Cybersecurity, Engineering, Nursing</p><p><strong>Service Commitment:</strong> Varies by program</p><p><strong>Notable Alumni:</strong> Alonzo Jackman, Thomas Anderson, Gordon Sullivan</p>'
+        };
+        
+        document.getElementById('academiesModalLabel').innerText = academyNames[academy];
+        document.getElementById('academiesModalBody').innerHTML = academyDetails[academy];
+        
+        const academiesModal = new bootstrap.Modal(document.getElementById('academiesModal'));
+        academiesModal.show();
+    }
+    
+    // Function to show all academies
+    function showAllAcademies() {
+        document.getElementById('academiesModalLabel').innerText = 'Top Defence Academies';
+        document.getElementById('academiesModalBody').innerHTML = `
+            <h5>United States Service Academies</h5>
+            <ul>
+                <li><strong>United States Military Academy (West Point)</strong> - West Point, NY</li>
+                <li><strong>United States Naval Academy</strong> - Annapolis, MD</li>
+                <li><strong>United States Air Force Academy</strong> - Colorado Springs, CO</li>
+                <li><strong>United States Coast Guard Academy</strong> - New London, CT</li>
+                <li><strong>United States Merchant Marine Academy</strong> - Kings Point, NY</li>
+            </ul>
+            
+            <h5>Senior Military Colleges</h5>
+            <ul>
+                <li><strong>Norwich University</strong> - Northfield, VT</li>
+                <li><strong>Texas A&M University</strong> - College Station, TX</li>
+                <li><strong>Virginia Tech</strong> - Blacksburg, VA</li>
+                <li><strong>The Citadel</strong> - Charleston, SC</li>
+                <li><strong>Virginia Military Institute</strong> - Lexington, VA</li>
+            </ul>
+            
+            <h5>ROTC Programs</h5>
+            <p>Most major universities offer Reserve Officers' Training Corps (ROTC) programs for Army, Navy, and Air Force.</p>
+        `;
+        
+        const academiesModal = new bootstrap.Modal(document.getElementById('academiesModal'));
+        academiesModal.show();
+    }
+    
+    // Function to show field selection
+    function showFieldSelection() {
+        document.getElementById('fieldModalLabel').innerText = 'Explore Defence Fields';
+        document.getElementById('fieldModalBody').innerHTML = `
+            <p>Select a defence field to explore career opportunities:</p>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Army</h5>
+                            <p class="card-text">Ground forces with diverse career specializations</p>
+                            <button class="btn btn-defence" onclick="showFieldDetails('army')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Navy</h5>
+                            <p class="card-text">Maritime operations and global deployment</p>
+                            <button class="btn btn-defence" onclick="showFieldDetails('navy')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Air Force</h5>
+                            <p class="card-text">Air and space operations with technical focus</p>
+                            <button class="btn btn-defence" onclick="showFieldDetails('air-force')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Marine Corps</h5>
+                            <p class="card-text">Expeditionary warfare and rapid response</p>
+                            <button class="btn btn-defence" onclick="showFieldDetails('marines')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Cyber Security</h5>
+                            <p class="card-text">Digital defence and information security</p>
+                            <button class="btn btn-defence" onclick="showFieldDetails('cyber-security')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Defence Technology</h5>
+                            <p class="card-text">Advanced military systems and equipment</p>
+                            <button class="btn btn-defence" onclick="showFieldDetails('defence-tech')">Explore</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        const fieldModal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        fieldModal.show();
+    }
+    
+    // Function to load content (for navigation)
+    function loadContent(page) {
+        alert(`This would load the ${page} page in a real application.`);
+    }
+</script>
+</body>
+</html>

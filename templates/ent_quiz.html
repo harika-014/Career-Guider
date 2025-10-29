@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entertainment Career Ability Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #e91e63;
+      --secondary-color: #f8f9fc;
+      --accent-color: #f06292;
+      --text-color: #4a4a4a;
+      --dark-color: #ad1457;
+    }
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Nunito', sans-serif;
+      color: var(--text-color);
+      padding-top: 20px;
+    }
+    .quiz-container { max-width: 800px; margin: 0 auto; }
+    .card {
+      margin-bottom: 20px;
+      box-shadow: 0 0.15rem 1.75rem 0 rgba(0,0,0,0.15);
+      border: none; border-radius: 10px;
+    }
+    .card-header {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+      color: white; border-radius: 10px 10px 0 0 !important; font-weight: 600;
+    }
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary-color), var(--dark-color));
+      border: none; border-radius: 30px; padding: 10px 25px; font-weight: 600;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(to right, var(--dark-color), var(--primary-color));
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .btn-secondary {
+      background: rgba(148,163,184,.2);
+      color: var(--text-color);
+      border: none; border-radius: 30px; padding: 10px 25px; font-weight: 600;
+    }
+    .progress { height: 10px; margin-bottom: 20px; }
+    .option-btn {
+      text-align: left; margin-bottom: 10px; padding: 15px;
+      border: 1px solid #dee2e6; border-radius: 8px; transition: all 0.3s;
+      background-color: white; width: 100%;
+    }
+    .option-btn:hover { background-color: #f8f9fa; border-color: var(--primary-color); }
+    .option-btn.selected {
+      background-color: var(--primary-color);
+      color: white; border-color: var(--primary-color);
+    }
+    input[type="radio"] { margin-right: 10px; }
+    .badge { font-size: 0.9rem; padding: 8px 12px; }
+    .result-card { text-align: center; padding: 2rem; }
+    .footer {
+      background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+      color: white; padding: 1rem 0; margin-top: 2rem; border-radius: 0 0 10px 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container quiz-container">
+    <div class="card" id="app">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h1 class="h4 mb-0"><i class="fas fa-film me-2"></i>Entertainment Career Ability Quiz</h1>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="badge bg-info"><span id="counter">Q 1 / 20</span></span>
+          <span class="badge bg-warning"><span id="timer">05:00</span></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="progress"><div class="progress-bar" id="bar" role="progressbar" style="width:0%"></div></div>
+        <div id="quizPane"></div>
+      </div>
+      <div class="footer text-center">
+        <small>Tip: This quiz helps discover your strengths and interests in the entertainment industry.</small>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const QUIZ_MINUTES = 5;
+    const HIGH_GUIDANCE_URL = "/ent1";
+    const LOW_GUIDANCE_URL  = "/ent2";
+    const AUTO_REDIRECT = true;
+
+    const questions = [
+      // --- Technical (scored) ---
+      { text: "What does CGI stand for in movies?", options: ["Computer Generated Imagery", "Camera Graphic Illustration", "Creative Graphics Input", "Cinematic Graphic Integration"], correctIndex: 0 },
+      { text: "Who directs the actors and visualizes the film?", options: ["Producer", "Editor", "Director", "Cinematographer"], correctIndex: 2 },
+      { text: "Which is NOT a film genre?", options: ["Action", "Comedy", "Thriller", "Laptop"], correctIndex: 3 },
+      { text: "The Oscars are officially known as:", options: ["Global Film Awards", "Academy Awards", "Golden Awards", "CineFest"], correctIndex: 1 },
+      { text: "Which department handles lighting on a film set?", options: ["Grip team", "Art direction", "Gaffer crew", "Sound design"], correctIndex: 2 },
+      { text: "Which of these is used in video editing?", options: ["Adobe Premiere Pro", "AutoCAD", "MATLAB", "Unity 3D"], correctIndex: 0 },
+      { text: "A script that describes scenes and dialogue is called:", options: ["Storyboard", "Screenplay", "Shot list", "Draft plan"], correctIndex: 1 },
+      { text: "Who is responsible for film sound mixing?", options: ["Producer", "Sound Engineer", "Art Director", "Lighting Head"], correctIndex: 1 },
+      { text: "Which company owns the streaming platform Netflix?", options: ["Disney", "Sony", "Netflix Inc.", "Warner Bros."], correctIndex: 2 },
+      { text: "A 'frame rate' of 24 fps means:", options: ["24 filters per scene", "24 frames per second", "24 films per session", "24 focal points shared"], correctIndex: 1 },
+
+      // --- Personality (unscored) ---
+      { text: "Which role excites you the most?", options: ["Actor/Performer", "Director/Leader", "Writer/Creator", "Editor/Designer"], correctIndex: null },
+      { text: "You enjoy stories that are:", options: ["Romantic", "Action-packed", "Emotional", "Thought-provoking"], correctIndex: null },
+      { text: "When watching a movie, what do you focus on?", options: ["Acting", "Camera work", "Storyline", "Music"], correctIndex: null },
+      { text: "You prefer working:", options: ["On stage", "Behind the camera", "At a computer", "In a team of artists"], correctIndex: null },
+      { text: "Your dream career in entertainment:", options: ["Actor/Actress", "Film Director", "Screenwriter", "Music Producer"], correctIndex: null },
+      { text: "You get inspired by:", options: ["Celebrities", "Cinematography", "Creative writing", "Background music"], correctIndex: null },
+      { text: "If you had to choose one, you'd prefer to:", options: ["Perform", "Direct", "Edit", "Compose"], correctIndex: null },
+      { text: "In a group project, you are the one who:", options: ["Takes the spotlight", "Leads and coordinates", "Writes the ideas", "Designs the visuals"], correctIndex: null },
+      { text: "You believe a good film is made by:", options: ["Great acting", "Strong direction", "A solid script", "Perfect sound and visuals"], correctIndex: null },
+      { text: "Your favorite creative outlet is:", options: ["Singing", "Drawing", "Storytelling", "Video editing"], correctIndex: null },
+    ];
+
+    let idx = 0;
+    const answers = new Array(questions.length).fill(null);
+    const $ = q => document.querySelector(q);
+
+    function render() {
+      const q = questions[idx];
+      const total = questions.length;
+      const selected = answers[idx];
+      $('#counter').textContent = `Q ${idx+1} / ${total}`;
+      const pct = Math.round((idx/total)*100);
+      $('#bar').style.width = `${pct}%`;
+
+      const opts = q.options.map((op,i)=>`
+        <button type="button" class="option-btn ${selected===i?'selected':''}" data-value="${i}">
+          <input type="radio" name="opt" value="${i}" ${selected===i?'checked':''} /> ${op}
+        </button>`).join('');
+
+      const canPrev = idx>0, isLast = idx===total-1;
+      $('#quizPane').innerHTML = `
+        <div class="mb-2 text-muted">Section: ${q.correctIndex===null?'Personality':'Technical'}</div>
+        <h4 class="mb-3">${q.text}</h4>
+        <div class="mb-4">${opts}</div>
+        <div class="d-flex justify-content-between align-items-center">
+          <button class="btn btn-secondary" ${!canPrev?'disabled':''} id="prevBtn">Previous</button>
+          <div class="text-muted">${q.correctIndex===null?'Choose what fits you.':'Select the correct answer.'}</div>
+          <button class="btn btn-primary" id="nextBtn">${isLast?'Submit':'Next'}</button>
+        </div>
+        <div class="mt-3 small text-muted">Your choice is saved automatically.</div>`;
+
+      $('#prevBtn')?.addEventListener('click', e=>{e.preventDefault(); saveSelection(); idx--; render();});
+      $('#nextBtn')?.addEventListener('click', e=>{e.preventDefault(); saveSelection(); isLast?finish(): (idx++, render());});
+      document.querySelectorAll('.option-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          document.querySelectorAll('.option-btn').forEach(b=>b.classList.remove('selected'));
+          btn.classList.add('selected');
+          btn.querySelector('input').checked=true;
+          answers[idx]=Number(btn.dataset.value);
+        });
+      });
+    }
+
+    function saveSelection(){
+      const picked=document.querySelector('input[name="opt"]:checked');
+      if(picked) answers[idx]=Number(picked.value);
+    }
+
+    function computeScore(){
+      let correct=0,total=0;
+      questions.forEach((q,i)=>{
+        if(q.correctIndex===null) return;
+        total++;
+        if(answers[i]===q.correctIndex) correct++;
+      });
+      const percent=Math.round((correct/total)*100);
+      return {correct,total,percent};
+    }
+
+    function finish(){
+      const {correct,total,percent}=computeScore();
+      const high=percent>=70;
+      const target=high?HIGH_GUIDANCE_URL:LOW_GUIDANCE_URL;
+      $('#quizPane').innerHTML=`
+        <div class="result-card">
+          <h2>🎬 Score: ${correct}/${total}</h2>
+          <h3>Percentage: ${percent}%</h3>
+          <p>${high?'✅ Excellent! Redirecting to guidance...':'❌ Below 70%. Redirecting to guidance...'}</p>
+          <div class="d-flex justify-content-center gap-3">
+            <a class="btn btn-primary" id="goGuidance">Go to Guidance Page</a>
+            <button class="btn btn-secondary" id="retryBtn">Restart Quiz</button>
+          </div>
+        </div>`;
+      document.getElementById('goGuidance').addEventListener('click', e=>{
+        e.preventDefault(); window.location.href=target;
+      });
+      document.getElementById('retryBtn').addEventListener('click', ()=>location.reload());
+      if(AUTO_REDIRECT && target){
+        setTimeout(()=>window.location.href=target,4000);
+      }
+      clearInterval(t);
+    }
+
+    let remaining=QUIZ_MINUTES*60;
+    function updateTimer(){
+      const m=String(Math.floor(remaining/60)).padStart(2,'0');
+      const s=String(remaining%60).padStart(2,'0');
+      $('#timer').textContent=`${m}:${s}`;
+      if(remaining<=0){
+        clearInterval(t);
+        finish();
+        return;}
+      remaining--;
+    }
+
+    render(); updateTimer();
+    const t=setInterval(updateTimer,1000);
+  </script>
+</body>
+</html>

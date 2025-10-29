@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Career Development | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        --primary-color: #8B4513;
+        --secondary-color: #f8f9fc;
+        --accent-color: #A0522D;
+        --text-color: #5a5c69;
+        --dark-color: #654321;
+        --law-color: #8B4513;
+        --improvement-color: #8B4513;
+    }
+    
+    body {
+        padding-top: 70px;
+        background-color: #f8f9fa;
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text-color);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid #fff;
+        transition: transform 0.3s;
+    }
+    
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Hero Section */
+    .law-hero {
+        background: linear-gradient(rgba(139, 69, 19, 0.85), rgba(139, 69, 19, 0.9)), url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 5rem 0;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    /* Card Styles */
+    .card {
+        margin-bottom: 20px;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, var(--law-color), #654321);
+        color: white;
+        border-radius: 10px 10px 0 0 !important;
+        font-weight: 600;
+    }
+    
+    /* Law Specific Styles */
+    .law-badge {
+        background: linear-gradient(135deg, var(--law-color), #654321);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    
+    .pathway-card {
+        border-left: 4px solid var(--law-color);
+    }
+    
+    .specialization-card {
+        border-top: 3px solid var(--law-color);
+    }
+    
+    .progress {
+        height: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Roadmap Styles */
+    .roadmap-container {
+        position: relative;
+        padding-left: 30px;
+        margin: 40px 0;
+    }
+    
+    .roadmap-container::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--law-color);
+    }
+    
+    .roadmap-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: var(--law-color);
+        border: 4px solid white;
+        box-shadow: 0 0 0 2px var(--law-color);
+    }
+    
+    /* Button Styles */
+    .btn-law {
+        background: linear-gradient(to right, var(--law-color), #654321);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: 600;
+    }
+    
+    .btn-law:hover {
+        background: linear-gradient(to right, #654321, var(--law-color));
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Resource Cards */
+    .resource-card {
+        height: 100%;
+        transition: all 0.3s;
+    }
+    
+    .resource-card:hover {
+        box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--law-color);
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+    
+    /* Modal Styles */
+    .modal-content {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, var(--law-color), #654321);
+        color: white;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    /* Law Field Colors */
+    .corporate { --field-color: #8B4513; }
+    .criminal { --field-color: #8B0000; }
+    .family { --field-color: #228B22; }
+    .intellectual { --field-color: #4169E1; }
+    .environmental { --field-color: #2E8B57; }
+    .immigration { --field-color: #9932CC; }
+    .human-rights { --field-color: #FF4500; }
+    
+    .field-badge {
+        background-color: var(--field-color);
+        color: white;
+    }
+    
+    /* College ranking styles */
+    .college-rank {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--law-color);
+        margin-right: 15px;
+    }
+    
+    .college-card {
+        transition: all 0.3s ease;
+    }
+    
+    .college-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Help Button Animation */
+    #helpBtn {
+        transition: all 0.3s ease;
+    }
+    
+    #helpBtn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(139, 69, 19, 0.5);
+    }
+    
+    /* Help Modal Styles */
+    .help-step {
+        border-left: 4px solid var(--law-color);
+        padding-left: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .help-step-number {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: var(--law-color);
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .contact-support {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    /* Skill Development Section */
+    .skill-dev-card {
+        border-top: 3px solid var(--law-color);
+    }
+    
+    .skill-pill {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background-color: #e9ecef;
+        color: #495057;
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .improvement-plan {
+        background-color: #e9ecef;
+        border-left: 4px solid var(--law-color);
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-balance-scale me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-warning me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Future Lawyer!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Law Hero Section -->
+    <div class="law-hero rounded">
+        <div class="container">
+            <div class="law-badge">
+                <i class="fas fa-gavel me-2"></i>Legal Career Development
+            </div>
+            <h1 class="display-4 fw-bold">Law Career Pathways</h1>
+            <p class="lead">Your assessment shows potential for a legal career! With dedication and the right skill development plan, you can build a successful career in law.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Skill Development Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Legal Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Skill Development Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-brain me-2"></i>Key Skills to Develop for a Legal Career</h4>
+                </div>
+                <div class="card-body">
+                    <div class="improvement-plan">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Your Development Plan</h5>
+                        <p>Based on your assessment results, we recommend focusing on these foundational skills to prepare for a legal career:</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Analytical & Critical Thinking</h5>
+                                    <p class="card-text">Essential for legal analysis and argumentation:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Logical Reasoning</span>
+                                        <span class="skill-pill">Case Analysis</span>
+                                        <span class="skill-pill">Argument Construction</span>
+                                        <span class="skill-pill">Problem-Solving</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showSkillResources('analytical')">Improve Analytical Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Research & Writing</h5>
+                                    <p class="card-text">Core skills for legal practice:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Legal Research</span>
+                                        <span class="skill-pill">Persuasive Writing</span>
+                                        <span class="skill-pill">Case Briefing</span>
+                                        <span class="skill-pill">Citation Skills</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showSkillResources('research')">Improve Research Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Oral Communication</h5>
+                                    <p class="card-text">Key skills for advocacy and client relations:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Public Speaking</span>
+                                        <span class="skill-pill">Argument Presentation</span>
+                                        <span class="skill-pill">Negotiation</span>
+                                        <span class="skill-pill">Client Counseling</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showSkillResources('communication')">Improve Communication Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ethical Reasoning</h5>
+                                    <p class="card-text">Foundation of professional legal practice:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Professional Ethics</span>
+                                        <span class="skill-pill">Moral Reasoning</span>
+                                        <span class="skill-pill">Confidentiality</span>
+                                        <span class="skill-pill">Conflict Resolution</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showSkillResources('ethics')">Improve Ethical Reasoning</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Attention to Detail</h5>
+                                    <p class="card-text">Critical for legal accuracy and precision:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Document Review</span>
+                                        <span class="skill-pill">Proofreading</span>
+                                        <span class="skill-pill">Fact Checking</span>
+                                        <span class="skill-pill">Procedural Compliance</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showSkillResources('detail')">Improve Attention to Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Time Management & Organization</h5>
+                                    <p class="card-text">Essential for managing caseloads and deadlines:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Case Management</span>
+                                        <span class="skill-pill">Deadline Tracking</span>
+                                        <span class="skill-pill">Prioritization</span>
+                                        <span class="skill-pill">Workflow Organization</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showSkillResources('organization')">Improve Organizational Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">7-10 Years</div>
+                    <div class="stat-label">Education & Training Timeline</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">90%</div>
+                    <div class="stat-label">Bar Passage Rate with Proper Prep</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">$127,990</div>
+                    <div class="stat-label">Median Annual Salary (2022)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">1-on-1</div>
+                    <div class="stat-label">LSAT Prep Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Legal Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Legal Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>These legal fields offer diverse opportunities. Each field lists the specific skills you should focus on developing.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 corporate">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Corporate Law</span>
+                                    <h5 class="card-title">Corporate Law</h5>
+                                    <p class="card-text">Advise businesses on legal rights, responsibilities, and obligations. Key skills to develop:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Contract Law</span>
+                                        <span class="skill-pill">Business Acumen</span>
+                                        <span class="skill-pill">Negotiation</span>
+                                        <span class="skill-pill">Regulatory Compliance</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showFieldDetails('corporate')">Explore Corporate Law</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 criminal">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Criminal Law</span>
+                                    <h5 class="card-title">Criminal Law</h5>
+                                    <p class="card-text">Prosecute or defend individuals accused of crimes. Focus on developing:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Trial Advocacy</span>
+                                        <span class="skill-pill">Evidence Rules</span>
+                                        <span class="skill-pill">Persuasion</span>
+                                        <span class="skill-pill">Criminal Procedure</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showFieldDetails('criminal')">Explore Criminal Law</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 family">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Family Law</span>
+                                    <h5 class="card-title">Family Law</h5>
+                                    <p class="card-text">Handle legal matters involving family relationships. Develop these skills:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Empathy</span>
+                                        <span class="skill-pill">Mediation</span>
+                                        <span class="skill-pill">Child Advocacy</span>
+                                        <span class="skill-pill">Domestic Relations</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showFieldDetails('family')">Explore Family Law</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 intellectual">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Intellectual Property</span>
+                                    <h5 class="card-title">Intellectual Property Law</h5>
+                                    <p class="card-text">Protect creations of the mind like inventions and artistic works. Improve these areas:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Patent Law</span>
+                                        <span class="skill-pill">Copyright</span>
+                                        <span class="skill-pill">Trademark</span>
+                                        <span class="skill-pill">Technical Understanding</span>
+                                    </div>
+                                    <button class="btn btn-law" onclick="showFieldDetails('intellectual')">Explore IP Law</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Consider starting with a pre-law program or majoring in political science, history, or philosophy to build foundational skills for law school.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alternative Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-random me-2"></i>Alternative Pathways to Legal Careers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Paralegal Pathway</h5>
+                                    <p class="card-text">Become a paralegal to gain legal experience before pursuing law school.</p>
+                                    <ul>
+                                        <li>Shorter educational timeline (1-2 years)</li>
+                                        <li>Hands-on legal experience</li>
+                                        <li>Opportunity to confirm interest in law</li>
+                                        <li>Potential employer sponsorship for law school</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Legal Studies Programs</h5>
+                                    <p class="card-text">Consider undergraduate legal studies programs that prepare you for law-related careers.</p>
+                                    <ul>
+                                        <li>Focus on legal reasoning and analysis</li>
+                                        <li>Preparation for various law-adjacent careers</li>
+                                        <li>Strong foundation for law school</li>
+                                        <li>Career options beyond traditional practice</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Part-Time Law Programs</h5>
+                                    <p class="card-text">Many law schools offer part-time programs for working professionals.</p>
+                                    <ul>
+                                        <li>Ability to work while studying</li>
+                                        <li>Longer timeline but more manageable</li>
+                                        <li>Practical experience alongside education</li>
+                                        <li>Networking opportunities while studying</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Legal Apprenticeship (in some states)</h5>
+                                    <p class="card-text">A few states allow reading the law as an alternative to law school.</p>
+                                    <ul>
+                                        <li>Learn directly from practicing attorneys</li>
+                                        <li>No law school debt</li>
+                                        <li>Practical, hands-on learning</li>
+                                        <li>Limited to certain jurisdictions</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Legal Career Development Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: Undergraduate Education (4 years)</h5>
+                            <p>Complete a bachelor's degree with a strong GPA. Focus on developing critical thinking, research, and writing skills.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: LSAT Preparation (6-12 months)</h5>
+                            <p>Prepare for and take the Law School Admission Test (LSAT). Aim for a competitive score for your target schools.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Law School Application (1 year)</h5>
+                            <p>Research law schools, prepare applications, write personal statements, and secure recommendations.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: Law School (3 years)</h5>
+                            <p>Complete Juris Doctor (JD) program, focusing on core legal principles and potential specialization areas.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: Bar Exam Preparation (2-3 months)</h5>
+                            <p>Intensive study for the bar exam in your chosen jurisdiction(s).</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Career Launch (1-2 years)</h5>
+                            <p>Begin legal career through internships, clerkships, or associate positions. Consider further specialization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Skill Development Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">LSAT Preparation</h5>
+                                    <ul>
+                                        <li>Khan Academy - Free LSAT Prep</li>
+                                        <li>7Sage - Comprehensive LSAT Course</li>
+                                        <li>Blueprint LSAT Prep - Live Courses</li>
+                                        <li>LSAT Max - Mobile-Focused Prep</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showResources('lsat')">LSAT Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Legal Research & Writing</h5>
+                                    <ul>
+                                        <li>"Legal Writing in Plain English" by Bryan Garner</li>
+                                        <li>Westlaw/LexisNexis Training</li>
+                                        <li>Coursera - Introduction to Legal Research</li>
+                                        <li>CALI Lessons - Legal Education</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showResources('research')">Research Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Critical Thinking Development</h5>
+                                    <ul>
+                                        <li>"Thinking Like a Lawyer" by Frederick Schauer</li>
+                                        <li>LSAT Logical Reasoning Practice</li>
+                                        <li>Critical Thinking Courses on edX</li>
+                                        <li>Law School Case Briefing Practice</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showResources('critical_thinking')">Critical Thinking Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Legal Career Development Plan</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Immediate Actions (0-12 months)</h5>
+                                    <ul>
+                                        <li>Maintain strong GPA in undergraduate studies</li>
+                                        <li>Begin LSAT preparation with diagnostic test</li>
+                                        <li>Join pre-law society or debate team</li>
+                                        <li>Seek internships or shadowing opportunities in legal settings</li>
+                                        <li>Develop relationships with potential recommenders</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Medium-Term Goals (1-3 years)</h5>
+                                    <ul>
+                                        <li>Take the LSAT and achieve target score</li>
+                                        <li>Research and apply to law schools</li>
+                                        <li>Secure strong letters of recommendation</li>
+                                        <li>Develop a compelling personal statement</li>
+                                        <li>Gain legal experience through internships</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-law btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Legal Fields
+                        </button>
+                        <button class="btn btn-outline-warning btn-lg" onclick="showResources('courses')">
+                            <i class="fas fa-book me-2"></i>Learning Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1>Some YouTube Videos Related to Law Field</h1>
+<h3><a href="https://youtu.be/dIWTrKI_4xc?si=CfWzmEZpjJxqfjq2" target="_blank">1. Different Types of Lawyers</a></h3>
+<h3><a href="https://youtu.be/fMTLYRedBwo?si=xHvoingn1egRfqMA" target="_blank">2. A Day in the Life of a Corporate Lawyer</a></h3>
+<h3><a href="https://youtu.be/KMkG0nKwqGA?si=9g55iduAFVQ1OiB8" target="_blank">3. How to Prepare for Law School</a></h3>
+<h3><a href="https://youtu.be/IYNlrSPqBRE?si=ddVC5OyspOyZ7NXN" target="_blank">4. Criminal Law Explained</a></h3>
+<h3><a href="https://youtu.be/Ay9fZMUPCnE?si=TSWH7zWY3jgVYgcp" target="_blank">5. Intellectual Property Law Basics</a></h3>
+
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping students discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('courses')">Skill Development</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Books & Publications</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Support Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2025 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Legal Field Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Legal Career Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel">Help Center - Legal Career Guidance</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="help-step">
+                    <span class="help-step-number">1</span>
+                    <h5>Understanding Your Assessment Results</h5>
+                    <p>Your assessment indicates strong potential for a legal career based on your analytical thinking, communication skills, and ethical reasoning abilities.</p>
+                </div>
+                <div class="help-step">
+                    <span class="help-step-number">2</span>
+                    <h5>Next Steps for Legal Career Development</h5>
+                    <p>Focus on developing the specific skills highlighted in your personalized development plan. Consider joining debate teams, mock trial programs, or pre-law societies.</p>
+                </div>
+                <div class="help-step">
+                    <span class="help-step-number">3</span>
+                    <h5>Exploring Legal Specializations</h5>
+                    <p>Research different legal fields to identify which areas align with your interests and strengths. Consider informational interviews with practicing attorneys.</p>
+                </div>
+                <div class="help-step">
+                    <span class="help-step-number">4</span>
+                    <h5>Preparing for Law School</h5>
+                    <p>Maintain a strong GPA, prepare for the LSAT, and gain relevant experience through internships or paralegal work.</p>
+                </div>
+                <div class="contact-support">
+                    <h5><i class="fas fa-headset me-2"></i>Need More Help?</h5>
+                    <p>Contact our career advisors for personalized guidance on your legal career path.</p>
+                    <button class="btn btn-law" onclick="contactAdvisor()">Contact Career Advisor</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Function to show field details
+    function showFieldDetails(field) {
+        const modalBody = document.getElementById('fieldModalBody');
+        let content = '';
+        
+        switch(field) {
+            case 'corporate':
+                content = `
+                    <h4>Corporate Law</h4>
+                    <p>Corporate lawyers advise businesses on their legal rights, responsibilities, and obligations. They handle matters such as mergers and acquisitions, corporate governance, compliance, and contract negotiations.</p>
+                    <h5>Key Skills to Develop:</h5>
+                    <ul>
+                        <li><strong>Contract Law:</strong> Understanding of contract formation, interpretation, and enforcement</li>
+                        <li><strong>Business Acumen:</strong> Knowledge of business operations and financial concepts</li>
+                        <li><strong>Negotiation:</strong> Ability to negotiate favorable terms for clients</li>
+                        <li><strong>Regulatory Compliance:</strong> Understanding of industry-specific regulations</li>
+                    </ul>
+                    <h5>Educational Path:</h5>
+                    <p>JD degree with coursework in corporate law, securities regulation, and business organizations. Consider an MBA for enhanced business understanding.</p>
+                    <h5>Career Outlook:</h5>
+                    <p>Corporate lawyers are in demand across various industries. Starting salaries at large firms can exceed $200,000, with partnership potential after several years.</p>
+                `;
+                break;
+            case 'criminal':
+                content = `
+                    <h4>Criminal Law</h4>
+                    <p>Criminal lawyers either prosecute individuals accused of crimes (as district attorneys) or defend them (as defense attorneys). This field involves courtroom litigation and case preparation.</p>
+                    <h5>Key Skills to Develop:</h5>
+                    <ul>
+                        <li><strong>Trial Advocacy:</strong> Courtroom presentation and argumentation skills</li>
+                        <li><strong>Evidence Rules:</strong> Understanding of rules governing admissible evidence</li>
+                        <li><strong>Persuasion:</strong> Ability to persuade judges and juries</li>
+                        <li><strong>Criminal Procedure:</strong> Knowledge of arrest, bail, and trial procedures</li>
+                    </ul>
+                    <h5>Educational Path:</h5>
+                    <p>JD degree with clinical experience in criminal law. Participation in moot court and mock trial competitions is highly beneficial.</p>
+                    <h5>Career Outlook:</h5>
+                    <p>Public defenders and prosecutors are always in demand. Private criminal defense can be lucrative, especially for high-profile cases.</p>
+                `;
+                break;
+            case 'family':
+                content = `
+                    <h4>Family Law</h4>
+                    <p>Family lawyers handle matters such as divorce, child custody, adoption, and domestic violence cases. This field requires sensitivity and strong interpersonal skills.</p>
+                    <h5>Key Skills to Develop:</h5>
+                    <ul>
+                        <li><strong>Empathy:</strong> Ability to work with clients during emotionally difficult times</li>
+                        <li><strong>Mediation:</strong> Skills in negotiating settlements outside of court</li>
+                        <li><strong>Child Advocacy:</strong> Understanding of children's rights and best interests</li>
+                        <li><strong>Domestic Relations:</strong> Knowledge of family law statutes and precedents</li>
+                    </ul>
+                    <h5>Educational Path:</h5>
+                    <p>JD degree with family law coursework and clinical experience. Certification in mediation can be beneficial.</p>
+                    <h5>Career Outlook:</h5>
+                    <p>Family law practices can be established as solo practitioners or in small firms. This field offers consistent demand as family issues are common.</p>
+                `;
+                break;
+            case 'intellectual':
+                content = `
+                    <h4>Intellectual Property Law</h4>
+                    <p>IP lawyers protect creations of the mind, including inventions, literary and artistic works, designs, symbols, names, and images used in commerce.</p>
+                    <h5>Key Skills to Develop:</h5>
+                    <ul>
+                        <li><strong>Patent Law:</strong> Understanding of patent application and prosecution (technical background often required)</li>
+                        <li><strong>Copyright:</strong> Knowledge of copyright registration and infringement issues</li>
+                        <li><strong>Trademark:</strong> Expertise in trademark search, registration, and enforcement</li>
+                        <li><strong>Technical Understanding:</strong> Ability to comprehend complex technical concepts</li>
+                    </ul>
+                    <h5>Educational Path:</h5>
+                    <p>JD degree with IP specialization. For patent law, a technical undergraduate degree (engineering, science) is typically required.</p>
+                    <h5>Career Outlook:</h5>
+                    <p>IP law is growing rapidly with technological advancement. Specialized IP attorneys command high salaries, especially those with technical backgrounds.</p>
+                `;
+                break;
+        }
+        
+        modalBody.innerHTML = content;
+        const fieldModal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        fieldModal.show();
+    }
+    
+    // Function to show resources
+    function showResources(type) {
+        const modalBody = document.getElementById('resourcesModalBody');
+        let content = '';
+        
+        switch(type) {
+            case 'courses':
+                content = `
+                    <h4>Legal Skill Development Courses</h4>
+                    <div class="mb-4">
+                        <h5>LSAT Preparation</h5>
+                        <ul>
+                            <li><strong>Khan Academy LSAT Prep:</strong> Free comprehensive LSAT preparation with personalized practice</li>
+                            <li><strong>7Sage:</strong> Video explanations for every LSAT question, analytics, and study planning</li>
+                            <li><strong>Blueprint LSAT Prep:</strong> Live online classes with expert instructors</li>
+                            <li><strong>LSAT Max:</strong> Mobile-focused preparation with on-demand instruction</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Legal Research & Writing</h5>
+                        <ul>
+                            <li><strong>Coursera - Introduction to Legal Research:</strong> Basic legal research techniques</li>
+                            <li><strong>edX - Legal Writing and Research:</strong> Foundation skills for legal practice</li>
+                            <li><strong>Westlaw/LexisNexis Training:</strong> Free training on major legal research platforms</li>
+                            <li><strong>CALI Lessons:</strong> Interactive lessons on various legal topics</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Critical Thinking Development</h5>
+                        <ul>
+                            <li><strong>edX - Critical Thinking & Problem Solving:</strong> Develop analytical reasoning skills</li>
+                            <li><strong>FutureLearn - Logical and Critical Thinking:</strong> Improve decision-making abilities</li>
+                            <li><strong>LSAT Logical Reasoning Practice:</strong> Specific practice for law school admission test</li>
+                            <li><strong>Mock Trial Programs:</strong> Hands-on experience with legal argumentation</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'lsat':
+                content = `
+                    <h4>LSAT Preparation Resources</h4>
+                    <p>The Law School Admission Test (LSAT) is a critical component of law school applications. Here are recommended preparation resources:</p>
+                    
+                    <div class="mb-4">
+                        <h5>Free Resources</h5>
+                        <ul>
+                            <li><strong>Khan Academy Official LSAT Prep:</strong> Partnership with LSAC offering free official practice tests</li>
+                            <li><strong>LSAC LawHub:</strong> Free access to official LSAT prep tests</li>
+                            <li><strong>7Sage Free Trial:</strong> Access to basic curriculum and analytics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Paid Preparation Courses</h5>
+                        <ul>
+                            <li><strong>7Sage Ultimate+:</strong> $699 - Most comprehensive with video explanations</li>
+                            <li><strong>Blueprint LSAT Live Online:</strong> $1,299 - Live instruction with structured curriculum</li>
+                            <li><strong>Princeton Review LSAT 165+:</strong> $1,499 - Guaranteed score improvement</li>
+                            <li><strong>Manhattan Prep LSAT Complete:</strong> $1,199 - Comprehensive course with expert instructors</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Study Timeline Recommendations</h5>
+                        <ul>
+                            <li><strong>3-month intensive:</strong> 15-20 hours per week for high scorers</li>
+                            <li><strong>6-month standard:</strong> 10-15 hours per week for balanced preparation</li>
+                            <li><strong>9-month extended:</strong> 5-10 hours per week for those with busy schedules</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'research':
+                content = `
+                    <h4>Legal Research & Writing Resources</h4>
+                    <p>Strong research and writing skills are essential for success in law school and legal practice.</p>
+                    
+                    <div class="mb-4">
+                        <h5>Books</h5>
+                        <ul>
+                            <li><strong>"Legal Writing in Plain English" by Bryan Garner:</strong> Classic guide to clear legal writing</li>
+                            <li><strong>"Point Made: How to Write Like the Nation's Top Advocates" by Ross Guberman:</strong> Analysis of effective legal writing techniques</li>
+                            <li><strong>"The Bluebook: A Uniform System of Citation":</strong> Essential reference for legal citation</li>
+                            <li><strong>"Making Your Case: The Art of Persuading Judges" by Antonin Scalia and Bryan Garner:</strong> Persuasive writing techniques</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Online Courses</h5>
+                        <ul>
+                            <li><strong>Coursera - English for Legal Professionals:</strong> Language skills for legal contexts</li>
+                            <li><strong>edX - Legal Research & Writing for U.S. Law Students:</strong> Foundation skills for law school</li>
+                            <li><strong>CALI Lessons - Legal Research:</strong> Interactive tutorials on research methods</li>
+                            <li><strong>Westlaw/LexisNexis Certification Programs:</strong> Official training on research platforms</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Practice Resources</h5>
+                        <ul>
+                            <li><strong>Case Briefing Practice:</strong> Analyze and summarize court opinions</li>
+                            <li><strong>Legal Memorandum Writing:</strong> Practice writing legal analysis documents</li>
+                            <li><strong>Moot Court Competitions:</strong> Develop appellate advocacy skills</li>
+                            <li><strong>Legal Writing Centers:</strong> Many law schools offer writing support services</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+        }
+        
+        modalBody.innerHTML = content;
+        const resourcesModal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        resourcesModal.show();
+    }
+    
+    // Function to show skill-specific resources
+    function showSkillResources(skill) {
+        const modalBody = document.getElementById('resourcesModalBody');
+        let content = '';
+        
+        switch(skill) {
+            case 'analytical':
+                content = `
+                    <h4>Analytical & Critical Thinking Resources</h4>
+                    <p>Develop the logical reasoning skills essential for legal analysis and argumentation.</p>
+                    
+                    <div class="mb-4">
+                        <h5>Books</h5>
+                        <ul>
+                            <li><strong>"Thinking Like a Lawyer: A New Introduction to Legal Reasoning" by Frederick Schauer</strong></li>
+                            <li><strong>"The Legal Analyst: A Toolkit for Thinking About the Law" by Ward Farnsworth</strong></li>
+                            <li><strong>"Critical Thinking" by Brooke Noel Moore and Richard Parker</strong></li>
+                            <li><strong>"The Tools of Argument: How the Best Lawyers Think, Argue, and Win" by Joel P. Trachtman</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Practice Resources</h5>
+                        <ul>
+                            <li><strong>LSAT Logical Reasoning Sections:</strong> Excellent practice for legal analysis</li>
+                            <li><strong>Case Briefing:</strong> Analyze court opinions to identify legal reasoning</li>
+                            <li><strong>Debate Clubs:</strong> Develop argumentation and refutation skills</li>
+                            <li><strong>Logic Puzzles:</strong> Improve deductive reasoning abilities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Online Courses</h5>
+                        <ul>
+                            <li><strong>edX - Critical Thinking & Problem Solving</strong></li>
+                            <li><strong>Coursera - Introduction to Logic and Critical Thinking</strong></li>
+                            <li><strong>FutureLearn - Logical and Critical Thinking</strong></li>
+                            <li><strong>Khan Academy - LSAT Logical Reasoning</strong></li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'research':
+                content = `
+                    <h4>Legal Research & Writing Resources</h4>
+                    <p>Master the research and writing skills that form the foundation of legal practice.</p>
+                    
+                    <div class="mb-4">
+                        <h5>Essential Resources</h5>
+                        <ul>
+                            <li><strong>Westlaw/LexisNexis Training:</strong> Free tutorials on major legal research platforms</li>
+                            <li><strong>"Legal Research Demystified" by Eric Voigt:</strong> Step-by-step research guide</li>
+                            <li><strong>"The Process of Legal Research" by Christina L. Kunz et al.:</strong> Comprehensive research methodology</li>
+                            <li><strong>CALI Lessons:</strong> Interactive legal research tutorials</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Writing Improvement</h5>
+                        <ul>
+                            <li><strong>"Legal Writing in Plain English" by Bryan Garner</strong></li>
+                            <li><strong>"Writing to Win" by Mark Herrmann</strong></li>
+                            <li><strong>Legal Writing Institutes:</strong> Many law schools offer summer programs</li>
+                            <li><strong>Writing Centers:</strong> Utilize university writing support services</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'communication':
+                content = `
+                    <h4>Oral Communication & Advocacy Resources</h4>
+                    <p>Develop the speaking and persuasion skills essential for courtroom advocacy and client relations.</p>
+                    
+                    <div class="mb-4">
+                        <h5>Public Speaking Resources</h5>
+                        <ul>
+                            <li><strong>Toastmasters International:</strong> Practice public speaking in supportive environment</li>
+                            <li><strong>Debate Clubs/Teams:</strong> Develop argumentation and refutation skills</li>
+                            <li><strong>Mock Trial Programs:</strong> Hands-on experience with courtroom speaking</li>
+                            <li><strong>Moot Court Competitions:</strong> Appellate advocacy practice</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5>Books on Persuasion</h5>
+                        <ul>
+                            <li><strong>"Thank You for Arguing" by Jay Heinrichs</strong></li>
+                            <li><strong>"Influence: The Psychology of Persuasion" by Robert Cialdini</strong></li>
+                            <li><strong>"Win Your Case" by Gerry Spence</strong></li>
+                            <li><strong>"The Articulate Advocate" by Brian K. Johnson and Marsha Hunter</strong></li>
+                        </ul>
+                    </div>
+                `;
+                break;
+        }
+        
+        modalBody.innerHTML = content;
+        const resourcesModal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        resourcesModal.show();
+    }
+    
+    // Function to show field selection
+    function showFieldSelection() {
+        alert('Explore different legal fields to find your specialization. Consider your interests, strengths, and career goals when selecting a legal path.');
+    }
+    
+    // Function to contact advisor
+    function contactAdvisor() {
+        alert('A career advisor will contact you within 24 hours to discuss your legal career path. Thank you for reaching out!');
+        const helpModal = bootstrap.Modal.getInstance(document.getElementById('helpModal'));
+        helpModal.hide();
+    }
+</script>
+</body>
+</html>

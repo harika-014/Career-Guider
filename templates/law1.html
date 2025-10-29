@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Career Guidance | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #f8f9fc;
+            --accent-color: #36b9cc;
+            --text-color: #5a5c69;
+            --dark-color: #224abe;
+            --law-color: #1a237e;
+        }
+        
+        body {
+            padding-top: 70px;
+            background-color: #f8f9fa;
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+        }
+        
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid #fff;
+            transition: transform 0.3s;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .law-hero {
+            background: linear-gradient(rgba(26, 35, 126, 0.85), rgba(26, 35, 126, 0.9)), url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 0;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Card Styles */
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--law-color), #283593);
+            color: white;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 600;
+        }
+        
+        /* Law Specific Styles */
+        .law-badge {
+            background: linear-gradient(135deg, var(--law-color), #283593);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .pathway-card {
+            border-left: 4px solid var(--law-color);
+        }
+        
+        .specialization-card {
+            border-top: 3px solid var(--law-color);
+        }
+        
+        .progress {
+            height: 10px;
+            margin-bottom: 20px;
+        }
+        
+        /* Roadmap Styles */
+        .roadmap-container {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+        
+        .roadmap-container::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--law-color);
+        }
+        
+        .roadmap-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--law-color);
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--law-color);
+        }
+        
+        /* Button Styles */
+        .btn-law {
+            background: linear-gradient(to right, var(--law-color), #283593);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 600;
+        }
+        
+        .btn-law:hover {
+            background: linear-gradient(to right, #283593, var(--law-color));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Resource Cards */
+        .resource-card {
+            height: 100%;
+            transition: all 0.3s;
+        }
+        
+        .resource-card:hover {
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+        }
+        
+        /* Stats */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--law-color);
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        /* Modal Styles */
+        .modal-content {
+            border-radius: 15px;
+            border: none;
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--law-color), #283593);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+        
+        /* Law Field Colors */
+        .criminal-law { --field-color: #c62828; }
+        .corporate-law { --field-color: #283593; }
+        .family-law { --field-color: #ad1457; }
+        .environmental-law { --field-color: #2e7d32; }
+        .intellectual-property { --field-color: #4527a0; }
+        .international-law { --field-color: #00695c; }
+        
+        .field-badge {
+            background-color: var(--field-color);
+            color: white;
+        }
+        
+        /* Law school ranking styles */
+        .law-school-rank {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--law-color);
+            margin-right: 15px;
+        }
+        
+        .law-school-card {
+            transition: all 0.3s ease;
+        }
+        
+        .law-school-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Help Button Animation */
+        #helpBtn {
+            transition: all 0.3s ease;
+        }
+        
+        #helpBtn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+        }
+        
+        /* Help Modal Styles */
+        .help-step {
+            border-left: 4px solid var(--law-color);
+            padding-left: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .help-step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--law-color);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .contact-support {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        /* Footer Links */
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-balance-scale me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-info me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Future Legal Professional!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Law Hero Section -->
+    <div class="law-hero rounded">
+        <div class="container">
+            <div class="law-badge">
+                <i class="fas fa-gavel me-2"></i>Legal Profession
+            </div>
+            <h1 class="display-4 fw-bold">Law Career Pathways</h1>
+            <p class="lead">Your analytical mind and passion for justice make you an ideal candidate for a rewarding career in law.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Learning Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Legal Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">$70K-$190K</div>
+                    <div class="stat-label">Average Starting Salary</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">8%</div>
+                    <div class="stat-label">Job Growth (2022-2032)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">89%</div>
+                    <div class="stat-label">Bar Passage Rate (Top Schools)</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">7 Years</div>
+                    <div class="stat-label">Typical Education Path</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Law Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Legal Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 criminal-law">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Criminal Law</span>
+                                    <h5 class="card-title">Criminal Law</h5>
+                                    <p class="card-text">Defend or prosecute individuals accused of crimes, working as defense attorneys, prosecutors, or public defenders.</p>
+                                    <ul class="mb-3">
+                                        <li>Courtroom litigation experience</li>
+                                        <li>Public service opportunities</li>
+                                        <li>Diverse case types</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showFieldDetails('criminal-law')">Explore Criminal Law</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 corporate-law">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Corporate Law</span>
+                                    <h5 class="card-title">Corporate Law</h5>
+                                    <p class="card-text">Advise businesses on legal rights, responsibilities, and obligations, including mergers, acquisitions, and compliance.</p>
+                                    <ul class="mb-3">
+                                        <li>High earning potential</li>
+                                        <li>Corporate environment</li>
+                                        <li>Transaction-focused work</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showFieldDetails('corporate-law')">Explore Corporate Law</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 family-law">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Family Law</span>
+                                    <h5 class="card-title">Family Law</h5>
+                                    <p class="card-text">Handle legal matters related to family relationships, including divorce, child custody, and adoption cases.</p>
+                                    <ul class="mb-3">
+                                        <li>Client-focused practice</li>
+                                        <li>Emotionally rewarding work</li>
+                                        <li>Mediation opportunities</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showFieldDetails('family-law')">Explore Family Law</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 environmental-law">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Environmental Law</span>
+                                    <h5 class="card-title">Environmental Law</h5>
+                                    <p class="card-text">Focus on regulations and policies related to environmental protection, conservation, and sustainability.</p>
+                                    <ul class="mb-3">
+                                        <li>Policy advocacy opportunities</li>
+                                        <li>Growing field</li>
+                                        <li>Public interest focus</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showFieldDetails('environmental-law')">Explore Environmental Law</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 intellectual-property">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Intellectual Property</span>
+                                    <h5 class="card-title">Intellectual Property Law</h5>
+                                    <p class="card-text">Protect creative works and inventions through copyright, trademark, and patent law.</p>
+                                    <ul class="mb-3">
+                                        <li>Technology-focused</li>
+                                        <li>High demand field</li>
+                                        <li>Innovation protection</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showFieldDetails('intellectual-property')">Explore IP Law</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 international-law">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">International Law</span>
+                                    <h5 class="card-title">International Law</h5>
+                                    <p class="card-text">Handle legal issues between nations, multinational corporations, and international organizations.</p>
+                                    <ul class="mb-3">
+                                        <li>Global opportunities</li>
+                                        <li>Diplomatic relations</li>
+                                        <li>Cross-cultural practice</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showFieldDetails('international-law')">Explore International Law</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Top Law Schools Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-university me-2"></i>Top Law Schools</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Law School 1 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card law-school-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="law-school-rank">#1</span>
+                                        <h5 class="card-title mb-0">Yale Law School</h5>
+                                    </div>
+                                    <p class="card-text">Consistently ranked as the top law school with exceptional academic programs and prestigious faculty.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">New Haven, CT</span>
+                                        <span class="badge bg-success">Acceptance: 6.9%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Constitutional Law, Legal Theory, Public Interest Law</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showLawSchoolDetails('yale')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Law School 2 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card law-school-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="law-school-rank">#2</span>
+                                        <h5 class="card-title mb-0">Stanford Law School</h5>
+                                    </div>
+                                    <p class="card-text">Renowned for its innovation and technology focus with strong connections to Silicon Valley.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Stanford, CA</span>
+                                        <span class="badge bg-success">Acceptance: 6.3%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Intellectual Property, Corporate Law, Environmental Law</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showLawSchoolDetails('stanford')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Law School 3 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card law-school-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="law-school-rank">#3</span>
+                                        <h5 class="card-title mb-0">Harvard Law School</h5>
+                                    </div>
+                                    <p class="card-text">One of the most prestigious law schools with extensive resources and global recognition.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Cambridge, MA</span>
+                                        <span class="badge bg-success">Acceptance: 10.1%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> International Law, Corporate Law, Public Interest Law</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showLawSchoolDetails('harvard')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Law School 4 -->
+                        <div class="col-md-6 mb-4">
+                            <div class="card law-school-card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <span class="law-school-rank">#4</span>
+                                        <h5 class="card-title mb-0">University of Chicago Law School</h5>
+                                    </div>
+                                    <p class="card-text">Known for its rigorous academic environment and strong emphasis on law and economics.</p>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary me-1">Chicago, IL</span>
+                                        <span class="badge bg-success">Acceptance: 17.5%</span>
+                                    </div>
+                                    <p><strong>Top Programs:</strong> Law & Economics, Constitutional Law, Corporate Law</p>
+                                    <button class="btn btn-sm btn-outline-primary" onclick="showLawSchoolDetails('uchicago')">More Info</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button class="btn btn-law" onclick="showAllLawSchools()">
+                            <i class="fas fa-list me-2"></i>View More Law Schools
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Specializations -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-star me-2"></i>Legal Specializations</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Litigation</h5>
+                                    <p class="card-text">Specialize in representing clients in court proceedings, including trials, hearings, and depositions.</p>
+                                    <span class="badge bg-primary mb-2">Courtroom Focus</span>
+                                    <span class="badge bg-success">High Demand</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tax Law</h5>
+                                    <p class="card-text">Focus on tax codes and regulations, helping individuals and businesses with tax planning and compliance.</p>
+                                    <span class="badge bg-primary mb-2">Technical Expertise</span>
+                                    <span class="badge bg-info">High Earning</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card specialization-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Health Law</h5>
+                                    <p class="card-text">Navigate the complex regulations governing healthcare providers, patients, and medical innovations.</p>
+                                    <span class="badge bg-success mb-2">Growing Field</span>
+                                    <span class="badge bg-warning">Regulatory Focus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Legal Education Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: Undergraduate Degree (4 years)</h5>
+                            <p>Complete a bachelor's degree in any field, maintaining a strong GPA. Consider majors that develop critical thinking and writing skills.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: LSAT Preparation & Exam</h5>
+                            <p>Prepare for and take the Law School Admission Test (LSAT), aiming for a competitive score to strengthen your application.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Law School (3 years)</h5>
+                            <p>Complete a Juris Doctor (JD) program, focusing on building a strong academic record and gaining practical experience through clinics and internships.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: Bar Examination</h5>
+                            <p>Prepare for and pass the bar examination in the state where you wish to practice law.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: Entry-Level Legal Position</h5>
+                            <p>Begin your career as an associate at a law firm, government attorney, public defender, or in-house counsel.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Specialization & Advancement (2-5 years)</h5>
+                            <p>Gain experience, develop expertise in a specific area of law, and advance to partnership, leadership roles, or specialized practice.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Learning Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">LSAT Preparation</h5>
+                                    <ul>
+                                        <li>Khan Academy - Free LSAT Prep</li>
+                                        <li>7Sage - Comprehensive LSAT Courses</li>
+                                        <li>Blueprint LSAT Prep - Live and Self-Paced Options</li>
+                                        <li>LSAT Demon - Adaptive Learning Platform</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showResources('lsat')">Explore LSAT Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Legal Reading</h5>
+                                    <ul>
+                                        <li>"Getting to Maybe" by Jeremy R. Paul & Richard Michael Fischl</li>
+                                        <li>"1L of a Ride" by Andrew J. McClurg</li>
+                                        <li>"The Bramble Bush" by Karl N. Llewellyn</li>
+                                        <li>"Making Your Case" by Antonin Scalia & Bryan A. Garner</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showResources('books')">View Reading List</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Legal Organizations</h5>
+                                    <ul>
+                                        <li>American Bar Association (ABA)</li>
+                                        <li>National Association for Law Placement (NALP)</li>
+                                        <li>Law School Admission Council (LSAC)</li>
+                                        <li>Federal Bar Association</li>
+                                    </ul>
+                                    <button class="btn btn-law" onclick="showResources('orgs')">Explore Organizations</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Next Steps</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Short-Term Goals (0-6 months)</h5>
+                                    <ul>
+                                        <li>Research law schools and their requirements</li>
+                                        <li>Begin LSAT preparation</li>
+                                        <li>Connect with current law students or attorneys</li>
+                                        <li>Gain experience through legal internships or paralegal work</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Long-Term Goals (1-3 years)</h5>
+                                    <ul>
+                                        <li>Achieve a competitive LSAT score</li>
+                                        <li>Secure admission to a law school</li>
+                                        <li>Excel in first-year law courses</li>
+                                        <li>Secure a summer associate position after 1L year</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-law btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Legal Fields
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg" onclick="showResources('lsat')">
+                            <i class="fas fa-graduation-cap me-2"></i>LSAT Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping students discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('lsat')">LSAT Preparation</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Legal Reading</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Professional Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Added navigation links -->
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="#" onclick="loadContent('about')">About</a>
+            <a href="#" onclick="loadContent('contact')">Contact Us</a>
+        </div>
+        
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2023 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Legal Field Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Legal Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Law Schools Modal -->
+<div class="modal fade" id="lawSchoolsModal" tabindex="-1" aria-labelledby="lawSchoolsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="lawSchoolsModalLabel">Law Schools</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="lawSchoolsModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel"><i class="fas fa-question-circle me-2"></i>Law Career Guidance Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>How to Use This Law Career Guide</h4>
+                <p>This personalized guide is designed to help you explore legal career options based on your interests. Here's how to make the most of it:</p>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">1</span> Explore Legal Fields</h5>
+                    <p>Browse through the different legal practice areas to find ones that match your interests and skills.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">2</span> Review Education Requirements</h5>
+                    <p>Understand the educational path required for a legal career, including undergraduate preparation, law school, and bar admission.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">3</span> Check Law School Information</h5>
+                    <p>Research top law schools and their specializations to find programs that align with your career goals.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">4</span> Utilize Resources</h5>
+                    <p>Take advantage of the recommended LSAT preparation materials, reading lists, and professional organizations.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">5</span> Plan Your Next Steps</h5>
+                    <p>Use the roadmap and goal-setting features to create a personalized plan for your legal career journey.</p>
+                </div>
+                
+                <div class="contact-support mt-4">
+                    <h5>Need More Help?</h5>
+                    <p>If you have specific questions about pursuing a legal career, contact our career advisors:</p>
+                    <p><i class="fas fa-envelope me-2"></i>Email: <a href="mailto:law-careers@careerguider.com">law-careers@careerguider.com</a></p>
+                    <p><i class="fas fa-phone me-2"></i>Phone: (800) 555-LEGAL</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got It!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap & jQuery JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Function to show field details in modal
+    function showFieldDetails(field) {
+        let title, content;
+        
+        switch(field) {
+            case 'criminal-law':
+                title = 'Criminal Law';
+                content = `
+                    <h4>Criminal Law Overview</h4>
+                    <p>Criminal law involves prosecuting or defending individuals accused of committing crimes. This field offers opportunities to work as a prosecutor, public defender, or private defense attorney.</p>
+                    
+                    <h5>Career Paths</h5>
+                    <ul>
+                        <li>Prosecutor (District Attorney, US Attorney)</li>
+                        <li>Public Defender</li>
+                        <li>Private Criminal Defense Attorney</li>
+                        <li>Judge</li>
+                    </ul>
+                    
+                    <h5>Required Skills</h5>
+                    <ul>
+                        <li>Strong oral advocacy</li>
+                        <li>Analytical thinking</li>
+                        <li>Emotional resilience</li>
+                        <li>Investigative skills</li>
+                    </ul>
+                    
+                    <h5>Typical Work Environment</h5>
+                    <p>Criminal lawyers often work in fast-paced environments, including courtrooms, law offices, and correctional facilities. They may handle heavy caseloads and work long hours, especially when preparing for trial.</p>
+                    
+                    <h5>Salary Range</h5>
+                    <p>Public defenders and prosecutors typically start around $50,000-$70,000, while experienced private criminal defense attorneys can earn $100,000-$200,000 or more depending on their reputation and case load.</p>
+                `;
+                break;
+                
+            case 'corporate-law':
+                title = 'Corporate Law';
+                content = `
+                    <h4>Corporate Law Overview</h4>
+                    <p>Corporate lawyers advise businesses on their legal rights, responsibilities, and obligations. They handle matters such as mergers and acquisitions, corporate governance, and regulatory compliance.</p>
+                    
+                    <h5>Career Paths</h5>
+                    <ul>
+                        <li>Law Firm Associate/Partner</li>
+                        <li>In-House Counsel</li>
+                        <li>Compliance Officer</li>
+                        <li>Transaction Attorney</li>
+                    </ul>
+                    
+                    <h5>Required Skills</h5>
+                    <ul>
+                        <li>Attention to detail</li>
+                        <li>Business acumen</li>
+                        <li>Negotiation skills</li>
+                        <li>Contract drafting</li>
+                    </ul>
+                    
+                    <h5>Typical Work Environment</h5>
+                    <p>Corporate lawyers typically work in law firms or corporate legal departments. The work often involves long hours, especially when closing major transactions, but can be financially rewarding.</p>
+                    
+                    <h5>Salary Range</h5>
+                    <p>Starting salaries at large firms range from $190,000-$215,000, with partners earning $500,000 to several million dollars annually. In-house counsel salaries vary by company size but typically range from $100,000-$300,000+.</p>
+                `;
+                break;
+                
+            // Additional field cases would go here
+            default:
+                title = 'Legal Field';
+                content = `<p>Details about this legal field will be displayed here.</p>`;
+        }
+        
+        document.getElementById('fieldModalLabel').textContent = title;
+        document.getElementById('fieldModalBody').innerHTML = content;
+        
+        // Show the modal
+        var fieldModal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        fieldModal.show();
+    }
+    
+    // Function to show resources in modal
+    function showResources(type) {
+        let title, content;
+        
+        switch(type) {
+            case 'lsat':
+                title = 'LSAT Preparation Resources';
+                content = `
+                    <h4>Top LSAT Preparation Resources</h4>
+                    <p>The Law School Admission Test (LSAT) is a critical component of law school applications. Here are the best resources to help you prepare:</p>
+                    
+                    <h5>Free Resources</h5>
+                    <ul>
+                        <li><strong>Khan Academy LSAT Prep:</strong> Official free prep developed in partnership with LSAC</li>
+                        <li><strong>LSAC LawHub:</strong> Free practice tests and questions</li>
+                        <li><strong>7Sage Free Trial:</strong> Access to some premium features for free</li>
+                    </ul>
+                    
+                    <h5>Paid Courses & Materials</h5>
+                    <ul>
+                        <li><strong>7Sage:</strong> Comprehensive online course with extensive video explanations ($69-$699)</li>
+                        <li><strong>Blueprint LSAT Prep:</strong> Live and self-paced options with detailed analytics ($799-$1,699)</li>
+                        <li><strong>LSAT Demon:</strong> Adaptive learning platform with daily practice ($95-$195/month)</li>
+                        <li><strong>Powerscore Bibles:</strong> Highly regarded book series for self-study ($40-$50 per book)</li>
+                    </ul>
+                    
+                    <h5>Practice Tests</h5>
+                    <ul>
+                        <li>Official LSAC PrepTests (available in LawHub)</li>
+                        <li>Cambridge LSAT packets by question type</li>
+                        <li>Manhattan Prep's 10 Actual Practice Tests</li>
+                    </ul>
+                    
+                    <h5>Study Plan Recommendations</h5>
+                    <p>Most students benefit from 3-6 months of dedicated study, spending 10-20 hours per week on preparation. Focus on:</p>
+                    <ul>
+                        <li>Mastering logical reasoning question types</li>
+                        <li>Developing reading comprehension strategies</li>
+                        <li>Practicing analytical games (until the June 2024 test)</li>
+                        <li>Taking timed practice tests regularly</li>
+                    </ul>
+                `;
+                break;
+                
+            case 'books':
+                title = 'Recommended Legal Reading';
+                content = `
+                    <h4>Essential Reading for Aspiring Lawyers</h4>
+                    <p>These books will help you understand the legal profession and prepare for law school:</p>
+                    
+                    <h5>Before Law School</h5>
+                    <ul>
+                        <li><strong>"The Bramble Bush" by Karl N. Llewellyn:</strong> Classic introduction to law school and legal thinking</li>
+                        <li><strong>"1L of a Ride" by Andrew J. McClurg:</strong> Practical guide to the first year of law school</li>
+                        <li><strong>"Getting to Maybe" by Jeremy R. Paul & Richard Michael Fischl:</strong> How to excel on law school exams</li>
+                        <li><strong>"The Nine" by Jeffrey Toobin:</strong> Inside look at the Supreme Court</li>
+                    </ul>
+                    
+                    <h5>Legal Reasoning & Writing</h5>
+                    <ul>
+                        <li><strong>"Making Your Case" by Antonin Scalia & Bryan A. Garner:</strong> Art of persuasive legal argument</li>
+                        <li><strong>"Point Made" by Ross Guberman:</strong> How to write like a top advocate</li>
+                        <li><strong>"Legal Writing in Plain English" by Bryan A. Garner:</strong> Guide to clear legal writing</li>
+                    </ul>
+                    
+                    <h5>Understanding the Profession</h5>
+                    <ul>
+                        <li><strong>"The Lawyer's Career Change Handbook" by Hindi Greenberg:</strong> Exploring alternative legal careers</li>
+                        <li><strong>"Tomorrow's Lawyers" by Richard Susskind:</strong> Future of legal services</li>
+                        <li><strong>"One L" by Scott Turow:</strong> Memoir of the first year at Harvard Law School</li>
+                    </ul>
+                `;
+                break;
+                
+            default:
+                title = 'Legal Resources';
+                content = `<p>Resources will be displayed here.</p>`;
+        }
+        
+        document.getElementById('resourcesModalLabel').textContent = title;
+        document.getElementById('resourcesModalBody').innerHTML = content;
+        
+        // Show the modal
+        var resourcesModal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        resourcesModal.show();
+    }
+    
+    // Function to show law school details
+    function showLawSchoolDetails(school) {
+        let title, content;
+        
+        switch(school) {
+            case 'yale':
+                title = 'Yale Law School';
+                content = `
+                    <h4>Yale Law School Overview</h4>
+                    <p>Yale Law School is consistently ranked as the top law school in the United States, known for its exceptional academic programs, prestigious faculty, and small class sizes.</p>
+                    
+                    <h5>Key Information</h5>
+                    <ul>
+                        <li><strong>Location:</strong> New Haven, Connecticut</li>
+                        <li><strong>Acceptance Rate:</strong> 6.9%</li>
+                        <li><strong>Median LSAT:</strong> 175</li>
+                        <li><strong>Median GPA:</strong> 3.94</li>
+                        <li><strong>Student-Faculty Ratio:</strong> 4.2:1</li>
+                    </ul>
+                    
+                    <h5>Notable Programs</h5>
+                    <ul>
+                        <li>Constitutional Law</li>
+                        <li>Legal Theory and Philosophy</li>
+                        <li>Public Interest Law</li>
+                        <li>International Human Rights Law</li>
+                    </ul>
+                    
+                    <h5>Employment Outcomes</h5>
+                    <ul>
+                        <li>98.5% employment within 10 months of graduation</li>
+                        <li>60% go to law firms (mostly with 500+ attorneys)</li>
+                        <li>25% pursue judicial clerkships</li>
+                        <li>10% enter public interest positions</li>
+                    </ul>
+                    
+                    <h5>Application Tips</h5>
+                    <p>Yale looks for exceptional academic credentials along with demonstrated commitment to public service or unique personal experiences. The personal statement and recommendations are particularly important in Yale's holistic review process.</p>
+                `;
+                break;
+                
+            // Additional law school cases would go here
+            default:
+                title = 'Law School';
+                content = `<p>Details about this law school will be displayed here.</p>`;
+        }
+        
+        document.getElementById('lawSchoolsModalLabel').textContent = title;
+        document.getElementById('lawSchoolsModalBody').innerHTML = content;
+        
+        // Show the modal
+        var lawSchoolsModal = new bootstrap.Modal(document.getElementById('lawSchoolsModal'));
+        lawSchoolsModal.show();
+    }
+    
+    // Function to show all law schools
+    function showAllLawSchools() {
+        document.getElementById('lawSchoolsModalLabel').textContent = 'Top Law Schools';
+        document.getElementById('lawSchoolsModalBody').innerHTML = `
+            <h4>Top Ranked Law Schools</h4>
+            <p>Here are some of the top law schools in the United States based on rankings, employment outcomes, and reputation:</p>
+            
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>School</th>
+                        <th>Location</th>
+                        <th>Acceptance Rate</th>
+                        <th>Median LSAT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Yale Law School</td>
+                        <td>New Haven, CT</td>
+                        <td>6.9%</td>
+                        <td>175</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Stanford Law School</td>
+                        <td>Stanford, CA</td>
+                        <td>6.3%</td>
+                        <td>173</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Harvard Law School</td>
+                        <td>Cambridge, MA</td>
+                        <td>10.1%</td>
+                        <td>174</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>University of Chicago Law School</td>
+                        <td>Chicago, IL</td>
+                        <td>17.5%</td>
+                        <td>173</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Columbia Law School</td>
+                        <td>New York, NY</td>
+                        <td>11.5%</td>
+                        <td>174</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>NYU School of Law</td>
+                        <td>New York, NY</td>
+                        <td>15.4%</td>
+                        <td>172</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>University of Pennsylvania Carey Law School</td>
+                        <td>Philadelphia, PA</td>
+                        <td>14.5%</td>
+                        <td>172</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>University of Virginia School of Law</td>
+                        <td>Charlottesville, VA</td>
+                        <td>13.5%</td>
+                        <td>171</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>University of California, Berkeley School of Law</td>
+                        <td>Berkeley, CA</td>
+                        <td>12.5%</td>
+                        <td>170</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>University of Michigan Law School</td>
+                        <td>Ann Arbor, MI</td>
+                        <td>13.4%</td>
+                        <td>171</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h5>Choosing the Right Law School</h5>
+            <p>When selecting a law school, consider factors beyond rankings:</p>
+            <ul>
+                <li><strong>Location:</strong> Where do you want to practice? Regional schools often have strong local networks.</li>
+                <li><strong>Cost & Financial Aid:</strong> Compare tuition and scholarship opportunities.</li>
+                <li><strong>Specializations:</strong> Does the school have strong programs in your area of interest?</li>
+                <li><strong>Employment Outcomes:</strong> Review bar passage rates and employment statistics.</li>
+                <li><strong>Campus Culture:</strong> Visit if possible to get a feel for the environment.</li>
+            </ul>
+        `;
+        
+        // Show the modal
+        var lawSchoolsModal = new bootstrap.Modal(document.getElementById('lawSchoolsModal'));
+        lawSchoolsModal.show();
+    }
+    
+    // Function to show field selection
+    function showFieldSelection() {
+        document.getElementById('fieldModalLabel').textContent = 'Explore Legal Fields';
+        document.getElementById('fieldModalBody').innerHTML = `
+            <h4>Find Your Legal Specialty</h4>
+            <p>The legal profession offers diverse practice areas. Consider which fields align with your interests, skills, and career goals.</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Litigation vs. Transactional Law</h5>
+                            <p><strong>Litigators</strong> handle disputes that may go to court, while <strong>transactional lawyers</strong> focus on deals and agreements.</p>
+                            <p>Consider your preference for adversarial settings versus collaborative negotiations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5>Public Interest vs. Private Practice</h5>
+                            <p><strong>Public interest lawyers</strong> serve underrepresented communities or advance social causes, often with lower compensation.</p>
+                            <p><strong>Private practice attorneys</strong> work in law firms or corporations, typically with higher earning potential.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h5>Self-Assessment Questions</h5>
+            <ul>
+                <li>Do you prefer working with people or with documents and ideas?</li>
+                <li>Are you comfortable with conflict and adversarial situations?</li>
+                <li>Do you value high earnings or social impact more?</li>
+                <li>Do you prefer a predictable schedule or varied, dynamic work?</li>
+                <li>Are you interested in a specific industry (e.g., technology, healthcare, entertainment)?</li>
+            </ul>
+            
+            <div class="alert alert-info mt-4">
+                <strong>Remember:</strong> Many lawyers change practice areas during their careers. Your first job doesn't have to define your entire career path.
+            </div>
+        `;
+        
+        // Show the modal
+        var fieldModal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        fieldModal.show();
+    }
+    
+    // Function to load content (placeholder for navigation)
+    function loadContent(page) {
+        alert(`This would load the ${page} page in a real application.`);
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Career Development | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        --primary-color: #4e73df;
+        --secondary-color:#4e73df;
+        --accent-color: #36b9cc;
+        --text-color: #5a5c69;
+        --dark-color: #2e59d9;
+        --medical-color: #4e73df;
+        --improvement-color: #4e73df;
+    }
+    
+    body {
+        padding-top: 70px;
+        background-color:  #f8f9fa;
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text-color);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+        background: linear-gradient(135deg, var(--medical-color), #c41e1e) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid #fff;
+        transition: transform 0.3s;
+    }
+    
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Hero Section */
+    .medical-hero {
+        background: linear-gradient(rgba(231, 74, 59, 0.85), rgba(196, 30, 30, 0.9)), url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 5rem 0;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    /* Card Styles */
+    .card {
+        margin-bottom: 20px;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, var(--medical-color), #c41e1e);
+        color: white;
+        border-radius: 10px 10px 0 0 !important;
+        font-weight: 600;
+    }
+    
+    /* Medical Specific Styles */
+    .medical-badge {
+        background: linear-gradient(135deg, var(--medical-color), #c41e1e);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    
+    .pathway-card {
+        border-left: 4px solid var(--medical-color);
+    }
+    
+    .specialization-card {
+        border-top: 3px solid var(--medical-color);
+    }
+    
+    .progress {
+        height: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Roadmap Styles */
+    .roadmap-container {
+        position: relative;
+        padding-left: 30px;
+        margin: 40px 0;
+    }
+    
+    .roadmap-container::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--medical-color);
+    }
+    
+    .roadmap-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: var(--medical-color);
+        border: 4px solid white;
+        box-shadow: 0 0 0 2px var(--medical-color);
+    }
+    
+    /* Button Styles */
+    .btn-medical {
+        background: linear-gradient(to right, var(--medical-color), #c41e1e);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: 600;
+    }
+    
+    .btn-medical:hover {
+        background: linear-gradient(to right, #c41e1e, var(--medical-color));
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Resource Cards */
+    .resource-card {
+        height: 100%;
+        transition: all 0.3s;
+    }
+    
+    .resource-card:hover {
+        box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--medical-color);
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+    
+    /* Modal Styles */
+    .modal-content {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, var(--medical-color), #c41e1e);
+        color: white;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    /* Medical Field Colors */
+    .primary-care { --field-color: #4e73df; }
+    .surgery { --field-color: #36b9cc; }
+    .pediatrics { --field-color: #1cc88a; }
+    .psychiatry { --field-color: #4e73df; }
+    .emergency { --field-color: #4e73df; }
+    .cardiology { --field-color: #6f42c1; }
+    .neurology { --field-color: #4e73df; }
+    
+    .field-badge {
+        background-color: var(--field-color);
+        color: white;
+    }
+    
+    /* College ranking styles */
+    .college-rank {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--medical-color);
+        margin-right: 15px;
+    }
+    
+    .college-card {
+        transition: all 0.3s ease;
+    }
+    
+    .college-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Help Button Animation */
+    #helpBtn {
+        transition: all 0.3s ease;
+    }
+    
+    #helpBtn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(231, 74, 59, 0.5);
+    }
+    
+    /* Help Modal Styles */
+    .help-step {
+        border-left: 4px solid var(--medical-color);
+        padding-left: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .help-step-number {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: var(--medical-color);
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .contact-support {
+        background-color: #4e73df;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    /* Skill Development Section */
+    .skill-dev-card {
+        border-top: 3px solid var(--medical-color);
+    }
+    
+    .skill-pill {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background-color: #e9ecef;
+        color: #495057;
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .improvement-plan {
+        background-color: #e9ecef;
+        border-left: 4px solid var(--medical-color);
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-graduation-cap me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-info me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Medical Student!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Medical Hero Section -->
+    <div class="medical-hero rounded">
+        <div class="container">
+            <div class="medical-badge">
+                <i class="fas fa-heartbeat me-2"></i>Medical Skill Development
+            </div>
+            <h1 class="display-4 fw-bold">Medical Career Pathways</h1>
+            <p class="lead">Your assessment shows areas for improvement, but a medical career is still within reach! With dedication and the right skill development plan, you can build a successful healthcare career.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Skill Development Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Specialties
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Skill Development Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-brain me-2"></i>Key Skills to Develop for Medical Careers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="improvement-plan">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Your Improvement Plan</h5>
+                        <p>Based on your assessment results, we recommend focusing on these foundational skills to prepare for a medical career:</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Biological Sciences</h5>
+                                    <p class="card-text">Essential for all medical disciplines:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Biology</span>
+                                        <span class="skill-pill">Anatomy</span>
+                                        <span class="skill-pill">Physiology</span>
+                                        <span class="skill-pill">Biochemistry</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showSkillResources('biology')">Improve Biology Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Chemistry Fundamentals</h5>
+                                    <p class="card-text">Core chemical knowledge needed:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">General Chemistry</span>
+                                        <span class="skill-pill">Organic Chemistry</span>
+                                        <span class="skill-pill">Biochemistry</span>
+                                        <span class="skill-pill">Pharmacology Basics</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showSkillResources('chemistry')">Improve Chemistry Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Critical Thinking & Analysis</h5>
+                                    <p class="card-text">Key medical diagnostic skills:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Diagnostic Reasoning</span>
+                                        <span class="skill-pill">Evidence-Based Medicine</span>
+                                        <span class="skill-pill">Clinical Decision Making</span>
+                                        <span class="skill-pill">Research Interpretation</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showSkillResources('critical_thinking')">Improve Critical Thinking</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Communication Skills</h5>
+                                    <p class="card-text">Essential healthcare communication:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Patient Communication</span>
+                                        <span class="skill-pill">Bedside Manner</span>
+                                        <span class="skill-pill">Medical Terminology</span>
+                                        <span class="skill-pill">Interprofessional Communication</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showSkillResources('communication')">Improve Communication</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Study & Learning Strategies</h5>
+                                    <p class="card-text">Improve how you learn medical concepts:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Active Recall</span>
+                                        <span class="skill-pill">Spaced Repetition</span>
+                                        <span class="skill-pill">Concept Mapping</span>
+                                        <span class="skill-pill">Time Management</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showSkillResources('study_skills')">Improve Study Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Empathy & Professionalism</h5>
+                                    <p class="card-text">Essential healthcare provider qualities:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Emotional Intelligence</span>
+                                        <span class="skill-pill">Ethical Reasoning</span>
+                                        <span class="skill-pill">Compassionate Care</span>
+                                        <span class="skill-pill">Professional Boundaries</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showSkillResources('professionalism')">Improve Professional Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">1-2 Years</div>
+                    <div class="stat-label">Skill Development Timeline</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">78%</div>
+                    <div class="stat-label">Success Rate with Proper Preparation</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">65%</div>
+                    <div class="stat-label">Pre-Med Students Who Improve Scores</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3">
+                <div class="card-body">
+                    <div class="stat-number">1-on-1</div>
+                    <div class="stat-label">MCAT Prep Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Medical Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Medical Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>These medical fields are still accessible with dedicated skill development. Each field lists the specific areas you should focus on.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 primary-care">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Primary Care</span>
+                                    <h5 class="card-title">Primary Care Medicine</h5>
+                                    <p class="card-text">Provide comprehensive first-contact care for patients. With focused improvement in these areas, you can succeed:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">General Medicine</span>
+                                        <span class="skill-pill">Patient Communication</span>
+                                        <span class="skill-pill">Diagnostic Skills</span>
+                                        <span class="skill-pill">Preventive Care</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showFieldDetails('primary_care')">Explore Primary Care</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 surgery">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Surgery</span>
+                                    <h5 class="card-title">Surgical Specialties</h5>
+                                    <p class="card-text">Perform operations to treat diseases and injuries. Focus on improving these key areas:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Anatomy</span>
+                                        <span class="skill-pill">Manual Dexterity</span>
+                                        <span class="skill-pill">Spatial Reasoning</span>
+                                        <span class="skill-pill">Decision Making</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showFieldDetails('surgery')">Explore Surgery</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 pediatrics">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Pediatrics</span>
+                                    <h5 class="card-title">Pediatrics</h5>
+                                    <p class="card-text">Provide medical care for infants, children, and adolescents. Develop these skills:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Child Development</span>
+                                        <span class="skill-pill">Communication with Children</span>
+                                        <span class="skill-pill">Preventive Care</span>
+                                        <span class="skill-pill">Family Counseling</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showFieldDetails('pediatrics')">Explore Pediatrics</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 psychiatry">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Psychiatry</span>
+                                    <h5 class="card-title">Psychiatry</h5>
+                                    <p class="card-text">Diagnose and treat mental health disorders. Improve these areas:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Psychology</span>
+                                        <span class="skill-pill">Therapeutic Communication</span>
+                                        <span class="skill-pill">Neurobiology</span>
+                                        <span class="skill-pill">Pharmacology</span>
+                                    </div>
+                                    <button class="btn btn-medical" onclick="showFieldDetails('psychiatry')">Explore Psychiatry</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Consider starting with a pre-medical or health sciences program to build foundational skills before applying to medical school.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alternative Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-random me-2"></i>Alternative Pathways to Medical Careers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Post-Baccalaureate Programs</h5>
+                                    <p class="card-text">Structured programs to strengthen your academic record before applying to medical school.</p>
+                                    <ul>
+                                        <li>Focused science coursework</li>
+                                        <li>MCAT preparation</li>
+                                        <li>Medical school advising</li>
+                                        <li>Clinical experience opportunities</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Osteopathic Medical Schools</h5>
+                                    <p class="card-text">Consider DO programs which often have a more holistic admissions process.</p>
+                                    <ul>
+                                        <li>Holistic approach to medicine</li>
+                                        <li>Emphasis on primary care</li>
+                                        <li>Manual manipulation techniques</li>
+                                        <li>Similar scope of practice to MDs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Caribbean Medical Schools</h5>
+                                    <p class="card-text">International medical schools with different admission standards.</p>
+                                    <ul>
+                                        <li>Different admission timeline</li>
+                                        <li>Focus on USMLE preparation</li>
+                                        <li>Clinical rotations in the US</li>
+                                        <li>Pathway to US residency programs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Allied Health Professions</h5>
+                                    <p class="card-text">Consider healthcare careers that can later transition to medicine.</p>
+                                    <ul>
+                                        <li>Physician Assistant</li>
+                                        <li>Nursing</li>
+                                        <li>Pharmacist</li>
+                                        <li>Medical Research</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Medical Career Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item">
+                            <h5>Step 1: Foundational Skill Assessment (1-3 months)</h5>
+                            <p>Identify specific areas needing improvement through diagnostic testing in sciences and critical thinking.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 2: Targeted Skill Development (6-12 months)</h5>
+                            <p>Focus on improving biology, chemistry, and critical thinking skills through courses, tutoring, and self-study.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 3: Pre-Medical Program (1-2 years)</h5>
+                            <p>Enroll in a post-baccalaureate or formal pre-med program to build academic readiness for medical school.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 4: MCAT Preparation & Medical School Applications</h5>
+                            <p>With improved skills and grades, prepare for the MCAT and apply to medical programs.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 5: Medical School (4 years)</h5>
+                            <p>Complete medical education with preclinical and clinical training phases.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h5>Step 6: Residency Training (3-7 years)</h5>
+                            <p>Gain specialized clinical training in your chosen medical specialty.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Skill Development Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Science Foundation Courses</h5>
+                                    <ul>
+                                        <li>Khan Academy - Biology & Chemistry</li>
+                                        <li>Coursera - Introductory Human Physiology</li>
+                                        <li>edX - Biochemistry Principles</li>
+                                        <li>Visible Body - Anatomy Resources</li>
+                                    </ul>
+                                    <button class="btn btn-medical" onclick="showResources('science')">Science Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">MCAT Preparation</h5>
+                                    <ul>
+                                        <li>Kaplan MCAT Prep</li>
+                                        <li>Princeton Review MCAT</li>
+                                        <li>UWorld Question Bank</li>
+                                        <li>AAMC Official Resources</li>
+                                    </ul>
+                                    <button class="btn btn-medical" onclick="showResources('mcat')">MCAT Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Clinical Exposure</h5>
+                                    <ul>
+                                        <li>Medical Volunteering</li>
+                                        <li>Shadowing Physicians</li>
+                                        <li>Clinical Research Opportunities</li>
+                                        <li>EMT or Medical Scribe Positions</li>
+                                    </ul>
+                                    <button class="btn btn-medical" onclick="showResources('clinical')">Clinical Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Medical Career Development Plan</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Immediate Actions (0-6 months)</h5>
+                                    <ul>
+                                        <li>Take diagnostic tests in biology and chemistry</li>
+                                        <li>Create a study schedule with dedicated time for skill development</li>
+                                        <li>Enroll in foundational science courses</li>
+                                        <li>Find a tutor or join a pre-med study group</li>
+                                        <li>Meet with a pre-health advisor to plan your pathway</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5>Medium-Term Goals (6-24 months)</h5>
+                                    <ul>
+                                        <li>Complete pre-medical prerequisite courses</li>
+                                        <li>Improve grades in key science courses</li>
+                                        <li>Gain clinical experience through volunteering or work</li>
+                                        <li>Prepare for and take the MCAT</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-medical btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Medical Specialties
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg" onclick="showResources('courses')">
+                            <i class="fas fa-book me-2"></i>Learning Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h1>some YouTube videos which is related to doctor field</h1>
+<h3><a href="https://youtu.be/RrKGr3JYCGw?si=20oIqOiAaWAjG2Dp" target="_blank">1.DOCTOR COURSE IN DETAIL </a></h3>
+<h3><a href="https://youtu.be/0f43HWAQjuE?si=gSe17DOAquJv1wn8" target="_blank">2.TYPES OF DOCTORS  </a></h3>
+<h3><a href="https://youtu.be/FY-Z6dWGCtU?si=hHwhIo04pichZCuK" target="_blank">3.DOCTOR COURSE FROM BEGIN TO END  </a></h3>
+
+<!-- Footer -->
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping students discover their potential and find the right career path.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white" onclick="showResources('courses')">Skill Development</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('books')">Books & Publications</a></li>
+                    <li><a href="#" class="text-white" onclick="showResources('orgs')">Support Organizations</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2025 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Medical Specialty Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Medical Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel"><i class="fas fa-question-circle me-2"></i>Medical Career Development Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4>How to Improve Your Medical Career Prospects</h4>
+                <p>Your assessment shows areas for improvement, but with the right approach, you can develop the skills needed for a medical career. Here's how to make the most of this guide:</p>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">1</span>Focus on Science Fundamentals</h5>
+                    <p>Start with biology and chemistry fundamentals. These are the building blocks for all medical disciplines.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">2</span>Develop Critical Thinking Skills</h5>
+                    <p>Medical careers require strong analytical and problem-solving abilities. Practice with diagnostic reasoning exercises.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">3</span>Gain Clinical Experience</h5>
+                    <p>Volunteer or work in healthcare settings to understand the field and demonstrate your commitment.</p>
+                </div>
+                
+                <div class="help-step">
+                    <h5><span class="help-step-number">4</span>Consider Alternative Pathways</h5>
+                    <p>If direct medical school entry seems challenging, explore post-baccalaureate programs or related health professions.</p>
+                </div>
+                
+                <div class="contact-support">
+                    <h5><i class="fas fa-headset me-2"></i>Need More Help?</h5>
+                    <p>Our career advisors specialize in helping students prepare for medical careers. Contact us for personalized guidance:</p>
+                    <ul>
+                        <li><strong>Email:</strong> medical-careers@careerguider.edu</li>
+                        <li><strong>Phone:</strong> (555) 123-4567</li>
+                        <li><strong>Hours:</strong> Monday-Friday, 9am-5pm EST</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Function to show field details
+    function showFieldDetails(field) {
+        let modalBody = document.getElementById('fieldModalBody');
+        let modalTitle = document.getElementById('fieldModalLabel');
+        
+        // Content based on the field
+        if (field === 'primary_care') {
+            modalTitle.textContent = 'Primary Care Medicine';
+            modalBody.innerHTML = `
+                <h4>Primary Care Physician</h4>
+                <p>Primary care physicians are often the first point of contact for patients and provide comprehensive, continuing care.</p>
+                
+                <h5>Key Responsibilities:</h5>
+                <ul>
+                    <li>Diagnose and treat common illnesses and injuries</li>
+                    <li>Perform routine health screenings</li>
+                    <li>Manage chronic conditions like diabetes and hypertension</li>
+                    <li>Provide preventive care and health education</li>
+                    <li>Refer patients to specialists when needed</li>
+                </ul>
+                
+                <h5>Skill Development Focus:</h5>
+                <div class="mb-3">
+                    <span class="skill-pill">General Medicine Knowledge</span>
+                    <span class="skill-pill">Diagnostic Skills</span>
+                    <span class="skill-pill">Patient Communication</span>
+                    <span class="skill-pill">Preventive Medicine</span>
+                </div>
+                
+                <h5>Education Pathway:</h5>
+                <p>Medical school (4 years) + Residency in Family Medicine, Internal Medicine, or Pediatrics (3 years)</p>
+                
+                <h5>Average Salary:</h5>
+                <p>$220,000 - $260,000 per year</p>
+            `;
+        } else if (field === 'surgery') {
+            modalTitle.textContent = 'Surgical Specialties';
+            modalBody.innerHTML = `
+                <h4>Surgical Careers</h4>
+                <p>Surgeons perform operations to treat diseases, injuries, and deformities. There are many surgical specialties to consider.</p>
+                
+                <h5>Key Specialties:</h5>
+                <ul>
+                    <li>General Surgery</li>
+                    <li>Orthopedic Surgery</li>
+                    <li>Cardiothoracic Surgery</li>
+                    <li>Neurosurgery</li>
+                    <li>Plastic Surgery</li>
+                </ul>
+                
+                <h5>Skill Development Focus:</h5>
+                <div class="mb-3">
+                    <span class="skill-pill">Anatomy</span>
+                    <span class="skill-pill">Manual Dexterity</span>
+                    <span class="skill-pill">Spatial Reasoning</span>
+                    <span class="skill-pill">Decision Making Under Pressure</span>
+                </div>
+                
+                <h5>Education Pathway:</h5>
+                <p>Medical school (4 years) + Surgical Residency (5-7 years) + Possible Fellowship (1-3 years)</p>
+                
+                <h5>Average Salary:</h5>
+                <p>$350,000 - $600,000+ per year depending on specialty</p>
+            `;
+        } else if (field === 'pediatrics') {
+            modalTitle.textContent = 'Pediatrics';
+            modalBody.innerHTML = `
+                <h4>Pediatric Medicine</h4>
+                <p>Pediatricians provide medical care for infants, children, and adolescents, focusing on their physical, emotional, and social health.</p>
+                
+                <h5>Key Responsibilities:</h5>
+                <ul>
+                    <li>Monitor child development and growth</li>
+                    <li>Diagnose and treat childhood illnesses</li>
+                    <li>Administer vaccinations</li>
+                    <li>Provide guidance on nutrition and safety</li>
+                    <li>Address behavioral and developmental issues</li>
+                </ul>
+                
+                <h5>Skill Development Focus:</h5>
+                <div class="mb-3">
+                    <span class="skill-pill">Child Development</span>
+                    <span class="skill-pill">Communication with Children</span>
+                    <span class="skill-pill">Preventive Care</span>
+                    <span class="skill-pill">Family Counseling</span>
+                </div>
+                
+                <h5>Education Pathway:</h5>
+                <p>Medical school (4 years) + Pediatrics Residency (3 years) + Possible Fellowship (3 years)</p>
+                
+                <h5>Average Salary:</h5>
+                <p>$200,000 - $250,000 per year</p>
+            `;
+        } else if (field === 'psychiatry') {
+            modalTitle.textContent = 'Psychiatry';
+            modalBody.innerHTML = `
+                <h4>Psychiatry</h4>
+                <p>Psychiatrists diagnose and treat mental illnesses through a combination of psychotherapy, psychoanalysis, medication, and hospitalization.</p>
+                
+                <h5>Key Responsibilities:</h5>
+                <ul>
+                    <li>Assess mental and physical status of patients</li>
+                    <li>Diagnose mental health conditions</li>
+                    <li>Develop treatment plans</li>
+                    <li>Provide psychotherapy and prescribe medications</li>
+                    <li>Collaborate with other healthcare professionals</li>
+                </ul>
+                
+                <h5>Skill Development Focus:</h5>
+                <div class="mb-3">
+                    <span class="skill-pill">Psychology</span>
+                    <span class="skill-pill">Therapeutic Communication</span>
+                    <span class="skill-pill">Neurobiology</span>
+                    <span class="skill-pill">Pharmacology</span>
+                </div>
+                
+                <h5>Education Pathway:</h5>
+                <p>Medical school (4 years) + Psychiatry Residency (4 years) + Possible Fellowship (1-2 years)</p>
+                
+                <h5>Average Salary:</h5>
+                <p>$220,000 - $300,000 per year</p>
+            `;
+        }
+        
+        // Show the modal
+        var modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        modal.show();
+    }
+    
+    // Function to show resources
+    function showResources(type) {
+        let modalBody = document.getElementById('resourcesModalBody');
+        let modalTitle = document.getElementById('resourcesModalLabel');
+        
+        // Content based on resource type
+        if (type === 'courses') {
+            modalTitle.textContent = 'Medical Skill Development Courses';
+            modalBody.innerHTML = `
+                <h4>Recommended Courses for Medical Career Preparation</h4>
+                
+                <h5>Biology Foundations:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Khan Academy - Biology Library</a> (Free)</li>
+                    <li><a href="#" target="_blank">Coursera - Introductory Human Physiology</a> (Duke University)</li>
+                    <li><a href="#" target="_blank">edX - Anatomy: Human Neuroanatomy</a> (University of Michigan)</li>
+                </ul>
+                
+                <h5>Chemistry Foundations:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Khan Academy - Chemistry</a> (Free)</li>
+                    <li><a href="#" target="_blank">Coursera - General Chemistry</a> (University of Kentucky)</li>
+                    <li><a href="#" target="_blank">edX - Principles of Biochemistry</a> (Harvard University)</li>
+                </ul>
+                
+                <h5>Critical Thinking & MCAT Prep:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Khan Academy - MCAT Collection</a> (Free)</li>
+                    <li><a href="#" target="_blank">Kaplan MCAT Prep Courses</a> (Paid)</li>
+                    <li><a href="#" target="_blank">Princeton Review MCAT Prep</a> (Paid)</li>
+                </ul>
+                
+                <h5>Clinical Skills:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Coursera - Vital Signs: Understanding What the Body Is Telling Us</a> (University of Pennsylvania)</li>
+                    <li><a href="#" target="_blank">edX - Clinical Terminology for International and U.S. Students</a> (University of Pittsburgh)</li>
+                </ul>
+            `;
+        } else if (type === 'mcat') {
+            modalTitle.textContent = 'MCAT Preparation Resources';
+            modalBody.innerHTML = `
+                <h4>MCAT Preparation Materials</h4>
+                <p>The Medical College Admission Test (MCAT) is a standardized exam required for admission to medical schools.</p>
+                
+                <h5>Official Resources:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">AAMC Official MCAT Prep Hub</a> - The most authoritative source</li>
+                    <li><a href="#" target="_blank">AAMC Practice Exams</a> - Most realistic practice tests</li>
+                    <li><a href="#" target="_blank">AAMC Question Packs</a> - Subject-specific practice</li>
+                </ul>
+                
+                <h5>Commercial Prep Courses:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Kaplan MCAT Prep</a> - Comprehensive courses and materials</li>
+                    <li><a href="#" target="_blank">Princeton Review MCAT</a> - Live courses and tutoring</li>
+                    <li><a href="#" target="_blank">Examkrackers</a> - Focused study materials</li>
+                </ul>
+                
+                <h5>Question Banks & Practice:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">UWorld MCAT QBank</a> - High-quality practice questions</li>
+                    <li><a href="#" target="_blank">Jack Westin MCAT Practice</a> - Free and paid resources</li>
+                </ul>
+                
+                <h5>Free Resources:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Khan Academy MCAT Collection</a> - Comprehensive free resource</li>
+                    <li><a href="#" target="_blank">r/MCAT subreddit</a> - Community support and advice</li>
+                </ul>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-lightbulb me-2"></i>Most students spend 3-6 months preparing for the MCAT. Plan your study schedule accordingly.
+                </div>
+            `;
+        } else if (type === 'clinical') {
+            modalTitle.textContent = 'Clinical Experience Opportunities';
+            modalBody.innerHTML = `
+                <h4>Gaining Clinical Experience</h4>
+                <p>Clinical experience is essential for medical school applications and helps you confirm your interest in medicine.</p>
+                
+                <h5>Volunteering Opportunities:</h5>
+                <ul>
+                    <li>Hospital volunteer programs</li>
+                    <li>Free clinics and community health centers</li>
+                    <li>Hospice care facilities</li>
+                    <li>Nursing homes and assisted living facilities</li>
+                </ul>
+                
+                <h5>Paid Clinical Positions:</h5>
+                <ul>
+                    <li>Medical scribe</li>
+                    <li>Emergency Medical Technician (EMT)</li>
+                    <li>Certified Nursing Assistant (CNA)</li>
+                    <li>Phlebotomist</li>
+                    <li>Medical assistant</li>
+                </ul>
+                
+                <h5>Shadowing Physicians:</h5>
+                <ul>
+                    <li>Contact physicians in your community</li>
+                    <li>Reach out to alumni from your school</li>
+                    <li>Use family and personal connections</li>
+                    <li>Formal shadowing programs at some hospitals</li>
+                </ul>
+                
+                <h5>Clinical Research:</h5>
+                <ul>
+                    <li>Research assistant positions at medical schools</li>
+                    <li>Clinical trials coordination</li>
+                    <li>Research in academic medical centers</li>
+                </ul>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-lightbulb me-2"></i>Aim for at least 100-200 hours of clinical experience before applying to medical school.
+                </div>
+            `;
+        }
+        
+        // Show the modal
+        var modal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        modal.show();
+    }
+    
+    // Function to show skill resources
+    function showSkillResources(skill) {
+        let modalBody = document.getElementById('resourcesModalBody');
+        let modalTitle = document.getElementById('resourcesModalLabel');
+        
+        // Content based on skill type
+        if (skill === 'biology') {
+            modalTitle.textContent = 'Biology Skill Development Resources';
+            modalBody.innerHTML = `
+                <h4>Improving Your Biology Knowledge</h4>
+                
+                <h5>Foundational Biology Resources:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Khan Academy - High School Biology</a> (Free comprehensive course)</li>
+                    <li><a href="#" target="_blank">Coursera - Introduction to Biology</a> (MIT)</li>
+                    <li><a href="#" target="_blank">edX - AP Biology Course</a> (Rice University)</li>
+                </ul>
+                
+                <h5>Anatomy & Physiology:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Visible Body - Human Anatomy Atlas</a> (Interactive 3D atlas)</li>
+                    <li><a href="#" target="_blank">Khan Academy - Human Anatomy and Physiology</a> (Free)</li>
+                    <li><a href="#" target="_blank">Coursera - Anatomy Specialization</a> (University of Michigan)</li>
+                </ul>
+                
+                <h5>Textbooks & Reference Materials:</h5>
+                <ul>
+                    <li>Campbell Biology (standard introductory textbook)</li>
+                    <li>Gray's Anatomy for Students (anatomy reference)</li>
+                    <li>Guyton and Hall Textbook of Medical Physiology</li>
+                </ul>
+                
+                <h5>Practice & Assessment:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Biology Question Banks</a> (Practice questions with explanations)</li>
+                    <li><a href="#" target="_blank">Flashcard decks</a> (Anki and other spaced repetition systems)</li>
+                    <li><a href="#" target="_blank">Biology diagnostic tests</a> (Assess your current knowledge level)</li>
+                </ul>
+            `;
+        } else if (skill === 'chemistry') {
+            modalTitle.textContent = 'Chemistry Skill Development Resources';
+            modalBody.innerHTML = `
+                <h4>Improving Your Chemistry Knowledge</h4>
+                
+                <h5>General Chemistry Resources:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Khan Academy - Chemistry</a> (Free comprehensive course)</li>
+                    <li><a href="#" target="_blank">Coursera - General Chemistry</a> (University of Kentucky)</li>
+                    <li><a href="#" target="_blank">edX - Principles of Chemical Science</a> (MIT)</li>
+                </ul>
+                
+                <h5>Organic Chemistry:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Khan Academy - Organic Chemistry</a> (Free)</li>
+                    <li><a href="#" target="_blank">Master Organic Chemistry</a> (Website with tutorials and practice)</li>
+                    <li><a href="#" target="_blank">Organic Chemistry as a Second Language</a> (Popular study guide)</li>
+                </ul>
+                
+                <h5>Biochemistry:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Khan Academy - Biochemistry</a> (Free)</li>
+                    <li><a href="#" target="_blank">Coursera - Biochemistry Specialization</a> (University of Colorado)</li>
+                    <li>Lehninger Principles of Biochemistry (standard textbook)</li>
+                </ul>
+                
+                <h5>Practice & Labs:</h5>
+                <ul>
+                    <li><a href="#" target="_blank">Chemistry practice problems</a> (With step-by-step solutions)</li>
+                    <li><a href="#" target="_blank">Virtual chemistry labs</a> (Online lab simulations)</li>
+                    <li><a href="#" target="_blank">Chemistry flashcards</a> (For memorizing reactions and concepts)</li>
+                </ul>
+            `;
+        }
+        
+        // Show the modal
+        var modal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        modal.show();
+    }
+    
+    // Function to show field selection
+    function showFieldSelection() {
+        let modalBody = document.getElementById('resourcesModalBody');
+        let modalTitle = document.getElementById('resourcesModalLabel');
+        
+        modalTitle.textContent = 'Explore Medical Specialties';
+        modalBody.innerHTML = `
+            <h4>Medical Specialty Exploration</h4>
+            <p>Learn about different medical specialties to find the best fit for your interests and skills.</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Primary Care Fields</h5>
+                            <ul>
+                                <li><a href="#" onclick="showFieldDetails('primary_care'); return false;">Family Medicine</a></li>
+                                <li><a href="#" onclick="showFieldDetails('primary_care'); return false;">Internal Medicine</a></li>
+                                <li><a href="#" onclick="showFieldDetails('pediatrics'); return false;">Pediatrics</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Surgical Specialties</h5>
+                            <ul>
+                                <li><a href="#" onclick="showFieldDetails('surgery'); return false;">General Surgery</a></li>
+                                <li>Orthopedic Surgery</li>
+                                <li>Neurosurgery</li>
+                                <li>Plastic Surgery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Medical Specialties</h5>
+                            <ul>
+                                <li>Cardiology</li>
+                                <li>Dermatology</li>
+                                <li>Gastroenterology</li>
+                                <li>Neurology</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Other Specialties</h5>
+                            <ul>
+                                <li><a href="#" onclick="showFieldDetails('psychiatry'); return false;">Psychiatry</a></li>
+                                <li>Radiology</li>
+                                <li>Emergency Medicine</li>
+                                <li>Anesthesiology</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-info mt-3">
+                <i class="fas fa-info-circle me-2"></i>Medical students typically explore specialties during their clinical rotations in medical school.
+            </div>
+        `;
+        
+        // Show the modal
+        var modal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        modal.show();
+    }
+</script>
+
+</body>
+</html>

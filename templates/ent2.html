@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entertainment Career Development | Career Guider</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+        --primary-color: #2196F3;
+        --secondary-color: #f8f9fc;
+        --accent-color: #03A9F4;
+        --text-color: #5a5c69;
+        --dark-color: #1976D2;
+        --entertainment-color: #2196F3;
+        --improvement-color: #2196F3;
+    }
+    
+    body {
+        padding-top: 70px;
+        background-color: #f8f9fa;
+        font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        color: var(--text-color);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+        background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid #fff;
+        transition: transform 0.3s;
+    }
+    
+    .profile-img:hover {
+        transform: scale(1.1);
+    }
+    
+    /* Hero Section */
+    .entertainment-hero {
+        background: linear-gradient(rgba(33, 150, 243, 0.85), rgba(33, 150, 243, 0.9)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 5rem 0;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    /* Card Styles */
+    .card {
+        margin-bottom: 20px;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        border: none;
+        border-radius: 10px;
+        transition: transform 0.3s;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, var(--entertainment-color), #0D47A1);
+        color: white;
+        border-radius: 10px 10px 0 0 !important;
+        font-weight: 600;
+    }
+    
+    /* Entertainment Specific Styles */
+    .entertainment-badge {
+        background: linear-gradient(135deg, var(--entertainment-color), #0D47A1);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+    
+    .pathway-card {
+        border-left: 4px solid var(--entertainment-color);
+    }
+    
+    .specialization-card {
+        border-top: 3px solid var(--entertainment-color);
+    }
+    
+    .progress {
+        height: 10px;
+        margin-bottom: 20px;
+    }
+    
+    /* Roadmap Styles */
+    .roadmap-container {
+        position: relative;
+        padding-left: 30px;
+        margin: 40px 0;
+    }
+    
+    .roadmap-container::before {
+        content: '';
+        position: absolute;
+        left: 10px;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--entertainment-color);
+    }
+    
+    .roadmap-item {
+        position: relative;
+        margin-bottom: 30px;
+    }
+    
+    .roadmap-item::before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        background: var(--entertainment-color);
+        border: 4px solid white;
+        box-shadow: 0 0 0 2px var(--entertainment-color);
+    }
+    
+    /* Button Styles */
+    .btn-entertainment {
+        background: linear-gradient(to right, var(--entertainment-color), #0D47A1);
+        color: white;
+        border: none;
+        border-radius: 30px;
+        padding: 10px 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .btn-entertainment:hover {
+        background: linear-gradient(to right, #0D47A1, var(--entertainment-color));
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Resource Cards */
+    .resource-card {
+        height: 100%;
+        transition: all 0.3s;
+    }
+    
+    .resource-card:hover {
+        box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+    }
+    
+    /* Stats */
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--entertainment-color);
+    }
+    
+    .stat-label {
+        font-size: 1rem;
+        color: var(--text-color);
+    }
+    
+    /* Modal Styles */
+    .modal-content {
+        border-radius: 15px;
+        border: none;
+    }
+    
+    .modal-header {
+        background: linear-gradient(135deg, var(--entertainment-color), #0D47A1);
+        color: white;
+        border-radius: 15px 15px 0 0;
+    }
+    
+    /* Entertainment Field Colors */
+    .film { --field-color: #2196F3; }
+    .music { --field-color: #03A9F4; }
+    .performing { --field-color: #00BCD4; }
+    .gaming { --field-color: #009688; }
+    .media { --field-color: #4CAF50; }
+    .digital { --field-color: #8BC34A; }
+    .production { --field-color: #CDDC39; }
+    
+    .field-badge {
+        background-color: var(--field-color);
+        color: white;
+    }
+    
+    /* College ranking styles */
+    .college-rank {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--entertainment-color);
+        margin-right: 15px;
+    }
+    
+    .college-card {
+        transition: all 0.3s ease;
+    }
+    
+    .college-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Help Button Animation */
+    #helpBtn {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    #helpBtn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(33, 150, 243, 0.5);
+    }
+    
+    /* Help Modal Styles */
+    .help-step {
+        border-left: 4px solid var(--entertainment-color);
+        padding-left: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .help-step-number {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: var(--entertainment-color);
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    
+    .contact-support {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    /* Skill Development Section */
+    .skill-dev-card {
+        border-top: 3px solid var(--entertainment-color);
+    }
+    
+    .skill-pill {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background-color: #E3F2FD;
+        color: #0D47A1;
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+    
+    .improvement-plan {
+        background-color: #E3F2FD;
+        border-left: 4px solid var(--entertainment-color);
+        padding: 15px;
+        border-radius: 5px;
+        margin: 15px 0;
+    }
+    
+    /* Clickable elements */
+    .clickable-card {
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .clickable-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    }
+    
+    .clickable-resource {
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+    
+    .clickable-resource:hover {
+        background-color: #E3F2FD;
+    }
+</style>
+</head>
+<body>
+
+<!-- Top Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top shadow">
+    <a class="navbar-brand fw-bold" href="#">
+        <i class="fas fa-mask me-2"></i>Career Guider
+    </a>
+    <div class="ms-auto d-flex align-items-center">
+        <button class="btn btn-info me-2" id="helpBtn" data-bs-toggle="modal" data-bs-target="#helpModal">
+            <i class="fas fa-question-circle me-1"></i> Help
+        </button>
+        <span class="text-white me-2">Hi, Creative Student!</span>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <!-- Entertainment Hero Section -->
+    <div class="entertainment-hero rounded">
+        <div class="container">
+            <div class="entertainment-badge">
+                <i class="fas fa-theater-masks me-2"></i>Entertainment Skill Development
+            </div>
+            <h1 class="display-4 fw-bold">Entertainment Career Pathways</h1>
+            <p class="lead">Your assessment shows creative potential! With dedicated skill development and the right approach, you can build a successful career in the entertainment industry.</p>
+            <div class="mt-4">
+                <button class="btn btn-light btn-lg me-3" onclick="showResources('courses')">
+                    <i class="fas fa-book me-2"></i>Skill Development Resources
+                </button>
+                <button class="btn btn-outline-light btn-lg" onclick="showFieldSelection()">
+                    <i class="fas fa-search me-2"></i>Explore Fields
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Skill Development Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-brain me-2"></i>Key Skills to Develop for Entertainment Careers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="improvement-plan">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Your Creative Development Plan</h5>
+                        <p>Based on your assessment results, we recommend focusing on these foundational skills to prepare for an entertainment career:</p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100 clickable-card" onclick="showSkillResources('creative')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Creative Expression</h5>
+                                    <p class="card-text">Essential for all entertainment disciplines:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Storytelling</span>
+                                        <span class="skill-pill">Visual Arts</span>
+                                        <span class="skill-pill">Improvisation</span>
+                                        <span class="skill-pill">Character Development</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Improve Creative Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100 clickable-card" onclick="showSkillResources('technical')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Technical Production</h5>
+                                    <p class="card-text">Core technical knowledge needed:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Audio Production</span>
+                                        <span class="skill-pill">Video Editing</span>
+                                        <span class="skill-pill">Lighting Design</span>
+                                        <span class="skill-pill">Stage Management</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Improve Technical Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100 clickable-card" onclick="showSkillResources('performance')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Performance & Presentation</h5>
+                                    <p class="card-text">Key entertainment delivery skills:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Public Speaking</span>
+                                        <span class="skill-pill">Vocal Training</span>
+                                        <span class="skill-pill">Movement</span>
+                                        <span class="skill-pill">Audience Engagement</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Improve Performance Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100 clickable-card" onclick="showSkillResources('digital')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Digital Media Skills</h5>
+                                    <p class="card-text">Modern entertainment abilities:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Social Media Marketing</span>
+                                        <span class="skill-pill">Content Creation</span>
+                                        <span class="skill-pill">Digital Distribution</span>
+                                        <span class="skill-pill">Graphic Design</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Improve Digital Skills</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100 clickable-card" onclick="showSkillResources('industry')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Industry Knowledge</h5>
+                                    <p class="card-text">Understanding the entertainment business:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Industry Structure</span>
+                                        <span class="skill-pill">Copyright Law</span>
+                                        <span class="skill-pill">Contract Basics</span>
+                                        <span class="skill-pill">Networking Strategies</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Improve Industry Knowledge</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card skill-dev-card h-100 clickable-card" onclick="showSkillResources('collaboration')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Collaboration & Teamwork</h5>
+                                    <p class="card-text">Essential professional skills:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Team Communication</span>
+                                        <span class="skill-pill">Project Coordination</span>
+                                        <span class="skill-pill">Creative Collaboration</span>
+                                        <span class="skill-pill">Feedback Integration</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Improve Collaboration</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stats Section -->
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3 clickable-card" onclick="showResources('timeline')">
+                <div class="card-body">
+                    <div class="stat-number">6-18 Months</div>
+                    <div class="stat-label">Skill Development Timeline</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3 clickable-card" onclick="showResources('success')">
+                <div class="card-body">
+                    <div class="stat-number">78%</div>
+                    <div class="stat-label">Success Rate with Proper Preparation</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3 clickable-card" onclick="showResources('portfolio')">
+                <div class="card-body">
+                    <div class="stat-number">65%</div>
+                    <div class="stat-label">Entertainment Professionals Who Started with Portfolio Building</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 py-3 clickable-card" onclick="showResources('mentoring')">
+                <div class="card-body">
+                    <div class="stat-number">1-on-1</div>
+                    <div class="stat-label">Mentoring Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Entertainment Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-road me-2"></i>Entertainment Career Pathways</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>These entertainment fields are accessible with dedicated skill development. Each field lists the specific areas you should focus on.
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 film clickable-card" onclick="showFieldDetails('film')">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Film & Television</span>
+                                    <h5 class="card-title">Film & Television Production</h5>
+                                    <p class="card-text">Create visual stories for screens large and small. With focused improvement in these areas, you can succeed:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Visual Storytelling</span>
+                                        <span class="skill-pill">Scriptwriting</span>
+                                        <span class="skill-pill">Camera Operation</span>
+                                        <span class="skill-pill">Post-Production</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Explore Film & TV</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 music clickable-card" onclick="showFieldDetails('music')">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Music Industry</span>
+                                    <h5 class="card-title">Music Production & Performance</h5>
+                                    <p class="card-text">Create, produce, and perform music across genres. Focus on improving these key areas:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Music Theory</span>
+                                        <span class="skill-pill">Instrument Proficiency</span>
+                                        <span class="skill-pill">Audio Engineering</span>
+                                        <span class="skill-pill">Live Performance</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Explore Music Industry</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 performing clickable-card" onclick="showFieldDetails('performing')">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Performing Arts</span>
+                                    <h5 class="card-title">Theater & Live Performance</h5>
+                                    <p class="card-text">Create compelling live experiences for audiences. Develop these skills:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Acting Techniques</span>
+                                        <span class="skill-pill">Stage Presence</span>
+                                        <span class="skill-pill">Voice Projection</span>
+                                        <span class="skill-pill">Choreography</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Explore Performing Arts</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card pathway-card h-100 gaming clickable-card" onclick="showFieldDetails('gaming')">
+                                <div class="card-body">
+                                    <span class="badge field-badge mb-2">Gaming & Interactive</span>
+                                    <h5 class="card-title">Game Development & Design</h5>
+                                    <p class="card-text">Create interactive entertainment experiences. Improve these areas:</p>
+                                    <div class="mb-3">
+                                        <span class="skill-pill">Game Design</span>
+                                        <span class="skill-pill">Programming Basics</span>
+                                        <span class="skill-pill">Narrative Design</span>
+                                        <span class="skill-pill">User Experience</span>
+                                    </div>
+                                    <button class="btn btn-entertainment">Explore Gaming Industry</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Consider starting with community workshops, online courses, or assistant positions to build foundational skills before pursuing advanced opportunities.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alternative Pathways -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-random me-2"></i>Alternative Pathways to Entertainment Careers</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 clickable-card" onclick="showResources('community')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Community Arts Programs</h5>
+                                    <p class="card-text">Start with local community programs to build foundational skills and portfolio.</p>
+                                    <ul>
+                                        <li>Accessible entry points</li>
+                                        <li>Hands-on experience</li>
+                                        <li>Networking opportunities</li>
+                                        <li>Portfolio development</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 clickable-card" onclick="showResources('digital')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Digital Content Creation</h5>
+                                    <p class="card-text">Build skills and audience through personal content creation projects.</p>
+                                    <ul>
+                                        <li>Low barrier to entry</li>
+                                        <li>Direct audience feedback</li>
+                                        <li>Portfolio building</li>
+                                        <li>Potential monetization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 clickable-card" onclick="showResources('assistant')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Assistant & Apprenticeship Roles</h5>
+                                    <p class="card-text">Learn on the job through entry-level positions in the industry.</p>
+                                    <ul>
+                                        <li>Practical experience</li>
+                                        <li>Industry connections</li>
+                                        <li>Skill development</li>
+                                        <li>Career pathway</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 clickable-card" onclick="showResources('freelance')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Freelance & Gig Work</h5>
+                                    <p class="card-text">Build experience through project-based work in your area of interest.</p>
+                                    <ul>
+                                        <li>Flexible schedule</li>
+                                        <li>Portfolio development</li>
+                                        <li>Multiple income streams</li>
+                                        <li>Diverse experience</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Education Roadmap -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-map-marked-alt me-2"></i>Skill Development Roadmap</h4>
+                </div>
+                <div class="card-body">
+                    <div class="roadmap-container">
+                        <div class="roadmap-item clickable-resource" onclick="showResources('assessment')">
+                            <h5>Step 1: Creative Skill Assessment (1-2 months)</h5>
+                            <p>Identify specific creative strengths and areas needing improvement through practical exercises and self-assessment.</p>
+                        </div>
+                        <div class="roadmap-item clickable-resource" onclick="showResources('foundational')">
+                            <h5>Step 2: Foundational Skill Development (3-6 months)</h5>
+                            <p>Focus on improving core creative, technical, and performance skills through workshops, courses, and practice.</p>
+                        </div>
+                        <div class="roadmap-item clickable-resource" onclick="showResources('portfolio')">
+                            <h5>Step 3: Portfolio Building (6-12 months)</h5>
+                            <p>Create a body of work that demonstrates your skills and creative vision across multiple projects.</p>
+                        </div>
+                        <div class="roadmap-item clickable-resource" onclick="showResources('networking')">
+                            <h5>Step 4: Networking & Industry Exposure</h5>
+                            <p>Attend industry events, connect with professionals, and seek mentorship opportunities.</p>
+                        </div>
+                        <div class="roadmap-item clickable-resource" onclick="showResources('entrylevel')">
+                            <h5>Step 5: Entry-Level Opportunities</h5>
+                            <p>Pursue internships, assistant roles, or freelance work to gain practical experience.</p>
+                        </div>
+                        <div class="roadmap-item clickable-resource" onclick="showResources('specialization')">
+                            <h5>Step 6: Specialization & Career Advancement</h5>
+                            <p>Focus on a specific area of entertainment and pursue advanced opportunities in your chosen field.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recommended Resources -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-book-open me-2"></i>Recommended Skill Development Resources</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card clickable-card" onclick="showResources('creative')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Creative Development Courses</h5>
+                                    <ul>
+                                        <li>MasterClass - Various Creative Arts</li>
+                                        <li>Coursera - Film & Media Production</li>
+                                        <li>Skillshare - Creative & Design Courses</li>
+                                        <li>Berklee Online - Music Courses</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment">Creative Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card clickable-card" onclick="showResources('technical')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Technical Skill Development</h5>
+                                    <ul>
+                                        <li>LinkedIn Learning - Creative Software</li>
+                                        <li>Adobe Creative Cloud Tutorials</li>
+                                        <li>YouTube - Production Tutorials</li>
+                                        <li>Local Workshops & Classes</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment">Technical Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="card resource-card clickable-card" onclick="showResources('industry')">
+                                <div class="card-body">
+                                    <h5 class="card-title">Industry Knowledge & Networking</h5>
+                                    <ul>
+                                        <li>Entertainment Industry Events</li>
+                                        <li>Professional Associations</li>
+                                        <li>Industry Publications</li>
+                                        <li>Mentorship Programs</li>
+                                    </ul>
+                                    <button class="btn btn-entertainment">Industry Resources</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Next Steps -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-tasks me-2"></i>Your Creative Development Plan</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100 clickable-card" onclick="showResources('immediate')">
+                                <div class="card-body">
+                                    <h5>Immediate Actions (0-3 months)</h5>
+                                    <ul>
+                                        <li>Take creative skills assessment tests</li>
+                                        <li>Create a practice schedule with dedicated time for skill development</li>
+                                        <li>Enroll in foundational courses on Skillshare or Coursera</li>
+                                        <li>Join local creative workshops or classes</li>
+                                        <li>Start building a basic portfolio with small projects</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 clickable-card" onclick="showResources('mediumterm')">
+                                <div class="card-body">
+                                    <h5>Medium-Term Goals (3-12 months)</h5>
+                                    <ul>
+                                        <li>Complete intermediate-level courses in your chosen field</li>
+                                        <li>Build a comprehensive portfolio with 5-10 quality projects</li>
+                                        <li>Attend industry networking events</li>
+                                        <li>Secure an internship or assistant position</li>
+                                        <li>Develop a professional online presence</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-entertainment btn-lg me-3" onclick="showFieldSelection()">
+                            <i class="fas fa-search me-2"></i>Explore Entertainment Fields
+                        </button>
+                        <button class="btn btn-outline-primary btn-lg" onclick="showResources('courses')">
+                            <i class="fas fa-book me-2"></i>Learning Resources
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h1 class="container mt-5">Some YouTube Videos Related to Entertainment Field</h1>
+<div class="container mb-5">
+    <h3><a href="https://youtu.be/MfKn9pPKnKQ?si=KGdMQdpwX7hdS-6O" target="_blank" class="clickable-resource">1. Breaking Into the Film Industry</a></h3>
+    <h3><a href="https://youtu.be/Hi72cCOPUQU?si=bg6k_u8V3Fh0J9dw" target="_blank" class="clickable-resource">2. Music Production for Beginners</a></h3>
+    <h3><a href="https://youtu.be/yTWUk3QZoLs?si=vAkNhfLwy_lx4vN-" target="_blank" class="clickable-resource">3. Building a Career in Theater</a></h3>
+    <h3><a href="https://youtu.be/S7euR8zXEHs?si=2W6sjJsOJH50GeF6" target="_blank" class="clickable-resource">4. Game Development Career Paths</a></h3>
+    <h3><a href="https://youtu.be/AFpIixxSFjo?si=_aJC6tDMYyBEufoy" target="_blank" class="clickable-resource">5. Digital Content Creation Strategies</a></h3>
+</div>
+
+<footer class="footer mt-5 bg-dark text-white py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Career Guider</h5>
+                <p>Helping creative students discover their potential and find the right career path in entertainment.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Resources</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white clickable-resource" onclick="showResources('courses')">Skill Development</a></li>
+                    <li><a href="#" class="text-white clickable-resource" onclick="showResources('portfolio')">Portfolio Building</a></li>
+                    <li><a href="#" class="text-white clickable-resource" onclick="showResources('networking')">Industry Networking</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3 clickable-resource"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3 clickable-resource"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white me-3 clickable-resource"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white clickable-resource"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr class="mt-4 bg-light">
+        <p class="text-center mb-0">© 2025 Career Guider. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- Field Details Modal -->
+<div class="modal fade" id="fieldModal" tabindex="-1" aria-labelledby="fieldModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fieldModalLabel">Entertainment Field Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="fieldModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resources Modal -->
+<div class="modal fade" id="resourcesModal" tabindex="-1" aria-labelledby="resourcesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resourcesModalLabel">Entertainment Resources</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="resourcesModalBody">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Help Modal -->
+<div class="modal fade" id="helpModal" tabindex="-1" aria-labelledby="helpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="helpModalLabel">How to Use This Entertainment Career Guide</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="help-step">
+                    <h5><span class="help-step-number">1</span> Assess Your Creative Skills</h5>
+                    <p>Start by understanding your current creative abilities and areas for improvement. This will help you focus your development efforts.</p>
+                </div>
+                <div class="help-step">
+                    <h5><span class="help-step-number">2</span> Explore Entertainment Fields</h5>
+                    <p>Learn about different career paths in entertainment and identify which ones align with your interests and skills.</p>
+                </div>
+                <div class="help-step">
+                    <h5><span class="help-step-number">3</span> Develop Your Skills</h5>
+                    <p>Use the recommended resources to build the specific skills needed for your chosen entertainment field.</p>
+                </div>
+                <div class="help-step">
+                    <h5><span class="help-step-number">4</span> Build Your Portfolio</h5>
+                    <p>Create projects that demonstrate your abilities and showcase your unique creative perspective.</p>
+                </div>
+                <div class="help-step">
+                    <h5><span class="help-step-number">5</span> Network and Connect</h5>
+                    <p>Attend industry events, connect with professionals, and seek mentorship opportunities.</p>
+                </div>
+                
+                <div class="contact-support">
+                    <h5>Need Additional Help?</h5>
+                    <p>If you have questions about your entertainment career path or need personalized guidance, our career advisors are here to help.</p>
+                    <button class="btn btn-entertainment" onclick="showResources('support')">Contact Career Support</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Function to show field details
+    function showFieldDetails(field) {
+        const modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        const modalBody = document.getElementById('fieldModalBody');
+        
+        let content = '';
+        
+        switch(field) {
+            case 'film':
+                content = `
+                    <h4>Film & Television Production</h4>
+                    <p>This field involves creating visual content for various screens, from feature films to streaming series.</p>
+                    <h5>Key Areas to Focus On:</h5>
+                    <ul>
+                        <li><strong>Visual Storytelling:</strong> Learn how to tell compelling stories through images and sound</li>
+                        <li><strong>Scriptwriting:</strong> Develop skills in writing for visual media</li>
+                        <li><strong>Camera Operation:</strong> Master the technical aspects of capturing images</li>
+                        <li><strong>Post-Production:</strong> Learn editing, color grading, and sound design</li>
+                    </ul>
+                    <h5>Entry-Level Positions:</h5>
+                    <ul>
+                        <li>Production Assistant</li>
+                        <li>Camera Trainee</li>
+                        <li>Editorial Assistant</li>
+                        <li>Script Reader</li>
+                    </ul>
+                    <h5>Recommended Skill Development:</h5>
+                    <p>Start with online courses in filmmaking basics, then build a portfolio with short film projects.</p>
+                `;
+                break;
+            case 'music':
+                content = `
+                    <h4>Music Industry</h4>
+                    <p>This field encompasses music creation, production, performance, and business aspects of the music world.</p>
+                    <h5>Key Areas to Focus On:</h5>
+                    <ul>
+                        <li><strong>Music Theory:</strong> Understand the fundamentals of music composition</li>
+                        <li><strong>Instrument Proficiency:</strong> Develop skills on at least one instrument</li>
+                        <li><strong>Audio Engineering:</strong> Learn recording, mixing, and mastering techniques</li>
+                        <li><strong>Live Performance:</strong> Develop stage presence and performance skills</li>
+                    </ul>
+                    <h5>Entry-Level Positions:</h5>
+                    <ul>
+                        <li>Studio Assistant</li>
+                        <li>Music Teacher/Tutor</li>
+                        <li>Live Sound Technician</li>
+                        <li>Music Publishing Assistant</li>
+                    </ul>
+                    <h5>Recommended Skill Development:</h5>
+                    <p>Take music lessons, learn digital audio workstations, and start creating and sharing your music.</p>
+                `;
+                break;
+            case 'performing':
+                content = `
+                    <h4>Performing Arts</h4>
+                    <p>This field includes theater, dance, and other live performance disciplines.</p>
+                    <h5>Key Areas to Focus On:</h5>
+                    <ul>
+                        <li><strong>Acting Techniques:</strong> Learn various approaches to character development</li>
+                        <li><strong>Stage Presence:</strong> Develop confidence and connection with audiences</li>
+                        <li><strong>Voice Projection:</strong> Master vocal techniques for performance</li>
+                        <li><strong>Choreography:</strong> Understand movement and dance composition</li>
+                    </ul>
+                    <h5>Entry-Level Positions:</h5>
+                    <ul>
+                        <li>Community Theater Performer</li>
+                        <li>Teaching Artist</li>
+                        <li>Stage Crew</li>
+                        <li>Arts Administration Assistant</li>
+                    </ul>
+                    <h5>Recommended Skill Development:</h5>
+                    <p>Join local theater groups, take acting classes, and build a performance reel.</p>
+                `;
+                break;
+            case 'gaming':
+                content = `
+                    <h4>Gaming & Interactive Entertainment</h4>
+                    <p>This field involves creating interactive experiences through video games and other digital platforms.</p>
+                    <h5>Key Areas to Focus On:</h5>
+                    <ul>
+                        <li><strong>Game Design:</strong> Learn principles of creating engaging gameplay</li>
+                        <li><strong>Programming Basics:</strong> Understand the technical side of game development</li>
+                        <li><strong>Narrative Design:</strong> Develop skills in interactive storytelling</li>
+                        <li><strong>User Experience:</strong> Learn how to create intuitive and enjoyable interfaces</li>
+                    </ul>
+                    <h5>Entry-Level Positions:</h5>
+                    <ul>
+                        <li>Quality Assurance Tester</li>
+                        <li>Game Design Assistant</li>
+                        <li>Community Manager</li>
+                        <li>Technical Artist</li>
+                    </ul>
+                    <h5>Recommended Skill Development:</h5>
+                    <p>Learn game engines like Unity or Unreal, create small game projects, and participate in game jams.</p>
+                `;
+                break;
+        }
+        
+        modalBody.innerHTML = content;
+        modal.show();
+    }
+    
+    // Function to show resources
+    function showResources(type) {
+        const modal = new bootstrap.Modal(document.getElementById('resourcesModal'));
+        const modalBody = document.getElementById('resourcesModalBody');
+        
+        let content = '';
+        
+        switch(type) {
+            case 'courses':
+                content = `
+                    <h4>Entertainment Skill Development Courses</h4>
+                    <div class="mb-4">
+                        <h5>Online Learning Platforms</h5>
+                        <ul>
+                            <li><strong>MasterClass:</strong> Courses from industry leaders in film, music, and writing</li>
+                            <li><strong>Coursera:</strong> Specializations in film production, music business, and game design</li>
+                            <li><strong>Skillshare:</strong> Creative courses in various entertainment disciplines</li>
+                            <li><strong>Berklee Online:</strong> Music production and business courses</li>
+                            <li><strong>LinkedIn Learning:</strong> Technical skills for entertainment professionals</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Free Resources</h5>
+                        <ul>
+                            <li>YouTube tutorials from industry professionals</li>
+                            <li>Podcasts on entertainment industry topics</li>
+                            <li>Industry association webinars and workshops</li>
+                            <li>Library resources on entertainment careers</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'creative':
+                content = `
+                    <h4>Creative Skill Development Resources</h4>
+                    <div class="mb-4">
+                        <h5>Storytelling & Writing</h5>
+                        <ul>
+                            <li>Screenwriting workshops and books</li>
+                            <li>Creative writing courses</li>
+                            <li>Story structure analysis of successful films/shows</li>
+                            <li>Improvisation classes</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Visual Arts</h5>
+                        <ul>
+                            <li>Drawing and composition classes</li>
+                            <li>Photography courses</li>
+                            <li>Color theory resources</li>
+                            <li>Visual storytelling exercises</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'technical':
+                content = `
+                    <h4>Technical Skill Development Resources</h4>
+                    <div class="mb-4">
+                        <h5>Software & Tools</h5>
+                        <ul>
+                            <li>Adobe Creative Cloud tutorials</li>
+                            <li>Digital Audio Workstation training (Pro Tools, Logic, Ableton)</li>
+                            <li>Video editing software courses (Premiere Pro, Final Cut Pro)</li>
+                            <li>Game engine tutorials (Unity, Unreal Engine)</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Equipment & Production</h5>
+                        <ul>
+                            <li>Camera operation workshops</li>
+                            <li>Lighting design courses</li>
+                            <li>Audio engineering classes</li>
+                            <li>Stage management resources</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            case 'industry':
+                content = `
+                    <h4>Industry Knowledge & Networking Resources</h4>
+                    <div class="mb-4">
+                        <h5>Professional Associations</h5>
+                        <ul>
+                            <li>Academy of Television Arts & Sciences</li>
+                            <li>Recording Academy</li>
+                            <li>Actors' Equity Association</li>
+                            <li>International Game Developers Association</li>
+                        </ul>
+                    </div>
+                    <div class="mb-4">
+                        <h5>Networking Opportunities</h5>
+                        <ul>
+                            <li>Industry conferences and conventions</li>
+                            <li>Local meetups for creative professionals</li>
+                            <li>Film festivals and music showcases</li>
+                            <li>Online communities and forums</li>
+                        </ul>
+                    </div>
+                `;
+                break;
+            default:
+                content = `
+                    <h4>Entertainment Career Resources</h4>
+                    <p>Explore our comprehensive collection of resources to help you build a successful career in the entertainment industry.</p>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle me-2"></i>Select a specific resource category from the buttons throughout the site for more targeted information.
+                    </div>
+                `;
+        }
+        
+        modalBody.innerHTML = content;
+        modal.show();
+    }
+    
+    // Function to show skill resources
+    function showSkillResources(skillType) {
+        showResources(skillType);
+    }
+    
+    // Function to show field selection
+    function showFieldSelection() {
+        const modal = new bootstrap.Modal(document.getElementById('fieldModal'));
+        const modalBody = document.getElementById('fieldModalBody');
+        
+        const content = `
+            <h4>Explore Entertainment Fields</h4>
+            <p>Select a field to learn more about career opportunities and skill requirements:</p>
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="card clickable-card" onclick="showFieldDetails('film')">
+                        <div class="card-body text-center">
+                            <h5>Film & Television</h5>
+                            <p>Create visual stories for screens</p>
+                            <button class="btn btn-entertainment">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card clickable-card" onclick="showFieldDetails('music')">
+                        <div class="card-body text-center">
+                            <h5>Music Industry</h5>
+                            <p>Create, produce, and perform music</p>
+                            <button class="btn btn-entertainment">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card clickable-card" onclick="showFieldDetails('performing')">
+                        <div class="card-body text-center">
+                            <h5>Performing Arts</h5>
+                            <p>Theater, dance, and live performance</p>
+                            <button class="btn btn-entertainment">Explore</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card clickable-card" onclick="showFieldDetails('gaming')">
+                        <div class="card-body text-center">
+                            <h5>Gaming & Interactive</h5>
+                            <p>Create interactive entertainment</p>
+                            <button class="btn btn-entertainment">Explore</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        modalBody.innerHTML = content;
+        modal.show();
+    }
+</script>
+</body>
+</html>
