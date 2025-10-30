@@ -713,6 +713,7 @@ def test_email():
     except Exception as e:
         return jsonify({'success': False, 'message': f'Error: {str(e)}'}), 500
 
+<<<<<<< HEAD
 # Serve main application
 @app.route('/')
 def index():
@@ -817,6 +818,8 @@ def aca_guidance2():
     return render_template('aca2.html')
 
 
+=======
+>>>>>>> 524a0add66b0b348867ece501ad6a90d1955a1c6
 if __name__ == '__main__':
     try:
         template_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
