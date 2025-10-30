@@ -26,12 +26,13 @@ db_config = {
     'database': 'career_guider'
 }
 
-# Gmail SMTP Configuration - AFTER app is created
+# Gmail SMTP Configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'chukkaharika47@gmail.com'  # Replace with your Gmail
-app.config['MAIL_PASSWORD'] = 'pwzuikqvnrwstpqp'     # Replace with Gmail App Password
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'chukkaharika47@gmail.com'    # Replace with your Gmail
+app.config['MAIL_PASSWORD'] = 'ymxcpwprnytssyyq'       # Replace with Gmail App Password
 app.config['MAIL_DEFAULT_SENDER'] = 'chukkaharika47@gmail.com'
 
 class User:
@@ -122,12 +123,23 @@ def send_otp_email(email, otp):
         message.attach(MIMEText(body, 'html'))
         
         # Send email using Gmail SMTP
-        with smtplib.SMTP(app.config['MAIL_SERVER'], app.config['MAIL_PORT']) as server:
-            server.ehlo()
-            server.starttls()
-            server.ehlo()
+        server = smtplib.SMTP(app.config['MAIL_SERVER'], app.config['MAIL_PORT'])
+        server.set_debuglevel(1)  # Enable debug output
+        server.ehlo()
+        server.starttls()
+        server.ehlo()
+        
+        # Try login with better error handling
+        try:
             server.login(sender_email, sender_password)
-            server.sendmail(sender_email, email, message.as_string())
+            print("✅ Successfully authenticated with Gmail")
+        except smtplib.SMTPAuthenticationError as e:
+            print(f"❌ Authentication failed: {e}")
+            server.quit()
+            return False
+        
+        server.sendmail(sender_email, email, message.as_string())
+        server.quit()
         
         print(f"✅ OTP email sent successfully to {email}")
         return True
@@ -804,7 +816,17 @@ def aca_guidance1():
 def aca_guidance2():
     return render_template('aca2.html')
 
+
 if __name__ == '__main__':
+    try:
+        template_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+        print(f"✅ Template path: {template_path}")
+        if os.path.exists(template_path):
+            print(f"✅ Templates folder exists with {len(os.listdir(template_path))} files")
+        else:
+            print("❌ Templates folder not found!")
+    except Exception as e:
+        print(f"⚠️ Path check error: {e}")
     # Initialize database before starting the app
     init_database()
     
